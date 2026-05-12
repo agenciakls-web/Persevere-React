@@ -25,7 +25,7 @@ export default function ContatoForm() {
       !data.email
         .toLowerCase()
         .match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         )
     ) {
       setMessage("O e-mail digitado não é válido");
@@ -40,7 +40,7 @@ export default function ContatoForm() {
             reset();
           } else {
             setMessage(
-              "Mensagem não enviada, verifique todos os campos e tente novamente"
+              "Mensagem não enviada, verifique todos os campos e tente novamente",
             );
             setColorMessage("bg-red-700");
           }
@@ -53,21 +53,21 @@ export default function ContatoForm() {
       <div className="my-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 2xl:gap-8 ">
         <input
           {...register("nome")}
-            className=" text-base lg:text-lg 2xl:text-xl font-light py-3 md:py-3 lg:py-4 px-4 md:px-4 lg:px-5 rounded-md md:rounded-lg block w-full bg-zinc-200 text-black md:col-span-2"
-            placeholder="Nome"
+          className="  2xl:text-xl  my-3 py-3 px-6   md:rounded-lg block  bg-zinc-200  md:col-span-2 w-full rounded-lg text-lg font-medium border text-gray-500 "
+          placeholder="Nome"
         />
         <input
-           {...register("email")}
-            className=" text-base lg:text-lg 2xl:text-xl font-light py-3 md:py-3 lg:py-4 px-4 md:px-4 lg:px-5 rounded-md md:rounded-lg block w-full bg-zinc-200  text-black md:col-span-1"
-            placeholder="E-mail"
+          {...register("email")}
+          className="  2xl:text-xl my-3 py-3 px-6   md:rounded-lg block  bg-zinc-200  md:col-span-2 w-full rounded-lg text-lg font-medium border text-gray-500"
+          placeholder="E-mail"
         />
         <input
           {...register("telefone")}
-            className=" text-base lg:text-lg 2xl:text-xl font-light py-3 md:py-3 lg:py-4 px-4 md:px-4 lg:px-5 rounded-md md:rounded-lg block w-full bg-zinc-200 text-black  md:col-span-1"
-            placeholder="Telefone"
+          className=" 2xl:text-xl  my-3 py-3 px-6   md:rounded-lg block  bg-zinc-200  md:col-span-2 w-full rounded-lg text-lg font-medium border text-gray-500"
+          placeholder="Telefone"
         />
       </div>
-      <button className="my-3 flex place-items-center gap-2 md:gap-4 bg-yellow-600 transition-all rounded-md text-white text-base lg:text-lg px-4 py-2 md:px-8 lg:px-10 lg:py-2 font-normal uppercase">
+      <button className="place-items-center gap-2 md:gap-4  lg:text-lg  md:px-8 lg:px-10 lg:py-2  bg-blue-500 hover:bg-blue-700 transition text-white font-medium rounded-full my-4 py-2 px-10 block text-base uppercase">
         Enviar
       </button>
       {message != "" ? (

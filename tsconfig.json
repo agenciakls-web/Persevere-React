@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/parts/Componentes/verMais"  ],
+, "app/parts/Componentes/verMais.tsx"  ],
   "exclude": ["node_modules"]
 }

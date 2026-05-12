@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {ContentLinks} from "@/app/parts/dados/contentLinks";
+import ContatoFormLandingPage  from "@/app/parts/Componentes/ContatoFormLandingPage";
 
 
 export default function landingPage() {
@@ -13,7 +14,7 @@ export default function landingPage() {
         <div className="container mx-auto px-4">
             <div className="flex justify-between items-center">
                 <div className="logo py-4">
-                    <Image src="/img/logo.png" className="w-32 sm:w-48 md:w-64 lg:w-72" alt="" />
+                    <Image src="/img/logo.png" width={192} height={96} className="w-32 sm:w-48 md:w-64 lg:w-72" alt="" />
                 </div>
                 <nav className="items-center flex">
                     <ul className="mx-2 hidden md:flex">
@@ -178,6 +179,8 @@ export default function landingPage() {
                             <p role="status" aria-live="polite" aria-atomic="true"></p>
                             <ul></ul>
                         </div>
+                        <ContatoFormLandingPage />
+                        {/* 
                         <form action="/#wpcf7-f6-o1" method="post" className="wpcf7-form init" noValidate
                             data-status="init">
                             <span className="wpcf7-form-control-wrap" data-name="nome"><input type="text" name="nome" value="" size={40} className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500 mdcol-span-2" id="nome" aria-required="true" aria-invalid="false" placeholder="Nome"></input></span>
@@ -186,6 +189,8 @@ export default function landingPage() {
                             <input type="submit" value="Enviar" className="wpcf7-form-control has-spinner wpcf7-submit bg-blue-500 hover:bg-blue-700 transition text-white font-medium rounded-full my-4 py-2 px-10 block text-base uppercase" id="enviar"></input><span className="wpcf7-spinner"></span>
                             <div className="wpcf7-response-output" aria-hidden="true"></div>
                         </form>
+                        
+                        */}
                     </div>
                 </div>
             </div>
@@ -199,7 +204,7 @@ export default function landingPage() {
                     className="bg-black bg-[url(/img/landing-1.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
                 </div>
                 <div
-                    className="bg-black bg-[url/img/landing-2.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
+                    className="bg-black bg-[url(/img/landing-2.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
                 </div>
                 <div
                     className="bg-black bg-[url(/img/landing-4.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
@@ -208,7 +213,7 @@ export default function landingPage() {
             <div className="w-full">
                 <a href="">
                     <button type="button"
-                        className="bg-orange text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase">quero saber mais</button>
+                        className="bg-orange-500 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase">quero saber mais</button>
                 </a>
             </div>
         </div>
@@ -217,7 +222,7 @@ export default function landingPage() {
         <div className="container mx-auto px-4">
             <div className="block md:flex md:flex-row-reverse items-center">
                 <div className="md:w-1/2 flex justify-center">
-                    <Image src="/img/loja.jpg" className="w-2/3 rounded-xl" alt="Loja" />
+                    <Image src="/img/loja.jpg" width={680} height={510} className="w-2/3 rounded-xl" alt="Loja" />
                 </div>
                 <div className="md:w-1/2">
                     <h3
@@ -251,7 +256,8 @@ export default function landingPage() {
                                 <input type="hidden" name="_wpcf7_container_post" value="0"></input>
                                 <input type="hidden" name="_wpcf7_posted_data_hash" value=""></input>
                             </div>
-                            <span className="wpcf7-form-control-wrap" data-name="nome"><input type="text" name="nome"
+                            <span className="wpcf7-form-control-wrap" data-name="nome">
+                                <input type="text" name="nome"
                                     value="" size={40}
                                     className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500 mdcol-span-2"
                                     id="nome" aria-required="true" aria-invalid="false" placeholder="Nome"></input></span>
