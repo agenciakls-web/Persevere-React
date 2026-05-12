@@ -9,10 +9,10 @@ export async function POST(req: Request) {
 
     try {
         const data = await resend.emails.send({
-            from: "Persevere <noreply@Persevere.com.br>",
+            from: "Persevere <noreply@persevere.com.br>",
             to: [
                 "fabiofreitassilvacontato@gmail.com",
-                "teste@Persevere.com.br",
+                "teste@persevere.com.br",
             ],
             subject: "Persevere - Contato Site",
             react: EmailTemplate(body),

@@ -198,7 +198,7 @@ export default function landingPage() {
     </div>
     <section id="imoveis" className="my-10">
         <div className="container mx-auto px-4">
-            <h2 className="text-orange uppercase text-2xl md:text-2xl text-center my-2 font-open">Nossos Imóveis</h2>
+            <h2 className="text-orange-500 uppercase text-2xl md:text-2xl text-center my-2 font-open">Nossos Imóveis</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
                 <div
                     className="bg-black bg-[url(/img/landing-1.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
@@ -228,7 +228,7 @@ export default function landingPage() {
                     <h3
                         className="text-center md:text-left text-lg md:text-2xl xl:text-3xl text-blue-500 uppercase font-bold my-4">
                         A persevere</h3>
-                    <p className="text-center md:text-left text-base md:text-xl xl:text-2xl my-2 font-open font-medium">Somos um
+                    <p className="text-center md:text-left text-base md:text-xl xl:text-2xl text-zinc-800 my-2 font-open font-medium">Somos um
                         Somos uma empresa perseverante e inovadora, pertencente a um grupo empresarial que atua e investe no mercado imobiliário há 20 anos.</p>
                     <p className="text-center md:text-left text-base md:text-xl xl:text-2xl my-2 font-open font-medium">Investimos no aprimoramento de nossos colaboradores e enxergamos os desafios como grandes oportunidades de aprendizado e crescimento.</p>
                 </div>
@@ -277,7 +277,7 @@ export default function landingPage() {
                     </div>
                 </div>
                 <div className="text-sm md:text-xl text-black rounded-xl">
-                    <div className="border-red-700 border-blue-500 border-2 rounded-xl text-md md:text-lg p-6 my-3 md:mt-0">
+                    <div className="border-orange-500 border-blue-500 border-2 rounded-xl text-md md:text-lg p-6 my-3 md:mt-0">
                         <div className="text-lg md:text-xl pb-2">
                             <h3 className="font-bold uppercase">Informações de contato</h3>
                             <p>Entre em contato conosco também pelas informações abaixo:</p>
@@ -342,7 +342,7 @@ export default function landingPage() {
                 <div className="lg:w-7/12 text-center lg:text-left ">
                     <h3 className="text-blue-500 text-2xl md:text-3xl uppercase py-2 font-medium">Agende uma visita sem
                         compromisso!</h3>
-                    <p className="text-orange text-xl md:text-2xl">Nós temos os melhores imóveis disponíveis para você!</p>
+                    <p className="text-orange-500 text-xl md:text-2xl">Nós temos os melhores imóveis disponíveis para você!</p>
                 </div>
                 <div className="lg:w-5/12">
                     <button type="button"
