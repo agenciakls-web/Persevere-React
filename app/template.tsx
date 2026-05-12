@@ -14,9 +14,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
     return (
         <>
-            {!OcultarLayout && <Menu />}
+            {/* {!OcultarLayout && <Menu />} */}
             {children}
-            {!OcultarLayout && <Footer />}
+            {/* {!OcultarLayout && <Footer />} */}
         </>
     );
 }
