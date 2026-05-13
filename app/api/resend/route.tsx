@@ -12,7 +12,7 @@ export async function POST(req: Request) {
             from: "Persevere <noreply@persevere.com.br>",
             to: [
                 "fabiofreitassilvacontato@gmail.com",
-                "teste@persevere.com.br",
+                "contato@persevere.com.br",
             ],
             subject: "Persevere - Contato Site",
             react: EmailTemplate(body),

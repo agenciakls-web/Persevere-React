@@ -7,7 +7,7 @@ import { Img } from "@react-email/img";
 import { Heading } from "@react-email/heading";
 import { Section } from "@react-email/section";
 
-export function EmailTemplate({ body }: { body: ContatoTypes }) {
+export function EmailTemplate(body : ContatoTypes ) {
     return (
         <Html>
             <Tailwind>
