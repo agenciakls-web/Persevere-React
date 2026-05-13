@@ -1,6 +1,7 @@
 import { EmailTemplate } from "@/app/parts/estrutura/emailTemplate";
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { renderEmail } from "@/app/parts/utils/renderEmails";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -15,7 +16,7 @@ export async function POST(req: Request) {
                 "teste@persevere.com.br",
             ],
             subject: "Persevere - Contato Site",
-            react: EmailTemplate(body),
+            html: renderEmail(<EmailTemplate body={body} />),
         });
 
         return NextResponse.json(data);

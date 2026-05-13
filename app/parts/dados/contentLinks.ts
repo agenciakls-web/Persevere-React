@@ -1,5 +1,5 @@
 export const ContentLinks = {
-    titleSite: 'imagem',
+    titleSite: 'Persevere',
 
 	email: 'mailto:contato@persevere.com.br',
     emailShow: 'contato@persevere.com.br',
