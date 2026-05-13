@@ -1,13 +1,11 @@
 import { EmailTemplate } from "@/app/parts/estrutura/emailTemplate";
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import { renderEmail } from "@/app/parts/utils/renderEmails";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
     const body = await req.json();
-    const html = await renderEmail(<EmailTemplate body={body} />);
 
     try {
         const data = await resend.emails.send({
@@ -17,7 +15,7 @@ export async function POST(req: Request) {
                 "teste@persevere.com.br",
             ],
             subject: "Persevere - Contato Site",
-            html,
+            react: EmailTemplate(body),
         });
 
         return NextResponse.json(data);
