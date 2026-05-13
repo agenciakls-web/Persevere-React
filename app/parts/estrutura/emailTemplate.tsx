@@ -26,25 +26,25 @@ export function EmailTemplate(body : ContatoTypes ) {
 
                         <Section className="mt-1">
                             <h3 className="text-lg font-semibold mb-2">Contato</h3>
-                            <table className="w-full border-collapse">
+                            <table className="w-full border-collapse border-spacing-2">
                                 <tbody>
                                     <tr>
-                                        <td className="border-spacing-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
+                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             Nome
                                         </td>
-                                        <td className="border-spacing-2 px-4 py-2 bg-zinc-200">{body.nome}</td>
+                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.nome}</td>
                                     </tr>
                                     <tr>
-                                        <td className="border-spacing-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
+                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             E-mail
                                         </td>
-                                        <td className="border-spacing-2 px-4 py-2 bg-zinc-200">{body.email}</td>
+                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.email}</td>
                                     </tr>
                                     <tr>
-                                        <td className="border-spacing-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
+                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             Telefone
                                         </td>
-                                        <td className="border-spacing-2 px-4 py-2 bg-zinc-200">{body.telefone}</td>
+                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.telefone}</td>
                                     </tr>
                                 </tbody>
                             </table>
