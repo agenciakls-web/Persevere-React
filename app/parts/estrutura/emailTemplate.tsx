@@ -19,9 +19,9 @@ export function EmailTemplate(body : ContatoTypes ) {
                                 width="150"
                                 height="40"
                                 alt={ContentLinks.titleSite}
-                                className="mx-auto w-32 h-auto"
+                                className="mx-auto w-48 h-auto"
                             />
-                            <Heading className="uppercase font-bold mt-2">Contato Recebido</Heading>
+                            <Heading className="text-lg uppercase font-bold mt-2">Contato Recebido</Heading>
                         </Section>
 
                         <Section className="mt-1">
@@ -29,22 +29,22 @@ export function EmailTemplate(body : ContatoTypes ) {
                             <table className="w-full border-collapse">
                                 <tbody>
                                     <tr>
-                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
+                                        <td className="border-spacing-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             Nome
                                         </td>
-                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.nome}</td>
+                                        <td className="border-spacing-2 px-4 py-2 bg-zinc-200">{body.nome}</td>
                                     </tr>
                                     <tr>
-                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
+                                        <td className="border-spacing-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             E-mail
                                         </td>
-                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.email}</td>
+                                        <td className="border-spacing-2 px-4 py-2 bg-zinc-200">{body.email}</td>
                                     </tr>
                                     <tr>
-                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
+                                        <td className="border-spacing-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             Telefone
                                         </td>
-                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.telefone}</td>
+                                        <td className="border-spacing-2 px-4 py-2 bg-zinc-200">{body.telefone}</td>
                                     </tr>
                                 </tbody>
                             </table>
