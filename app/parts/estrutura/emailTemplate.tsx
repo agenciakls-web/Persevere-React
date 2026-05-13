@@ -24,7 +24,7 @@ export function EmailTemplate(body : ContatoTypes ) {
                             <Heading className="uppercase font-bold mt-2">Contato Recebido</Heading>
                         </Section>
 
-                        <Section className="mt-6">
+                        <Section className="mt-1">
                             <h3 className="text-lg font-semibold mb-2">Contato</h3>
                             <table className="w-full border-collapse">
                                 <tbody>
