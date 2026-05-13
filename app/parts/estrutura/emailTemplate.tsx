@@ -19,7 +19,7 @@ export function EmailTemplate(body : ContatoTypes ) {
                                 width="150"
                                 height="40"
                                 alt={ContentLinks.titleSite}
-                                className="mx-auto w-32"
+                                className="mx-auto w-32 h-auto"
                             />
                             <Heading className="uppercase font-bold mt-2">Contato Recebido</Heading>
                         </Section>
@@ -29,22 +29,22 @@ export function EmailTemplate(body : ContatoTypes ) {
                             <table className="w-full border-collapse">
                                 <tbody>
                                     <tr>
-                                        <td className="px-4 py-2 text-right font-bold text-orange-500 w-32 bg-blue-600">
+                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             Nome
                                         </td>
-                                        <td className="px-4 py-2 bg-zinc-200">{body.nome}</td>
+                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.nome}</td>
                                     </tr>
                                     <tr>
-                                        <td className="px-4 py-2 text-right font-bold text-orange-500 w-32 bg-blue-600">
+                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             E-mail
                                         </td>
-                                        <td className="px-4 py-2 bg-zinc-200">{body.email}</td>
+                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.email}</td>
                                     </tr>
                                     <tr>
-                                        <td className="px-4 py-2 text-right font-bold text-orange-500 w-32 bg-blue-600">
+                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
                                             Telefone
                                         </td>
-                                        <td className="px-4 py-2 bg-zinc-200">{body.telefone}</td>
+                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.telefone}</td>
                                     </tr>
                                 </tbody>
                             </table>
