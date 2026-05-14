@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import {ContentLinks} from "@/app/parts/dados/contentLinks";
 import ContatoFormLandingPage  from "@/app/parts/Componentes/ContatoFormLandingPage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faWhatsapp, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function landingPage() {
@@ -135,31 +138,31 @@ export default function landingPage() {
                     <li className="m-2">
                         <a href="https://pt-br.facebook.com/redeconomia" target="blank"
                             className="menu-link main-menu-link">
-                            <i className="fab fa-facebook"></i>
+                            <FontAwesomeIcon icon={faFacebook} />
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://www.instagram.com/souredeconomia/" target="blank"
                             className="menu-link main-menu-link">
-                            <i className="fab fa-instagram"></i>
+                            <FontAwesomeIcon icon="instagram" />
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://www.youtube.com/user/souredeconomia" target="blank"
                             className="menu-link main-menu-link">
-                            <i className="fab fa-youtube"></i>
+                            <FontAwesomeIcon icon={faYoutube} />
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://player.hstbr.net/radioproducoes" target="blank"
                             className="menu-link main-menu-link">
-                            <i className="fab fa-whatsapp"></i>
+                            <FontAwesomeIcon icon={faWhatsapp} />
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://webmail.exchange.locaweb.com.br/owa/auth/logon.aspx?replaceCurrent=1&amp;url=https%3a%2f%2fwebmail.exchange.locaweb.com.br%2fowa%2f"
                             target="blank" className="menu-link main-menu-link">
-                            <i className="far fa-envelope"></i>
+                            <FontAwesomeIcon icon={faEnvelope} />
                         </a>
                     </li>
                 </ul>
