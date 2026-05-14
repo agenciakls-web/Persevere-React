@@ -5,8 +5,8 @@ import Link from "next/link";
 import {ContentLinks} from "@/app/parts/dados/contentLinks";
 import ContatoFormLandingPage  from "@/app/parts/Componentes/ContatoFormLandingPage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faWhatsapp, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 
 export default function landingPage() {
@@ -138,31 +138,31 @@ export default function landingPage() {
                     <li className="m-2">
                         <a href="https://pt-br.facebook.com/redeconomia" target="blank"
                             className="menu-link main-menu-link">
-                            <FontAwesomeIcon icon={faFacebook} />
+                            <i className="fab fa-facebook"></i>
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://www.instagram.com/souredeconomia/" target="blank"
                             className="menu-link main-menu-link">
-                            <FontAwesomeIcon icon="instagram" />
+                            <i className="fab fa-instagram"></i>
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://www.youtube.com/user/souredeconomia" target="blank"
                             className="menu-link main-menu-link">
-                            <FontAwesomeIcon icon={faYoutube} />
+                            <i className="fab fa-youtube"></i>
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://player.hstbr.net/radioproducoes" target="blank"
                             className="menu-link main-menu-link">
-                            <FontAwesomeIcon icon={faWhatsapp} />
+                            <i className="fab fa-whatsapp"></i>
                         </a>
                     </li>
                     <li className="m-2">
                         <a href="https://webmail.exchange.locaweb.com.br/owa/auth/logon.aspx?replaceCurrent=1&amp;url=https%3a%2f%2fwebmail.exchange.locaweb.com.br%2fowa%2f"
                             target="blank" className="menu-link main-menu-link">
-                            <FontAwesomeIcon icon={faEnvelope} />
+                            <i className="far fa-envelope"></i>
                         </a>
                     </li>
                 </ul>
@@ -289,7 +289,7 @@ export default function landingPage() {
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                 <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <i className="fas fa-phone" aria-hidden="true"></i>
+                                    <FontAwesomeIcon icon={faPhone} aria-hidden="true"></FontAwesomeIcon>
                                 </div>
                                 <div>
                                     <div className="py-1 font-bold uppercase">Telefone:</div>
@@ -301,7 +301,7 @@ export default function landingPage() {
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                 <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <i className="fab fa-whatsapp" aria-hidden="true"></i>
+                                    <FontAwesomeIcon icon={faWhatsapp} aria-hidden="true"></FontAwesomeIcon>
                                 </div>
                                 <div>
                                     <div className="py-1 font-bold uppercase">WhatsApp:</div>
@@ -313,7 +313,7 @@ export default function landingPage() {
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                 <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <i className="far fa-envelope" aria-hidden="true"></i>
+                                    <FontAwesomeIcon icon={faEnvelope} aria-hidden="true"></FontAwesomeIcon>
                                 </div>
                                 <div>
                                     <div className="py-1 font-bold uppercase">E-mail:</div>
@@ -325,7 +325,7 @@ export default function landingPage() {
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                 <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <i className="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <FontAwesomeIcon icon={faLocationDot} aria-hidden="true"></FontAwesomeIcon>
                                 </div>
                                 <div>
                                     <div className="py-1 font-bold uppercase">Endereço:</div>
