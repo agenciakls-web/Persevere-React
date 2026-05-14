@@ -280,7 +280,7 @@ export default function landingPage() {
                     </div>
                 </div>
                 <div className="text-sm md:text-xl text-black rounded-xl">
-                    <div className="border-orange-500 border-blue-500 border-2 rounded-xl text-md md:text-lg p-6 my-3 md:mt-0">
+                    <div className="border-orange-500 border-2 rounded-xl text-md md:text-lg p-6 my-3 md:mt-0">
                         <div className="text-lg md:text-xl pb-2">
                             <h3 className="font-bold uppercase">Informações de contato</h3>
                             <p>Entre em contato conosco também pelas informações abaixo:</p>
