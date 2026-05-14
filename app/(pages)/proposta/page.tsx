@@ -110,7 +110,7 @@ export default function Proposta() {
                             </div>
                         </div>
                     </div>
-                    <div className="input-group text-right">
+                    <div className="input-group text-right flex justify-end gap-4">
                         <button type="button" className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 text-base uppercase inline-block btn-prev js-btn-prev">Anterior</button>
                         <button type="button" className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 text-base uppercase inline-block js-btn-next" data-step-text="Próximo" data-final-step-text="Enviar">Próximo</button>
                     </div>
