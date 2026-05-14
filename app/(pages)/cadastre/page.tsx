@@ -19,7 +19,7 @@ export default function Cadastre() {
                 </div>
                 <div className="step-single">
                     <div className="relative mb-2">
-                        <div className="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+                        <div className="absolute flex align-center items-center align-middle content-center">
                             <div className="w-full bg-gray-100 rounded items-center align-middle align-center flex-1">
                                 <div className="step-progress transition-all duration-300 w-0 bg-blue-500 py-1 rounded"></div>
                             </div>
@@ -34,7 +34,7 @@ export default function Cadastre() {
                 </div>
                 <div className="step-single">
                     <div className="relative mb-2">
-                        <div className="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+                        <div className="absolute flex align-center items-center align-middle content-center">
                             <div className="w-full bg-gray-100 rounded items-center align-middle align-center flex-1">
                                 <div className="step-progress transition-all duration-300 w-0 bg-blue-500 py-1 rounded"></div>
                             </div>
@@ -77,7 +77,7 @@ export default function Cadastre() {
                                 <input type="text" name="nome" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Nome Completo" />
                             </div>
                             <div className="lg:col-span-2">
-                                <input type="text" name="email" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="E-mail">
+                                <input type="text" name="email" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="E-mail" />
                             </div>
                             <div>
                                 <input type="tel" name="telefone" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Telefone" id="field-telefone" />
@@ -95,7 +95,7 @@ export default function Cadastre() {
                                 <input type="text" name="nascimento" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Data de Nascimento" id="field-nascimento" />
                             </div>
                             <div>
-                                <input type="text" name="Estado Civil" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Estado Civil" />
+                                <input type="text" name="Estado Civil" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Estado Civil" />
                             </div>
                         </div>
                     </div>
@@ -103,10 +103,10 @@ export default function Cadastre() {
                         <h2 className="py-3 font-medium text-xl font-reading text-blue-500">Escolaridade</h2>
                         <div className="grid grid-cols-1 md:gap-4">
                             <div>
-                                <textarea name="message" id="message" className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2" cols="30" rows="5" placeholder="MENSAGEM"></textarea>
+                                <textarea name="message" id="message" className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"placeholder="MENSAGEM"></textarea>
                             </div>
                             <div>
-                                <input type="text" name="valido" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Proposta válida até" />
+                                <input type="text" name="valido" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Proposta válida até" />
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ export default function Cadastre() {
                         <button type="button" className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 block text-base uppercase md:inline-block btn-prev js-btn-prev">Anterior</button>
                         <button type="button" className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 block text-base uppercase md:inline-block js-btn-next" data-step-text="Próximo" data-final-step-text="Enviar">Próximo</button>
                     </div>
-                    <div className="progress-bar js-progress-bar" style="transform: scaleX(0.01);"></div>
+                    <div className="progress-bar js-progress-bar"></div>
                     <div className="flex pt-3">
                         <div className="w-full">
                             <div id="response-proposal"></div>

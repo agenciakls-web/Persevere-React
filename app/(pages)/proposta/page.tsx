@@ -59,14 +59,14 @@ export default function Proposta() {
                         <div className="grid grid-cols-1 md:gap-4">
                             <div className="lg:col-span-2">
                                 <span className="px-2">
-                                    <input type="radio" id="comprar" name="proposito" value="comprar"/> <label for="comprar">Comprar</label>
+                                    <input type="radio" id="comprar" name="proposito" value="comprar"/> <label>Comprar</label>
                                 </span>
                                 <span className="px-2">
-                                    <input type="radio" id="alugar" name="proposito" value="alugar"/> <label for="alugar">Alugar</label>
+                                    <input type="radio" id="alugar" name="proposito" value="alugar"/> <label>Alugar</label>
                                 </span>
                             </div>
                             <div className="lg:col-span-2">
-                                <input type="text" name="codigo" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Código do Imóvel"/>
+                                <input type="text" name="codigo" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Código do Imóvel"/>
                             </div>
                         </div>
                     </div>
@@ -74,28 +74,28 @@ export default function Proposta() {
                         <h2 className="py-3 font-medium text-xl font-reading text-blue-500">Clientes</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
                             <div className="lg:col-span-2">
-                                <input type="text" name="nome" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Nome Completo"/>
+                                <input type="text" name="nome" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Nome Completo"/>
                             </div>
                             <div className="lg:col-span-2">
-                                <input type="text" name="email" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="E-mail"/>
+                                <input type="text" name="email" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="E-mail"/>
                             </div>
                             <div>
-                                <input type="tel" name="telefone" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Telefone" id="field-telefone"   />
+                                <input type="tel" name="telefone" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Telefone" id="field-telefone"   />
                             </div>
                             <div>
-                                <input type="text" name="celular" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Celular" id="field-celular" />
+                                <input type="text" name="celular" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Celular" id="field-celular" />
                             </div>
                             <div>
-                                <input type="text" name="cpf" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="CPF" id="field-cpf" />
+                                <input type="text" name="cpf" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="CPF" id="field-cpf" />
                             </div>
                             <div>
-                                <input type="text" name="rg" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="RG" id="field-rg" />
+                                <input type="text" name="rg" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="RG" id="field-rg" />
                             </div>
                             <div>
-                                <input type="text" name="nascimento" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Data de Nascimento" id="field-nascimento" />
+                                <input type="text" name="nascimento" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Data de Nascimento" id="field-nascimento" />
                             </div>
                             <div>
-                                <input type="text" name="Estado Civil" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Estado Civil" />
+                                <input type="text" name="Estado Civil" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Estado Civil" />
                             </div>
                         </div>
                     </div>
@@ -103,10 +103,10 @@ export default function Proposta() {
                         <h2 className="py-3 font-medium text-xl font-reading text-blue-500">Escolaridade</h2>
                         <div className="grid grid-cols-1 md:gap-4">
                             <div>
-                                <textarea name="message" id="message" className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2" cols="30" rows="5" placeholder="MENSAGEM"></textarea>
+                                <textarea name="message" id="message" className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2" placeholder="MENSAGEM"></textarea>
                             </div>
                             <div>
-                                <input type="text" name="valido" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required="" placeholder="Proposta válida até">
+                                <input type="text" name="valido" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Proposta válida até" />
                             </div>
                         </div>
                     </div>
