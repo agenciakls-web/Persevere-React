@@ -286,9 +286,8 @@ export default function landingPage() {
                             <p>Entre em contato conosco também pelas informações abaixo:</p>
                         </div>
                         <a href="tel:552126340075" target="_blank">
-                            <div
-                                className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
-                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
+                            <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
+                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500 ">
                                     <FontAwesomeIcon icon={faPhone} aria-hidden="true" className="h-10 w-10"></FontAwesomeIcon>
                                 </div>
                                 <div>
@@ -300,7 +299,7 @@ export default function landingPage() {
                         <a href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!" target="_blank">
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
-                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
+                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500">
                                     <FontAwesomeIcon icon={faWhatsapp} aria-hidden="true" className="h-10 w-10"></FontAwesomeIcon>
                                 </div>
                                 <div>
@@ -312,7 +311,7 @@ export default function landingPage() {
                         <a href="mailto:contato@persevere.com.br" target="_blank">
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
-                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
+                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500">
                                     <FontAwesomeIcon icon={faEnvelope} aria-hidden="true" className="h-10 w-10"></FontAwesomeIcon>
                                 </div>
                                 <div>
