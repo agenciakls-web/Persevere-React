@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+// @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
 type Photo = {

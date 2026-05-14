@@ -3,9 +3,10 @@
 import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+// @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 
-export default function ImovelDetalhe({ imovel }) {
+export default function ImovelDetalhe({ imovel }: { imovel: any}) {
 
     const fotos = useMemo(() => {
         return imovel?.photos || [];
@@ -124,7 +125,7 @@ export default function ImovelDetalhe({ imovel }) {
                                         }}
                                         aria-label="Galeria do imóvel"
                                     >
-                                        {fotos.map((foto, index) => (
+                                        {fotos.map((foto:any, index:any) => (
                                             <SplideSlide key={index}>
 
                                                 <div className="relative h-62.5 overflow-hidden rounded-2xl sm:h-100 lg:h-137.5">
@@ -144,7 +145,7 @@ export default function ImovelDetalhe({ imovel }) {
 
                                     <div className="mt-4 grid grid-cols-4 gap-3 sm:grid-cols-6">
 
-                                        {fotos.map((foto, index) => (
+                                        {fotos.map((foto: any, index: any) => (
                                             <div
                                                 key={index}
                                                 className="relative h-20 overflow-hidden rounded-xl border"

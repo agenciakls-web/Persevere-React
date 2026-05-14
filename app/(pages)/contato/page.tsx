@@ -47,7 +47,7 @@ const ContactPage = () => {
 
     // Pega o primeiro erro de validação, se existir
     const firstValidationError =
-        Object.values(errors)[0]?.message || "";
+        Object.values(errors)[0]?.message as string || "";
 
     // Decide qual mensagem mostrar: erro de validação ou resposta da API
     const messageToShow = firstValidationError || responseMessage;
