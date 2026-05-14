@@ -289,7 +289,7 @@ export default function landingPage() {
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                 <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <FontAwesomeIcon icon={faPhone} aria-hidden="true"></FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faPhone} aria-hidden="true" className="h-10 w-10"></FontAwesomeIcon>
                                 </div>
                                 <div>
                                     <div className="py-1 font-bold uppercase">Telefone:</div>
@@ -301,7 +301,7 @@ export default function landingPage() {
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                 <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <FontAwesomeIcon icon={faWhatsapp} aria-hidden="true"></FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faWhatsapp} aria-hidden="true" className="h-10 w-10"></FontAwesomeIcon>
                                 </div>
                                 <div>
                                     <div className="py-1 font-bold uppercase">WhatsApp:</div>
@@ -313,7 +313,7 @@ export default function landingPage() {
                             <div
                                 className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                 <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <FontAwesomeIcon icon={faEnvelope} aria-hidden="true"></FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faEnvelope} aria-hidden="true" className="h-10 w-10"></FontAwesomeIcon>
                                 </div>
                                 <div>
                                     <div className="py-1 font-bold uppercase">E-mail:</div>
