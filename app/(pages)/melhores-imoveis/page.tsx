@@ -2,187 +2,252 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {ContentLinks} from "@/app/parts/dados/contentLinks";
-import ContatoFormLandingPage  from "@/app/parts/Componentes/ContatoFormLandingPage";
+import { ContentLinks } from "@/app/parts/dados/contentLinks";
+import ContatoFormLandingPage from "@/app/parts/Componentes/ContatoFormLandingPage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 export default function landingPage() {
   return (
-      <>
+    <>
       <div className="h-2 bg-blue-500 w-full"></div>
-    <header id="header">
+      <header id="header">
         <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center">
-                <div className="logo py-4">
-                    <Image src="/img/logo.png" width={192} height={96} className="w-32 sm:w-48 md:w-64 lg:w-72" alt="" />
-                </div>
-                <nav className="items-center flex">
-                    <ul className="mx-2 hidden md:flex">
-                        <li><a href="#header"
-                                className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium">Início</a>
-                        </li>
-                        <li><a href="#sobre"
-                                className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium">Sobre</a>
-                        </li>
-                        <li><a href="#imoveis"
-                                className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium">Imóveis</a>
-                        </li>
-                        <li><a href="#contato"
-                                className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium">Contato</a>
-                        </li>
-                    </ul>
-                    <a id="mobile-menu-hamburger">
-                        <div className="hamburger hamburger--squeeze md:hidden px-4">
-                            <div className="hamburger-box">
-                                <div className="hamburger-inner"></div>
-                            </div>
-                        </div>
-                    </a>
-                </nav>
+          <div className="flex justify-between items-center">
+            <div className="logo py-4">
+              <Image
+                src="/img/logo.png"
+                width={192}
+                height={96}
+                className="w-32 sm:w-48 md:w-64 lg:w-72"
+                alt=""
+              />
             </div>
+            <nav className="items-center flex">
+              <ul className="mx-2 hidden md:flex">
+                <li>
+                  <a
+                    href="#header"
+                    className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium"
+                  >
+                    Início
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#sobre"
+                    className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium"
+                  >
+                    Sobre
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#imoveis"
+                    className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium"
+                  >
+                    Imóveis
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contato"
+                    className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium"
+                  >
+                    Contato
+                  </a>
+                </li>
+              </ul>
+              <a id="mobile-menu-hamburger">
+                <div className="hamburger hamburger--squeeze md:hidden px-4">
+                  <div className="hamburger-box">
+                    <div className="hamburger-inner"></div>
+                  </div>
+                </div>
+              </a>
+            </nav>
+          </div>
         </div>
-    </header>
-    <nav
-        className="fixed top-0 h-screen w-96 bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open right-0 hidden ">
+      </header>
+      <nav className="fixed top-0 h-screen w-96 bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open right-0 hidden ">
         <div className="hidden -right-full"></div>
-        <div className="button-close absolute top-0 right-0 px-4 py-2 my-2 mx-4 text-2xl rounded-md text-white hover:text-yellow-300 transition-colors"
-            id="header-bar-mobile-close">
-            <i className="fa-solid fa-xmark"></i>
+        <div
+          className="button-close absolute top-0 right-0 px-4 py-2 my-2 mx-4 text-2xl rounded-md text-white hover:text-yellow-300 transition-colors"
+          id="header-bar-mobile-close"
+        >
+          <i className="fa-solid fa-xmark"></i>
         </div>
         <div className="block">
-            <div className="px-2 py-2">
-                <h3 className="text-blue-400 text-left font-bold">Institucional</h3>
-                <ul className="text-white">
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Início
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="sobre.html" className="py-1 flex items-center hover:text-orange">
-                            Quem Somos
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Trabalhe Conosco
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Avaliar Corretor
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div className="px-2 py-2">
-                <h3 className="text-blue-400 text-left font-bold">Imóveis</h3>
-                <ul className="text-white">
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Venda
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Locação
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Condomínios
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Encomende seu imóvel
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div className="px-2 py-2">
-                <h3 className="text-blue-400 text-left font-bold">Serviços</h3>
-                <ul className="text-white">
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Cadastre seu imóvel
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Enviar Proposta
-                        </a>
-                    </li>
-                    <li className="mx-2">
-                        <a href="" className="py-1 flex items-center hover:text-orange">
-                            Financiamento
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div className="px-2 py-2">
-                <h3 className="text-blue-400 text-left font-bold">Contato</h3>
-                <ul className="text-white">
-                    <li className="mx-2">
-                        <a href="contato.html" className="py-1 flex items-center hover:text-orange">
-                            Fale Conosco
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div id="pre-socials-container" className="pre-socials-container">
-                <ul id="pre-list-ul" className="text-white flex justify-center items-center my-4 text-xl">
-                    <li className="m-2">
-                        <a href="https://pt-br.facebook.com/redeconomia" target="blank"
-                            className="menu-link main-menu-link">
-                            <i className="fab fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li className="m-2">
-                        <a href="https://www.instagram.com/souredeconomia/" target="blank"
-                            className="menu-link main-menu-link">
-                            <i className="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li className="m-2">
-                        <a href="https://www.youtube.com/user/souredeconomia" target="blank"
-                            className="menu-link main-menu-link">
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                    <li className="m-2">
-                        <a href="https://player.hstbr.net/radioproducoes" target="blank"
-                            className="menu-link main-menu-link">
-                            <i className="fab fa-whatsapp"></i>
-                        </a>
-                    </li>
-                    <li className="m-2">
-                        <a href="https://webmail.exchange.locaweb.com.br/owa/auth/logon.aspx?replaceCurrent=1&amp;url=https%3a%2f%2fwebmail.exchange.locaweb.com.br%2fowa%2f"
-                            target="blank" className="menu-link main-menu-link">
-                            <i className="far fa-envelope"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+          <div className="px-2 py-2">
+            <h3 className="text-blue-400 text-left font-bold">Institucional</h3>
+            <ul className="text-white">
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Início
+                </a>
+              </li>
+              <li className="mx-2">
+                <a
+                  href="sobre.html"
+                  className="py-1 flex items-center hover:text-orange"
+                >
+                  Quem Somos
+                </a>
+              </li>
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Trabalhe Conosco
+                </a>
+              </li>
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Avaliar Corretor
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="px-2 py-2">
+            <h3 className="text-blue-400 text-left font-bold">Imóveis</h3>
+            <ul className="text-white">
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Venda
+                </a>
+              </li>
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Locação
+                </a>
+              </li>
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Condomínios
+                </a>
+              </li>
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Encomende seu imóvel
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="px-2 py-2">
+            <h3 className="text-blue-400 text-left font-bold">Serviços</h3>
+            <ul className="text-white">
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Cadastre seu imóvel
+                </a>
+              </li>
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Enviar Proposta
+                </a>
+              </li>
+              <li className="mx-2">
+                <a href="" className="py-1 flex items-center hover:text-orange">
+                  Financiamento
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="px-2 py-2">
+            <h3 className="text-blue-400 text-left font-bold">Contato</h3>
+            <ul className="text-white">
+              <li className="mx-2">
+                <a
+                  href="contato.html"
+                  className="py-1 flex items-center hover:text-orange"
+                >
+                  Fale Conosco
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div id="pre-socials-container" className="pre-socials-container">
+            <ul
+              id="pre-list-ul"
+              className="text-white flex justify-center items-center my-4 text-xl"
+            >
+              <li className="m-2">
+                <a
+                  href="https://pt-br.facebook.com/redeconomia"
+                  target="blank"
+                  className="menu-link main-menu-link"
+                >
+                  <i className="fab fa-facebook"></i>
+                </a>
+              </li>
+              <li className="m-2">
+                <a
+                  href="https://www.instagram.com/souredeconomia/"
+                  target="blank"
+                  className="menu-link main-menu-link"
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </li>
+              <li className="m-2">
+                <a
+                  href="https://www.youtube.com/user/souredeconomia"
+                  target="blank"
+                  className="menu-link main-menu-link"
+                >
+                  <i className="fab fa-youtube"></i>
+                </a>
+              </li>
+              <li className="m-2">
+                <a
+                  href="https://player.hstbr.net/radioproducoes"
+                  target="blank"
+                  className="menu-link main-menu-link"
+                >
+                  <i className="fab fa-whatsapp"></i>
+                </a>
+              </li>
+              <li className="m-2">
+                <a
+                  href="https://webmail.exchange.locaweb.com.br/owa/auth/logon.aspx?replaceCurrent=1&amp;url=https%3a%2f%2fwebmail.exchange.locaweb.com.br%2fowa%2f"
+                  target="blank"
+                  className="menu-link main-menu-link"
+                >
+                  <i className="far fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
-    <div className="banner min-h-40 sm:min-h-64 md:min-h-72 lg:min-h-80 xl:min-h-96 2xl:min-h-104 py-8 bg-cover bg-center bg-[url(/img/banner-landing.jpg)] flex justify-center items-center">
+      </nav>
+      <div className="banner min-h-40 sm:min-h-64 md:min-h-72 lg:min-h-80 xl:min-h-96 2xl:min-h-104 py-8 bg-cover bg-center bg-[url(/img/banner-landing.jpg)] flex justify-center items-center">
         <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
-                <div className="text-sm md:text-xl text-black rounded-xl flex align-items justify-center h-full flex-col lg:pr-48">
-                    <h2 className="text-white text-center md:text-left text-3xl md:text-4xl lg:text-5xl uppercase leading-tight font-bold my-2 md:my-4">O imóvel certo para você!</h2>
-                    <h3 className="text-white text-center md:text-left text-xl md:text-2xl lg:text-3xl uppercase leading-tight my-2 md:my-4 ">nós temos os melhores imóveis para você!</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
+            <div className="text-sm md:text-xl text-black rounded-xl flex align-items justify-center h-full flex-col lg:pr-48">
+              <h2 className="text-white text-center md:text-left text-3xl md:text-4xl lg:text-5xl uppercase leading-tight font-bold my-2 md:my-4">
+                O imóvel certo para você!
+              </h2>
+              <h3 className="text-white text-center md:text-left text-xl md:text-2xl lg:text-3xl uppercase leading-tight my-2 md:my-4 ">
+                nós temos os melhores imóveis para você!
+              </h3>
+            </div>
+            <div>
+              <div
+                role="form"
+                className="wpcf7"
+                id="wpcf7-f6-o1"
+                lang="pt-BR"
+                dir="ltr"
+              >
+                <div className="screen-reader-response">
+                  <p role="status" aria-live="polite" aria-atomic="true"></p>
+                  <ul></ul>
                 </div>
-                <div>
-                    <div role="form" className="wpcf7" id="wpcf7-f6-o1" lang="pt-BR" dir="ltr">
-                        <div className="screen-reader-response">
-                            <p role="status" aria-live="polite" aria-atomic="true"></p>
-                            <ul></ul>
-                        </div>
-                        <ContatoFormLandingPage />
-                        {/* 
+                <ContatoFormLandingPage />
+                {/* 
                         <form action="/#wpcf7-f6-o1" method="post" className="wpcf7-form init" noValidate
                             data-status="init">
                             <span className="wpcf7-form-control-wrap" data-name="nome"><input type="text" name="nome" value="" size={40} className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500 mdcol-span-2" id="nome" aria-required="true" aria-invalid="false" placeholder="Nome"></input></span>
@@ -193,167 +258,273 @@ export default function landingPage() {
                         </form>
                         
                         */}
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <section id="imoveis" className="my-10">
+      </div>
+      <section id="imoveis" className="my-10">
         <div className="container mx-auto px-4">
-            <h2 className="text-orange-500 uppercase text-2xl md:text-2xl text-center my-2 font-open">Nossos Imóveis</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
-                <div
-                    className="bg-black bg-[url(/img/landing-1.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
-                </div>
-                <div
-                    className="bg-black bg-[url(/img/landing-2.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
-                </div>
-                <div
-                    className="bg-black bg-[url(/img/landing-4.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl">
-                </div>
-            </div>
-            <div className="w-full">
-                <a href="">
-                    <button type="button"
-                        className="bg-orange-500 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase">quero saber mais</button>
-                </a>
-            </div>
+          <h2 className="text-orange-500 uppercase text-2xl md:text-2xl text-center my-2 font-open">
+            Nossos Imóveis
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+            <div className="bg-black bg-[url(/img/landing-1.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl"></div>
+            <div className="bg-black bg-[url(/img/landing-2.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl"></div>
+            <div className="bg-black bg-[url(/img/landing-4.jpg)] bg-cover h-64 sm:h-72 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-lg sm:text-2xl"></div>
+          </div>
+          <div className="w-full">
+            <a href="">
+              <button
+                type="button"
+                className="bg-orange-500 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase"
+              >
+                quero saber mais
+              </button>
+            </a>
+          </div>
         </div>
-    </section>
-    <div id="sobre" className="bg-gray-100 py-10">
+      </section>
+      <div id="sobre" className="bg-gray-100 py-10">
         <div className="container mx-auto px-4">
-            <div className="block md:flex md:flex-row-reverse items-center">
-                <div className="md:w-1/2 flex justify-center">
-                    <Image src="/img/loja.jpg" width={680} height={510} className="w-2/3 rounded-xl" alt="Loja" />
-                </div>
-                <div className="md:w-1/2">
-                    <h3
-                        className="text-center md:text-left text-lg md:text-2xl xl:text-3xl text-blue-500 uppercase font-bold my-4">
-                        A persevere</h3>
-                    <p className="text-center md:text-left text-base md:text-xl xl:text-2xl text-zinc-800 my-2 font-open font-medium">Somos um
-                        Somos uma empresa perseverante e inovadora, pertencente a um grupo empresarial que atua e investe no mercado imobiliário há 20 anos.</p>
-                    <p className="text-center md:text-left text-base md:text-xl xl:text-2xl my-2 font-open font-medium">Investimos no aprimoramento de nossos colaboradores e enxergamos os desafios como grandes oportunidades de aprendizado e crescimento.</p>
-                </div>
+          <div className="block md:flex md:flex-row-reverse items-center">
+            <div className="md:w-1/2 flex justify-center">
+              <Image
+                src="/img/loja.jpg"
+                width={680}
+                height={510}
+                className="w-2/3 rounded-xl"
+                alt="Loja"
+              />
             </div>
+            <div className="md:w-1/2">
+              <h3 className="text-center md:text-left text-lg md:text-2xl xl:text-3xl text-blue-500 uppercase font-bold my-4">
+                A persevere
+              </h3>
+              <p className="text-center md:text-left text-base md:text-xl xl:text-2xl text-zinc-800 my-2 font-open font-medium">
+                Somos um Somos uma empresa perseverante e inovadora, pertencente
+                a um grupo empresarial que atua e investe no mercado imobiliário
+                há 20 anos.
+              </p>
+              <p className="text-center md:text-left text-base md:text-xl xl:text-2xl my-2 font-open font-medium">
+                Investimos no aprimoramento de nossos colaboradores e enxergamos
+                os desafios como grandes oportunidades de aprendizado e
+                crescimento.
+              </p>
+            </div>
+          </div>
         </div>
-    </div>
-    <section id="contato" className="min-h-140 py-4 md:py-10">
+      </div>
+      <section id="contato" className="min-h-140 py-4 md:py-10">
         <div className="container mx-auto px-6">
-            <h3 className="text-center uppercase font-base text-blue-500 text-xl md:text-3xl font-bold py-8">ENTRE EM
-                CONTATO</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
-                <div className="p-4">
-                    <div role="form" className="wpcf7" id="wpcf7-f6-o1" lang="pt-BR" dir="ltr">
-                        <div className="screen-reader-response">
-                            <p role="status" aria-live="polite" aria-atomic="true"></p>
-                            <ul></ul>
-                        </div>
-                        <form action="/#wpcf7-f6-o1" method="post" className="wpcf7-form init" noValidate
-                            data-status="init">
-                            <div style={{ display: 'none' }}>
-                                <input type="hidden" name="_wpcf7" value="6"></input>
-                                <input type="hidden" name="_wpcf7_version" value="5.6.4"></input>
-                                <input type="hidden" name="_wpcf7_locale" value="pt_BR"></input>
-                                <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f6-o1"></input>
-                                <input type="hidden" name="_wpcf7_container_post" value="0"></input>
-                                <input type="hidden" name="_wpcf7_posted_data_hash" value=""></input>
-                            </div>
-                            <span className="wpcf7-form-control-wrap" data-name="nome">
-                                <input type="text" name="nome"
-                                    value="" size={40}
-                                    className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500 mdcol-span-2"
-                                    id="nome" aria-required="true" aria-invalid="false" placeholder="Nome"></input></span>
-                            <span className="wpcf7-form-control-wrap" data-name="email"><input type="email" name="email"
-                                    value="" size={40}
-                                    className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
-                                    id="email" aria-required="true" aria-invalid="false" placeholder="E-mail"></input></span>
-                            <span className="wpcf7-form-control-wrap" data-name="phone"><input type="tel" name="phone"
-                                    value="" size={40}
-                                    className="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
-                                    id="phone" aria-required="true" aria-invalid="false" placeholder="Telefone"></input></span>
-                            <input type="submit" value="Enviar"
-                                className="wpcf7-form-control has-spinner wpcf7-submit bg-blue-500 hover:bg-blue-700 transition text-white font-medium rounded-full my-4 py-2 px-10 block text-base uppercase"
-                                id="enviar"></input><span className="wpcf7-spinner"></span>
-                            <div className="wpcf7-response-output" aria-hidden="true"></div>
-                        </form>
-                    </div>
+          <h3 className="text-center uppercase font-base text-blue-500 text-xl md:text-3xl font-bold py-8">
+            ENTRE EM CONTATO
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
+            <div className="p-4">
+              <div
+                role="form"
+                className="wpcf7"
+                id="wpcf7-f6-o1"
+                lang="pt-BR"
+                dir="ltr"
+              >
+                <div className="screen-reader-response">
+                  <p role="status" aria-live="polite" aria-atomic="true"></p>
+                  <ul></ul>
                 </div>
-                <div className="text-sm md:text-xl text-black rounded-xl">
-                    <div className="border-orange-500 border-2 rounded-xl text-md md:text-lg p-6 my-3 md:mt-0">
-                        <div className="text-lg md:text-xl pb-2">
-                            <h3 className="font-bold uppercase">Informações de contato</h3>
-                            <p>Entre em contato conosco também pelas informações abaixo:</p>
-                        </div>
-                        <a href="tel:552126340075" target="_blank">
-                            <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
-                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500 ">
-                                    <FontAwesomeIcon icon={faPhone} aria-hidden="true" className="text-orange-500 h-10 w-10"></FontAwesomeIcon>
-                                </div>
-                                <div>
-                                    <div className="py-1 font-bold uppercase">Telefone:</div>
-                                    <div>(21) 2634-0075</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!" target="_blank">
-                            <div
-                                className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
-                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500">
-                                    <FontAwesomeIcon icon={faWhatsapp} aria-hidden="true" className="text-orange-500 h-10 w-10"></FontAwesomeIcon>
-                                </div>
-                                <div>
-                                    <div className="py-1 font-bold uppercase">WhatsApp:</div>
-                                    <div>(21) 99125-7878</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="mailto:contato@persevere.com.br" target="_blank">
-                            <div
-                                className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
-                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500">
-                                    <FontAwesomeIcon icon={faEnvelope} aria-hidden="true" className="text-orange-500 h-10 w-10"></FontAwesomeIcon>
-                                </div>
-                                <div>
-                                    <div className="py-1 font-bold uppercase">E-mail:</div>
-                                    <div>contato@persevere.com.br</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://goo.gl/maps/icjifAHpkpRhfNtw5" target="_blank">
-                            <div
-                                className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
-                                <div className="px-4 md:px-6 text-xl md:text-4xl text-orange">
-                                    <FontAwesomeIcon icon={faLocationDot} aria-hidden="true"></FontAwesomeIcon>
-                                </div>
-                                <div>
-                                    <div className="py-1 font-bold uppercase">Endereço:</div>
-                                    <div>R. Prof. Cardoso de Menezes - Jardim Atlântico Oeste</div>
-                                    <div> Maricá - RJ, 24935-425</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <form
+                  action="/#wpcf7-f6-o1"
+                  method="post"
+                  className="wpcf7-form init"
+                  noValidate
+                  data-status="init"
+                >
+                  <div style={{ display: "none" }}>
+                    <input type="hidden" name="_wpcf7" value="6"></input>
+                    <input
+                      type="hidden"
+                      name="_wpcf7_version"
+                      value="5.6.4"
+                    ></input>
+                    <input
+                      type="hidden"
+                      name="_wpcf7_locale"
+                      value="pt_BR"
+                    ></input>
+                    <input
+                      type="hidden"
+                      name="_wpcf7_unit_tag"
+                      value="wpcf7-f6-o1"
+                    ></input>
+                    <input
+                      type="hidden"
+                      name="_wpcf7_container_post"
+                      value="0"
+                    ></input>
+                    <input
+                      type="hidden"
+                      name="_wpcf7_posted_data_hash"
+                      value=""
+                    ></input>
+                  </div>
+                  <span className="wpcf7-form-control-wrap" data-name="nome">
+                    <input
+                      type="text"
+                      name="nome"
+                      value=""
+                      size={40}
+                      className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500 mdcol-span-2"
+                      id="nome"
+                      aria-required="true"
+                      aria-invalid="false"
+                      placeholder="Nome"
+                    ></input>
+                  </span>
+                  <span className="wpcf7-form-control-wrap" data-name="email">
+                    <input
+                      type="email"
+                      name="email"
+                      value=""
+                      size={40}
+                      className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
+                      id="email"
+                      aria-required="true"
+                      aria-invalid="false"
+                      placeholder="E-mail"
+                    ></input>
+                  </span>
+                  <span className="wpcf7-form-control-wrap" data-name="phone">
+                    <input
+                      type="tel"
+                      name="phone"
+                      value=""
+                      size={40}
+                      className="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
+                      id="phone"
+                      aria-required="true"
+                      aria-invalid="false"
+                      placeholder="Telefone"
+                    ></input>
+                  </span>
+                  <input
+                    type="submit"
+                    value="Enviar"
+                    className="wpcf7-form-control has-spinner wpcf7-submit bg-blue-500 hover:bg-blue-700 transition text-white font-medium rounded-full my-4 py-2 px-10 block text-base uppercase"
+                    id="enviar"
+                  ></input>
+                  <span className="wpcf7-spinner"></span>
+                  <div
+                    className="wpcf7-response-output"
+                    aria-hidden="true"
+                  ></div>
+                </form>
+              </div>
             </div>
+            <div className="text-sm md:text-xl text-black rounded-xl">
+              <div className="border-orange-500 border-2 rounded-xl text-md md:text-lg p-6 my-3 md:mt-0">
+                <div className="text-lg md:text-xl pb-2">
+                  <h3 className="font-bold uppercase">
+                    Informações de contato
+                  </h3>
+                  <p>
+                    Entre em contato conosco também pelas informações abaixo:
+                  </p>
+                </div>
+                <a href="tel:552126340075" target="_blank">
+                  <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
+                    <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500 ">
+                      <FontAwesomeIcon
+                        icon={faPhone}
+                        aria-hidden="true"
+                        className="text-orange-500 h-10 w-10"
+                      ></FontAwesomeIcon>
+                    </div>
+                    <div>
+                      <div className="py-1 font-bold uppercase">Telefone:</div>
+                      <div>(21) 2634-0075</div>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!"
+                  target="_blank"
+                >
+                  <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
+                    <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500">
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        aria-hidden="true"
+                        className="text-orange-500 h-10 w-10"
+                      ></FontAwesomeIcon>
+                    </div>
+                    <div>
+                      <div className="py-1 font-bold uppercase">WhatsApp:</div>
+                      <div>(21) 99125-7878</div>
+                    </div>
+                  </div>
+                </a>
+                <a href="mailto:contato@persevere.com.br" target="_blank">
+                  <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
+                    <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500">
+                      <FontAwesomeIcon
+                        icon={faEnvelope}
+                        aria-hidden="true"
+                        className="text-orange-500 h-10 w-10"
+                      ></FontAwesomeIcon>
+                    </div>
+                    <div>
+                      <div className="py-1 font-bold uppercase">E-mail:</div>
+                      <div>contato@persevere.com.br</div>
+                    </div>
+                  </div>
+                </a>
+                <a href="https://goo.gl/maps/icjifAHpkpRhfNtw5" target="_blank">
+                  <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
+                    <div className="px-4 md:px-6 text-xl md:text-4xl text-orange-500">
+                      <FontAwesomeIcon
+                        icon={faLocationDot}
+                        aria-hidden="true"
+                        className="text-orange-500 h-10 w-10"
+                      ></FontAwesomeIcon>
+                    </div>
+                    <div>
+                      <div className="py-1 font-bold uppercase">Endereço:</div>
+                      <div>
+                        R. Prof. Cardoso de Menezes - Jardim Atlântico Oeste
+                      </div>
+                      <div> Maricá - RJ, 24935-425</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
-    <section className="bg-gray-100 py-14 font-brandon">
+      </section>
+      <section className="bg-gray-100 py-14 font-brandon">
         <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center">
-                <div className="lg:w-7/12 text-center lg:text-left ">
-                    <h3 className="text-blue-500 text-2xl md:text-3xl uppercase py-2 font-medium">Agende uma visita sem
-                        compromisso!</h3>
-                    <p className="text-orange-500 text-xl md:text-2xl">Nós temos os melhores imóveis disponíveis para você!</p>
-                </div>
-                <div className="lg:w-5/12">
-                    <button type="button"
-                        className="bg-blue-500 hover:bg-blue-600 text-gray-100 font-medium rounded-full my-4 py-3 px-16 block text-base md:text-lg mx-auto uppercase">Solicite
-                        um orçamento</button>
-                </div>
+          <div className="flex flex-wrap justify-center">
+            <div className="lg:w-7/12 text-center lg:text-left ">
+              <h3 className="text-blue-500 text-2xl md:text-3xl uppercase py-2 font-medium">
+                Agende uma visita sem compromisso!
+              </h3>
+              <p className="text-orange-500 text-xl md:text-2xl">
+                Nós temos os melhores imóveis disponíveis para você!
+              </p>
             </div>
+            <div className="lg:w-5/12">
+              <button
+                type="button"
+                className="bg-blue-500 hover:bg-blue-600 text-gray-100 font-medium rounded-full my-4 py-3 px-16 block text-base md:text-lg mx-auto uppercase"
+              >
+                Solicite um orçamento
+              </button>
+            </div>
+          </div>
         </div>
-    </section>
-   <footer className="bg-blue-500 py-6 md:py-12 text-white font-brandon">
+      </section>
+      <footer className="bg-blue-500 py-6 md:py-12 text-white font-brandon">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 md:gap-x-16">
             {/* Logo Column */}
@@ -506,11 +677,10 @@ export default function landingPage() {
       <div className="bg-orange-500 text-white py-4">
         <div className="container mx-auto px-4">
           <div className="text-center text-sm md:text-base uppercase font-medium tracking-wide">
-            Persevere - Todos os direitos reservados 
+            Persevere - Todos os direitos reservados
           </div>
         </div>
       </div>
-   </>
-   
+    </>
   );
 }
