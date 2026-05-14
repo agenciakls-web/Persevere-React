@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Imoveis() {
     return (
         <main>
-            <section className="py-8" id="#imoveis">
+            <section className="py-8 text-gray-500" id="#imoveis">
                 <div className="container mx-auto px-4">
                     <div>
                         <p className="text-lg font-medium text-orange">
@@ -139,7 +139,7 @@ export default function Imoveis() {
                                         </div>
                                         <button
                                             type="button"
-                                            className="bg-orange hover:bg-blue-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase w-4/5"
+                                            className="bg-orange-500 hover:bg-orange-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase w-4/5"
                                         >
                                             Quero visitar
                                         </button>

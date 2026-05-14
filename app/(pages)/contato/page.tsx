@@ -142,7 +142,7 @@ const ContactPage = () => {
               </form>
             </div>
             <div className="text-xl text-black rounded-xl font-brandon">
-              <div className="border-orange-500 border-blue-500 border-2 rounded-xl text-lg p-6 my-3 md:mt-0">
+              <div className="border-orange-500 border-2 rounded-xl text-lg p-6 my-3 md:mt-0">
                 <div className="text-xl pb-2">
                   <h3 className="font-bold uppercase">
                     Informações de contato
