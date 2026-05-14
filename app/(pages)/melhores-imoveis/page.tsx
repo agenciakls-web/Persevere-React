@@ -322,105 +322,91 @@ export default function landingPage() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
             <div className="p-4">
-              <div
-                role="form"
-                className="wpcf7"
-                id="wpcf7-f6-o1"
-                lang="pt-BR"
-                dir="ltr"
-              >
-                <div className="screen-reader-response">
-                  <p role="status" aria-live="polite" aria-atomic="true"></p>
-                  <ul></ul>
-                </div>
-                <form
-                  action="/#wpcf7-f6-o1"
-                  method="post"
-                  className="wpcf7-form init"
-                  noValidate
-                  data-status="init"
-                >
-                  <div style={{ display: "none" }}>
-                    <input type="hidden" name="_wpcf7" value="6"></input>
-                    <input
-                      type="hidden"
-                      name="_wpcf7_version"
-                      value="5.6.4"
-                    ></input>
-                    <input
-                      type="hidden"
-                      name="_wpcf7_locale"
-                      value="pt_BR"
-                    ></input>
-                    <input
-                      type="hidden"
-                      name="_wpcf7_unit_tag"
-                      value="wpcf7-f6-o1"
-                    ></input>
-                    <input
-                      type="hidden"
-                      name="_wpcf7_container_post"
-                      value="0"
-                    ></input>
-                    <input
-                      type="hidden"
-                      name="_wpcf7_posted_data_hash"
-                      value=""
-                    ></input>
-                  </div>
-                  <span className="wpcf7-form-control-wrap" data-name="nome">
-                    <input
-                      type="text"
-                      name="nome"
-                      value=""
-                      size={40}
-                      className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500 mdcol-span-2"
-                      id="nome"
-                      aria-required="true"
-                      aria-invalid="false"
-                      placeholder="Nome"
-                    ></input>
-                  </span>
-                  <span className="wpcf7-form-control-wrap" data-name="email">
-                    <input
-                      type="email"
-                      name="email"
-                      value=""
-                      size={40}
-                      className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
-                      id="email"
-                      aria-required="true"
-                      aria-invalid="false"
-                      placeholder="E-mail"
-                    ></input>
-                  </span>
-                  <span className="wpcf7-form-control-wrap" data-name="phone">
-                    <input
-                      type="tel"
-                      name="phone"
-                      value=""
-                      size={40}
-                      className="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
-                      id="phone"
-                      aria-required="true"
-                      aria-invalid="false"
-                      placeholder="Telefone"
-                    ></input>
-                  </span>
-                  <input
-                    type="submit"
-                    value="Enviar"
-                    className="wpcf7-form-control has-spinner wpcf7-submit bg-blue-500 hover:bg-blue-700 transition text-white font-medium rounded-full my-4 py-2 px-10 block text-base uppercase"
-                    id="enviar"
-                  ></input>
-                  <span className="wpcf7-spinner"></span>
-                  <div
-                    className="wpcf7-response-output"
-                    aria-hidden="true"
-                  ></div>
-                </form>
-              </div>
-            </div>
+  <div
+    role="form"
+    className="wpcf7"
+    id="wpcf7-f6-o1"
+    lang="pt-BR"
+    dir="ltr"
+  >
+    <div className="screen-reader-response">
+      <p role="status" aria-live="polite" aria-atomic="true"></p>
+      <ul></ul>
+    </div>
+    <form
+      action="/#wpcf7-f6-o1"
+      method="post"
+      className="wpcf7-form init"
+      noValidate
+      data-status="init"
+    >
+      <div style={{ display: "none" }}>
+        <input type="hidden" name="_wpcf7" value="6" />
+        <input type="hidden" name="_wpcf7_version" value="5.6.4" />
+        <input type="hidden" name="_wpcf7_locale" value="pt_BR" />
+        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f6-o1" />
+        <input type="hidden" name="_wpcf7_container_post" value="0" />
+        <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+      </div>
+
+      {/* Nome */}
+      <span className="wpcf7-form-control-wrap" data-name="nome">
+        <input
+          type="text"
+          name="nome"
+          defaultValue=""   // ✅ usar defaultValue
+          size={40}
+          className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
+          id="nome"
+          aria-required="true"
+          aria-invalid="false"
+          placeholder="Nome"
+        />
+      </span>
+
+      {/* Email */}
+      <span className="wpcf7-form-control-wrap" data-name="email">
+        <input
+          type="email"
+          name="email"
+          defaultValue=""   // ✅ corrigido
+          size={40}
+          className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
+          id="email"
+          aria-required="true"
+          aria-invalid="false"
+          placeholder="E-mail"
+        />
+      </span>
+
+      {/* Telefone */}
+      <span className="wpcf7-form-control-wrap" data-name="phone">
+        <input
+          type="tel"
+          name="phone"
+          defaultValue=""   // ✅ corrigido
+          size={40}
+          className="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel w-full my-3 py-3 px-6 rounded-lg text-lg font-medium border text-gray-500"
+          id="phone"
+          aria-required="true"
+          aria-invalid="false"
+          placeholder="Telefone"
+        />
+      </span>
+
+      {/* Botão */}
+      <input
+        type="submit"
+        value="Enviar"
+        className="wpcf7-form-control has-spinner wpcf7-submit bg-blue-500 hover:bg-blue-700 transition text-white font-medium rounded-full my-4 py-2 px-10 block text-base uppercase"
+        id="enviar"
+      />
+      <span className="wpcf7-spinner"></span>
+      <div className="wpcf7-response-output" aria-hidden="true"></div>
+    </form>
+  </div>
+</div>
+
             <div className="text-sm md:text-xl text-black rounded-xl">
               <div className="border-orange-500 border-2 rounded-xl text-md md:text-lg p-6 my-3 md:mt-0">
                 <div className="text-lg md:text-xl pb-2">
@@ -556,7 +542,7 @@ export default function landingPage() {
                   </li>
                   <li>
                     <Link
-                      href="/quem-somos"
+                      href="/sobre"
                       className="hover:text-orange-500 transition-colors"
                     >
                       Quem Somos

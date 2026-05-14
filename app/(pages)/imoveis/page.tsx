@@ -23,7 +23,6 @@ export default function Imoveis() {
                                     height="24"
                                     fill="none"
                                     stroke="currentColor"
-                                    stroke-width="2"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                     className="mr-1 text-blue-500"

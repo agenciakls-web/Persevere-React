@@ -47,7 +47,7 @@ export default function Sobre() {
                     <h3 className="text-2xl text-blue-500 uppercase font-brandon">
                         Missão
                     </h3>
-                    <p className="py-2">
+                    <p className="py-2 text-gray-500">
                         Nossa missão é satisfazer as necessidades de nossos estimados
                         clientes, preservando os fatores éticos e morais que são as
                         premissas básicas dos nossos negócios, destacados pela excelência no

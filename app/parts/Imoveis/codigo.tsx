@@ -1,10 +1,10 @@
 'use client';
 
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// @ts-ignore
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 
 export default function ImovelDetalhe({ imovel }: { imovel: any}) {
 

@@ -57,7 +57,7 @@ export default function Proposta() {
                     <div className="step js-step is-active">
                         <h2 className="py-3 font-medium text-xl font-reading text-blue-500">Informações Pessoais</h2>
                         <div className="grid grid-cols-1 md:gap-4">
-                            <div className="lg:col-span-2">
+                            <div className="lg:col-span-2 text-gray-500">
                                 <span className="px-2">
                                     <input type="radio" id="comprar" name="proposito" value="comprar"/> <label>Comprar</label>
                                 </span>
