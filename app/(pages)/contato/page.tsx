@@ -1,10 +1,8 @@
 
 export default function Contato() {
-  
-
   return (
    <main>
-    <section className="py-8">
+    <section className="py-8" id="#contato">
         <div className="container mx-auto px-4">
             <h3 className="my-4 font-medium text-2xl font-reading text-blue-500">Entre em contato</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
