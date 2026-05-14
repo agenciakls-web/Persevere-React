@@ -27,7 +27,7 @@ export default function landingPage() {
                         <li><a href="#sobre"
                                 className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium">Sobre</a>
                         </li>
-                        <li><a href="#servicos"
+                        <li><a href="#imoveis"
                                 className="text-blue-500 hover:text-gold-500 transition px-2 uppercase font-medium">Imóveis</a>
                         </li>
                         <li><a href="#contato"

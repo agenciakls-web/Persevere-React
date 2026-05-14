@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Sobre() {
   return (
     <main>
-      <section className="py-16">
+      <section className="py-16" id="#sobre">
         <div className="container mx-auto px-4">
           <div className="block lg:flex lg:flex-row-reverse">
             <div className="lg:w-1/2 flex justify-content items-center">
