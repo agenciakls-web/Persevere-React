@@ -1,10 +1,12 @@
 "use client";
 
+import HeaderTitle from "@/app/parts/estrutura/headerTitle";
 import Image from "next/image";
 
 export default function Sobre() {
     return (
         <main>
+            <HeaderTitle title="Sobre" />
             <section className="py-16" id="#sobre">
                 <div className="container mx-auto px-4">
                     <div className="block lg:flex lg:flex-row-reverse">

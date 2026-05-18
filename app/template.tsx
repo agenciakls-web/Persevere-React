@@ -1,17 +1,17 @@
 "use client";
 import Footer from "./parts/estrutura/Footer";
-import Menu from "./parts/estrutura/Menu";
 import { usePathname } from "next/navigation";
+import MobileMenu from "./parts/estrutura/menu";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  const OcultarRotas = ["/landing-page"]; // Adicione as rotas onde deseja ocultar o layout
+  const OcultarRotas = ["/landing-page"]; 
   const OcultarLayout = OcultarRotas.includes(pathname);
 
   return (
     <>
-      {!OcultarLayout && <Menu />}
+      {!OcultarLayout && <MobileMenu />}
       {children}
       {!OcultarLayout && <Footer />}
     </>
