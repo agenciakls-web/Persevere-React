@@ -1,5 +1,3 @@
-'use client'
-
 export default function Pesquisa() {
     return (
         <section className="py-10 bg-gray-100" id="#pesquisa">
