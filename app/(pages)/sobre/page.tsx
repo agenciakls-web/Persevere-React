@@ -9,12 +9,12 @@ export default function Sobre() {
             <HeaderTitle title="Sobre" />
             <section className="py-16" id="#sobre">
                 <div className="container mx-auto px-4">
-                    <div className="block lg:flex lg:flex-row-reverse">
+                    <div className="block justify-center items-center lg:flex lg:flex-row-reverse gap-4">
                         <div className="lg:w-1/2 flex justify-content items-center">
                             <Image
                                 alt=""
                                 src="/img/loja.jpg"
-                                className="w-full mx-auto lazyloaded"
+                                className="w-full mx-auto lazyloaded aspect-16/9 object-cover rounded-xl"
                                 width={500}
                                 height={300}
                             />
