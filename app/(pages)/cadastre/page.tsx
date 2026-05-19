@@ -1,7 +1,9 @@
 "use client";
 
 import HeaderTitle from "@/app/parts/estrutura/headerTitle";
-import React, { useState } from "react";
+import { faGraduationCap, faLocationDot, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 const ProposalForm = () => {
     const [step, setStep] = useState(0);
@@ -110,10 +112,10 @@ const ProposalForm = () => {
                                         }`}
                                 >
                                     <span className="text-center w-full">
-                                        {idx === 0 && <i className="fa-regular fa-user"></i>}
-                                        {idx === 1 && <i className="fa-solid fa-location-dot"></i>}
+                                        {idx === 0 && <FontAwesomeIcon icon={faUser} className="fa-regular fa-user" />}
+                                        {idx === 1 && <FontAwesomeIcon icon={faLocationDot} className="fa-solid fa-location-dot" />}
                                         {idx === 2 && (
-                                            <i className="fa-solid fa-graduation-cap"></i>
+                                            <FontAwesomeIcon icon={faGraduationCap} className="fa-solid fa-graduation-cap" />
                                         )}
                                     </span>
                                 </div>
