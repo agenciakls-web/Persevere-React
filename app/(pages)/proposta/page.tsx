@@ -1,4 +1,7 @@
 import HeaderTitle from "@/app/parts/estrutura/headerTitle";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faGraduationCap, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Proposta() {
 
@@ -13,7 +16,7 @@ export default function Proposta() {
                             <div className="relative mb-2">
                                 <div className="step-icon transition delay-300 w-10 h-10 mx-auto rounded-full text-lg flex items-center bg-blue-500 text-white">
                                     <span className="text-center w-full">
-                                        <i className="fa-regular fa-user"></i>
+                                        <FontAwesomeIcon icon={faUser} className="fa-regular fa-user" />
                                     </span>
                                 </div>
                             </div>
@@ -28,7 +31,7 @@ export default function Proposta() {
                                 </div>
                                 <div className="step-icon transition delay-300 w-10 h-10 mx-auto rounded-full text-lg flex items-center bg-white border-2 border-gray-100 text-gray-600">
                                     <span className="text-center w-full">
-                                        <i className="fa-solid fa-location-dot"></i>
+                                        <FontAwesomeIcon icon={faLocationDot} className="fa-solid fa-location-dot" />
                                     </span>
                                 </div>
                             </div>
@@ -43,7 +46,7 @@ export default function Proposta() {
                                 </div>
                                 <div className="step-icon transition delay-300 w-10 h-10 mx-auto rounded-full text-lg flex items-center bg-white border-2 border-gray-100 text-gray-600">
                                     <span className="text-center w-full">
-                                        <i className="fa-solid fa-graduation-cap"></i>
+                                        <FontAwesomeIcon icon={faGraduationCap} className="fa-solid fa-graduation-cap" />
                                     </span>
                                 </div>
                             </div>
