@@ -101,14 +101,14 @@ export default function Imoveis() {
                                 <h3 className="text-blue-500 my-2 text-2xl md:text-2xl font-open">
                                     Sobre o imóvel
                                 </h3>
-                                <iframe
+                                {/* <iframe
                                     className="w-full aspect-video rounded-xl md:rounded-2xl lazyloaded"
                                     src="https://www.youtube.com/embed/9IlEiBVG3Vw"
                                     title="YouTube video player"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
-                                ></iframe>
+                                ></iframe> */}
                             </div>
                         </div>
                         <div className="w-full md:w-1/3">

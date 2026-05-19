@@ -10,7 +10,6 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
         <header>
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center">
-                    {/* Logo */}
                     <div className="logo py-4">
                         <Link href="/">
                             <Image
@@ -22,10 +21,7 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
                             />
                         </Link>
                     </div>
-
-                    {/* Social + Menu */}
                     <div className="flex items-center">
-                        {/* Instagram */}
                         <a
                             href="https://www.instagram.com/persevere.imoveis/"
                             target="_blank"
@@ -36,8 +32,6 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
                                 <span className="hidden lg:block">Instagram</span>
                             </button>
                         </a>
-
-                        {/* Facebook */}
                         <a
                             href="https://www.facebook.com/persevereimoveis"
                             target="_blank"
@@ -48,8 +42,6 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
                                 <span className="hidden lg:block">Facebook</span>
                             </button>
                         </a>
-
-                        {/* WhatsApp */}
                         <a
                             href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!"
                             target="_blank"
@@ -66,7 +58,6 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
                                 <span className="hidden lg:block">(21) 99125-7878</span>
                             </button>
                         </a>
-
                         <button
                             onClick={() => setIsOpen(true)}
                             className="hamburger hamburger--squeeze"
