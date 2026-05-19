@@ -1,7 +1,12 @@
+'use client'
 import { useState } from "react";
 
 export default function PesquisaImovel() {
     const [activeTab, setActiveTab] = useState("tab-1");
+    
+    const handleTabClick = (tabId: string) => {
+        setActiveTab(tabId);
+    };
 
     return (
         <section className="py-10 bg-gray-100">
@@ -12,12 +17,10 @@ export default function PesquisaImovel() {
                 <h3 className="text-blue-500 text-2xl md:text-3xl uppercase pb-8 font-medium text-center">
                     Pesquisar imóvel
                 </h3>
-
-                {/* Tabs */}
                 <ul className="grid justify-center grid-cols-2 md:grid-cols-3 lg:grid-cols-3 px-4 md:px-16">
                     <li className="mx-1 md:mx-2 xl:mx-2">
                         <button
-                            onClick={() => setActiveTab("tab-1")}
+                            onClick={() => handleTabClick("tab-1")}
                             className={`tab-button cursor-pointer my-1 md:my-0 px-1 xl:px-4 py-4 md:py-5 block rounded-xl lg:rounded-b-none lg:rounded-t-xl w-full text-center uppercase text-sm md:text-base lg:text-xs xl:text-sm 2xl:text-base ${activeTab === "tab-1"
                                     ? "bg-white text-blue-500"
                                     : "bg-blue-500 text-white"
@@ -28,7 +31,7 @@ export default function PesquisaImovel() {
                     </li>
                     <li className="mx-1 md:mx-2 xl:mx-2">
                         <button
-                            onClick={() => setActiveTab("tab-3")}
+                            onClick={() => handleTabClick("tab-3")}
                             className={`tab-button cursor-pointer my-1 md:my-0 px-1 xl:px-4 py-4 md:py-5 block rounded-xl lg:rounded-b-none lg:rounded-t-xl w-full text-center uppercase text-sm md:text-base lg:text-xs xl:text-sm 2xl:text-base ${activeTab === "tab-3"
                                     ? "bg-white text-blue-500"
                                     : "bg-blue-500 text-white"
