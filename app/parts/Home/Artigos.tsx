@@ -270,6 +270,7 @@ export default function Artigos() {
               </div>
             </a>
           </div>
+          {/*
           <div className="px-2 py-2">
             <a href="" className="h-full">
               <div className="rounded-xl h-full overflow-hidden shadow-lg shadow-gray-300">
@@ -987,6 +988,7 @@ export default function Artigos() {
               </div>
             </a>
           </div>
+          */}
         </div>
         <div className="w-full">
           <a href="">
