@@ -10,20 +10,20 @@ export const ContentLinks = {
 	whatsapp: 'https://wa.me/5521992260747',
     whatsappShow: '(21) 99226-0747',
     
-	facebook: 'https://www.facebook.com/',
+	facebook: 'https://www.facebook.com/persevereimoveis',
     facebookShow: '/',
 
     linkedin: 'https://www.linkedin.com/in/',
     linkedinShow: '',
 
-    instagram: 'https://instagram.com/',
-    instagramShow: '@',
+    instagram: 'https://instagram.com/persevere.imoveis',
+    instagramShow: '@persevere.imoveis',
 
 	tiktok: '',
     tiktokShow: '',
 
-	youtube: 'https://www.youtube.com/',
-    youtubeShow: '@',
+	youtube: 'https://www.youtube.com/@persevere.imoveis',
+    youtubeShow: '@persevere.imoveis',
 
     site: '',
     siteShow: '',

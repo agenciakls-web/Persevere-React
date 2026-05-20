@@ -4,10 +4,23 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function MobileNav({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: (open: boolean) => void}) {
-
+export default function MobileNav({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+}) {
   return (
     <>
+      {/* Overlay para fechar ao clicar fora */}
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300"
+        ></div>
+      )}
+
       {/* Menu lateral */}
       <nav
         className={`fixed top-0 h-screen w-96 bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open ${
