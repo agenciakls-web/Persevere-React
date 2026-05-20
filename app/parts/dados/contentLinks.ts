@@ -11,7 +11,7 @@ export const ContentLinks = {
     whatsappShow: '(21) 99226-0747',
     
 	facebook: 'https://www.facebook.com/persevereimoveis',
-    facebookShow: '/',
+    facebookShow: '/persevereimoveis',
 
     linkedin: 'https://www.linkedin.com/in/',
     linkedinShow: '',
