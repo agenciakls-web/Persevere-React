@@ -106,7 +106,7 @@ export default function Footer() {
                             <div className="flex items-center gap-5">
                                 {/* Facebook */}
                                 <a
-                                    href="https://facebook.com"
+                                    href={ContentLinks.facebook}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:scale-110 transition-transform hover:text-orange-500"
@@ -121,7 +121,7 @@ export default function Footer() {
                                 </a>
                                 {/* Instagram */}
                                 <a
-                                    href="https://instagram.com"
+                                    href={ContentLinks.instagram}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:scale-110 transition-transform hover:text-orange-500"
@@ -136,7 +136,7 @@ export default function Footer() {
                                 </a>
                                 {/* YouTube */}
                                 <a
-                                    href="https://youtube.com"
+                                    href={ContentLinks.youtube}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:scale-110 transition-transform "
