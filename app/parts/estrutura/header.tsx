@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,13 +46,13 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <button className="flex justify-center items-center mx-4 bg-blue-500 py-3 px-2 md:px-4 rounded-full text-lg text-white font-brandon uppercase">
+                            <button className="flex justify-center items-center mx-4 bg-blue-500 py-3 px-4 md:px-8 rounded-full text-lg text-white font-brandon uppercase">
                                 <Image
                                     src="/img/whatsapp.png"
                                     width={24}
                                     height={24}
                                     alt="WhatsApp"
-                                    className="w-6 mx-4"
+                                    className="w-6 mr-4"
                                 />
                                 <span className="hidden lg:block">(21) 99125-7878</span>
                             </button>

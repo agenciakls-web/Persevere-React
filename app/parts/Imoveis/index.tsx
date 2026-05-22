@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import axios from 'axios';
 import HeaderTitle from '../estrutura/headerTitle';
 
 type TipoImovel = {
@@ -41,27 +43,106 @@ interface Props {
     imoveis: Imovel[];
 }
 
-export default function ImoveisPage({
-    tiposImoveis,
-    imoveis,
-}: Props) {
-    const [filters, setFilters] = useState({
-        pesquisa: '',
-        TipoImovel: '',
-        PrecoVenda: '',
-        quartos: '',
-        condominio: '',
+export default function ImoveisPage({ tiposImoveis }: { tiposImoveis: TipoImovel[] }) {
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    // Pegando valores atuais da URL ou definindo padrões
+    const paginaAtual = parseInt(searchParams.get('page') || '1');
+    const pesquisaAtual = searchParams.get('pesquisa') || '';
+    const tipoAtual = searchParams.get('TipoImovel') || '';
+    const precoAtual = searchParams.get('PrecoVenda') || '';
+    const quartosAtual = searchParams.get('quartos') || '';
+    const condominioAtual = searchParams.get('condominio') || '';
+
+    // Estados locais para controlar os dados da API
+    const [listaImoveis, setListaImoveis] = useState<Imovel[]>([]);
+    const [totalPaginas, setTotalPaginas] = useState(1);
+    const [loading, setLoading] = useState(true);
+
+    // Estado do formulário (controlado localmente para não disparar a API a cada tecla digitada)
+    const [formFilters, setFormFilters] = useState({
+        pesquisa: pesquisaAtual,
+        TipoImovel: tipoAtual,
+        PrecoVenda: precoAtual,
+        quartos: quartosAtual,
+        condominio: condominioAtual,
     });
 
-    const handleChange = (
-        e: React.ChangeEvent<
-            HTMLInputElement | HTMLSelectElement
-        >
-    ) => {
-        setFilters({
-            ...filters,
+    // Sincroniza o formulário se a URL mudar externamente
+    useEffect(() => {
+        setFormFilters({
+            pesquisa: pesquisaAtual,
+            TipoImovel: tipoAtual,
+            PrecoVenda: precoAtual,
+            quartos: quartosAtual,
+            condominio: condominioAtual,
+        });
+    }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
+
+    // Função que busca os dados no Backend via Axios
+    useEffect(() => {
+        async function carregarImoveis() {
+            setLoading(true);
+            try {
+                const response = await axios.get( process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
+                    params: {
+                        page: paginaAtual,
+                        limit: 12, 
+                        pesquisa: pesquisaAtual,
+                        TipoImovel: tipoAtual,
+                        PrecoVenda: precoAtual,
+                        quartos: quartosAtual,
+                        condominio: condominioAtual,
+                    }
+                });
+                console.log(response);
+
+                // Adapte o response abaixo de acordo com o retorno da sua API
+                setListaImoveis(response.data.resultado || response.data);
+                setTotalPaginas(response.data.totalPaginas || 1);
+            } catch (error) {
+                console.error("Erro ao buscar imóveis:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        carregarImoveis();
+    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
+
+    // Atualiza os inputs controlados
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormFilters({
+            ...formFilters,
             [e.target.name]: e.target.value,
         });
+    };
+
+    // Atualiza a URL com os filtros quando o usuário clica em "Buscar" ou troca um Radio
+    const aplicarFiltros = (novosFiltros = formFilters, novaPagina = 1) => {
+        const params = new URLSearchParams();
+
+        if (novaPagina > 1) params.set('page', novaPagina.toString());
+        if (novosFiltros.pesquisa) params.set('pesquisa', novosFiltros.pesquisa);
+        if (novosFiltros.TipoImovel) params.set('TipoImovel', novosFiltros.TipoImovel);
+        if (novosFiltros.PrecoVenda) params.set('PrecoVenda', novosFiltros.PrecoVenda);
+        if (novosFiltros.quartos) params.set('quartos', novosFiltros.quartos);
+        if (novosFiltros.condominio) params.set('condominio', novosFiltros.condominio);
+
+        router.push(`${pathname}?${params.toString()}`);
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        aplicarFiltros(formFilters, 1); // Reseta para a página 1 ao buscar
+    };
+
+    const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const atualizado = { ...formFilters, [e.target.name]: e.target.value };
+        setFormFilters(atualizado);
+        aplicarFiltros(atualizado, 1); // Filtra imediatamente ao clicar no Radio
     };
 
     return (
@@ -74,7 +155,7 @@ export default function ImoveisPage({
                         <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
                             <aside>
                                 <div className="mb-4 md:mb-10">
-                                    <form className="space-y-6">
+                                    <form className="space-y-6" onSubmit={handleSubmit}>
                                         {/* PESQUISA */}
                                         <div>
                                             <h4 className="my-2 font-bold uppercase text-blue-500">
@@ -85,7 +166,7 @@ export default function ImoveisPage({
                                                 type="text"
                                                 name="pesquisa"
                                                 placeholder="Digite condomínio, região, bairro ou cidade"
-                                                value={filters.pesquisa}
+                                                value={formFilters.pesquisa}
                                                 onChange={handleChange}
                                                 className="w-full rounded-lg border border-blue-500 px-4 py-3 text-lg font-medium text-blue-500"
                                             />
@@ -118,7 +199,7 @@ export default function ImoveisPage({
 
                                             <select
                                                 name="TipoImovel"
-                                                value={filters.TipoImovel}
+                                                value={formFilters.TipoImovel}
                                                 onChange={handleChange}
                                                 className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
                                             >
@@ -171,7 +252,7 @@ export default function ImoveisPage({
 
                                             <select
                                                 name="PrecoVenda"
-                                                value={filters.PrecoVenda}
+                                                value={formFilters.PrecoVenda}
                                                 onChange={handleChange}
                                                 className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
                                             >
@@ -229,7 +310,7 @@ export default function ImoveisPage({
 
                                             <select
                                                 name="quartos"
-                                                value={filters.quartos}
+                                                value={formFilters.quartos}
                                                 onChange={handleChange}
                                                 className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
                                             >
@@ -277,7 +358,7 @@ export default function ImoveisPage({
 
                                             <select
                                                 name="condominio"
-                                                value={filters.condominio}
+                                                value={formFilters.condominio}
                                                 onChange={handleChange}
                                                 className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
                                             >
@@ -304,9 +385,11 @@ export default function ImoveisPage({
 
                         {/* LISTAGEM */}
                         <div className="w-full md:w-2/3 lg:w-3/4">
-                            {imoveis.length > 0 ? (
+                            {loading ? (
+                                <div className="py-12 text-center text-blue-500 font-medium">Carregando imóveis...</div>
+                            ) : listaImoveis.length > 0 ? (
                                 <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                                    {imoveis.map((imovel) => {
+                                    {listaImoveis.map((imovel) => {
                                         const foto =
                                             imovel.photos?.find(
                                                 (p) => p.Principal === 1
@@ -315,7 +398,7 @@ export default function ImoveisPage({
 
                                         return (
                                             <Link
-                                                href={`/imoveis/${imovel.slug}`}
+                                                href={`/imoveis/codigo/${imovel.CodigoImovel}`}
                                                 key={imovel.id}
                                                 className="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:-translate-y-1"
                                             >
@@ -387,39 +470,54 @@ export default function ImoveisPage({
 
                             {/* PAGINAÇÃO */}
                             <div className="my-8 flex justify-center">
-                                <ul className="inline-flex gap-2">
+                                <ul className="inline-flex gap-2 items-center">
+                                    {/* Ir para a Primeira Página */}
                                     <li>
-                                        <button className="rounded border px-4 py-2 hover:bg-gray-100">
+                                        <button
+                                            onClick={() => aplicarFiltros(formFilters, 1)}
+                                            disabled={paginaAtual === 1}
+                                            className="rounded border px-4 py-2 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent"
+                                        >
                                             {'<<'}
                                         </button>
                                     </li>
 
+                                    {/* Página Anterior */}
                                     <li>
-                                        <button className="rounded border px-4 py-2 hover:bg-gray-100">
+                                        <button
+                                            onClick={() => aplicarFiltros(formFilters, paginaAtual - 1)}
+                                            disabled={paginaAtual === 1}
+                                            className="rounded border px-4 py-2 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent"
+                                        >
                                             {'<'}
                                         </button>
                                     </li>
 
+                                    {/* Indicador da Página Atual */}
                                     <li>
-                                        <button className="rounded bg-blue-500 px-4 py-2 text-white">
-                                            1
-                                        </button>
+                                        <span className="rounded bg-blue-500 px-4 py-2.5 text-white font-bold">
+                                            {paginaAtual} de {totalPaginas}
+                                        </span>
                                     </li>
 
+                                    {/* Próxima Página */}
                                     <li>
-                                        <button className="rounded border px-4 py-2 hover:bg-gray-100">
-                                            2
-                                        </button>
-                                    </li>
-
-                                    <li>
-                                        <button className="rounded border px-4 py-2 hover:bg-gray-100">
+                                        <button
+                                            onClick={() => aplicarFiltros(formFilters, paginaAtual + 1)}
+                                            disabled={paginaAtual >= totalPaginas}
+                                            className="rounded border px-4 py-2 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent"
+                                        >
                                             {'>'}
                                         </button>
                                     </li>
 
+                                    {/* Ir para a Última Página */}
                                     <li>
-                                        <button className="rounded border px-4 py-2 hover:bg-gray-100">
+                                        <button
+                                            onClick={() => aplicarFiltros(formFilters, totalPaginas)}
+                                            disabled={paginaAtual >= totalPaginas}
+                                            className="rounded border px-4 py-2 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent"
+                                        >
                                             {'>>'}
                                         </button>
                                     </li>
