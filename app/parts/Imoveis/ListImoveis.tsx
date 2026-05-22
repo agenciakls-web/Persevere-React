@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
 import HeaderTitle from '../estrutura/headerTitle';
+import ListImoveisCard from './ListImoveisCard';
 
 type TipoImovel = {
     TipoImovel: string;
@@ -43,7 +44,7 @@ interface Props {
     imoveis: Imovel[];
 }
 
-export default function ImoveisPage({ tiposImoveis }: { tiposImoveis: TipoImovel[] }) {
+export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel[] }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -397,62 +398,7 @@ export default function ImoveisPage({ tiposImoveis }: { tiposImoveis: TipoImovel
                                             imovel.photos?.[0]?.URLArquivo;
 
                                         return (
-                                            <Link
-                                                href={`/imoveis/codigo/${imovel.CodigoImovel}`}
-                                                key={imovel.id}
-                                                className="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:-translate-y-1"
-                                            >
-                                                {/* IMAGEM */}
-                                                <div className="relative h-64">
-                                                    {foto && (
-                                                        <Image
-                                                            src={foto}
-                                                            alt={imovel.SubTipoImovel}
-                                                            fill
-                                                            className="object-cover"
-                                                        />
-                                                    )}
-                                                </div>
-
-                                                {/* CONTEÚDO */}
-                                                <div className="p-4">
-                                                    <p className="text-sm text-orange-500">
-                                                        {imovel.Bairro} -{' '}
-                                                        {imovel.Cidade}
-                                                    </p>
-
-                                                    <h3 className="mt-1 text-xl font-semibold text-blue-500">
-                                                        {imovel.SubTipoImovel}
-                                                    </h3>
-
-                                                    <p className="mt-2 text-gray-500">
-                                                        {imovel.QtdDormitorios} quartos •{' '}
-                                                        {imovel.QtdBanheiros} banheiros
-                                                    </p>
-
-                                                    <p className="text-gray-500">
-                                                        {imovel.QtdVagas} vagas
-                                                    </p>
-
-                                                    {imovel.AreaTotal && (
-                                                        <p className="text-gray-500">
-                                                            {imovel.AreaTotal}m²
-                                                        </p>
-                                                    )}
-
-                                                    {imovel.PrecoVenda && (
-                                                        <div className="mt-4 text-2xl font-bold text-blue-500">
-                                                            {imovel.PrecoVenda.toLocaleString(
-                                                                'pt-BR',
-                                                                {
-                                                                    style: 'currency',
-                                                                    currency: 'BRL',
-                                                                }
-                                                            )}
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </Link>
+                                            <ListImoveisCard imovel={imovel} foto={foto} />
                                         );
                                     })}
                                 </div>

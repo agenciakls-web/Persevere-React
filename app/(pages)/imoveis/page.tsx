@@ -1,6 +1,6 @@
 "use client";
 
-import ImoveisPage from "@/app/parts/Imoveis";
+import ListImoveis from "@/app/parts/Imoveis/ListImoveis";
 
 export default function Imoveis() {
     const exemplo = {
@@ -50,7 +50,7 @@ export default function Imoveis() {
     };
     return (
         <>
-            <ImoveisPage tiposImoveis={exemplo.tiposImoveis} />
+            <ListImoveis tiposImoveis={exemplo.tiposImoveis} />
         </>
     );
 }
