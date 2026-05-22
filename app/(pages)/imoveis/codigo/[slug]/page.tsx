@@ -182,15 +182,17 @@ export default function ImovelSingle() {
                                                 </h3>
                                             </div>
                                         </div>
+                                       {/*
+                                       
                                         <button
                                             type="button"
                                             className="bg-orange-500 hover:bg-orange-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase w-4/5 transition"
                                         >
                                             Quero visitar
-                                        </button>
+                                        </button>*/}
                                         <button
                                             type="button"
-                                            className="bg-blue-500 hover:bg-blue-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase w-4/5 transition"
+                                            className="bg-orange-500 hover:bg-orange-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase w-4/5 transition"
                                         >
                                             Mais informações
                                         </button>
