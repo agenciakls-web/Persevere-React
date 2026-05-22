@@ -50,7 +50,7 @@ export default function Imoveis() {
     };
     return (
         <>
-            <ImoveisPage tiposImoveis={exemplo.tiposImoveis} imoveis={exemplo.imoveis} />
+            <ImoveisPage tiposImoveis={exemplo.tiposImoveis} />
         </>
     );
 }
