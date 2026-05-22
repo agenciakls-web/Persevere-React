@@ -398,7 +398,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
                                             imovel.photos?.[0]?.URLArquivo;
 
                                         return (
-                                            <ListImoveisCard imovel={imovel} foto={foto} />
+                                            <ListImoveisCard key={imovel.CodigoImovel} imovel={imovel} foto={foto} />
                                         );
                                     })}
                                 </div>
