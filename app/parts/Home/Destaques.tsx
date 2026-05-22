@@ -11,6 +11,7 @@ type Photo = {
 
 type ImovelDestaque = {
     id: number;
+    CodigoImovel: string;
     slug: string;
     Bairro: string;
     Cidade: string;
@@ -28,7 +29,7 @@ export default function Destaques() {
             try {
                 setLoading(true);
                 // Substitua pela URL real da sua API externa ou interna
-                const response = await axios.get("URL_DA_SUA_API/imoveis/destaques");
+                const response = await axios.get( process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/destaques');
                 setDestaques(response.data);
             } catch (error) {
                 console.error("Erro ao carregar os destaques do frontend:", error);
@@ -80,7 +81,7 @@ export default function Destaques() {
 
                         return (
                             <Link
-                                href={`/imoveis/codigo/${imovel.slug}`}
+                                href={`/imoveis/codigo/${imovel.CodigoImovel}`}
                                 key={imovel.id}
                                 className="group relative bg-black bg-cover bg-center h-80 flex items-end rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-md"
                                 style={{ backgroundImage: `url('${fotoCapa}')` }}

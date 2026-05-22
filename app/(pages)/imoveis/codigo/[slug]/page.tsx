@@ -43,7 +43,7 @@ export default function ImovelSingle() {
             try {
                 setLoading(true);
                 // Requisição buscando pelo slug específico do imóvel
-                const response = await axios.get( process.env.NEXT_PUBLIC_API_BACKEND + `/imoveis/${slug}`);
+                const response = await axios.get( process.env.NEXT_PUBLIC_API_BACKEND + `/imoveis/codigo/${slug}`);
                 setImovel(response.data);
             } catch (error) {
                 console.error("Erro ao carregar os detalhes do imóvel:", error);
