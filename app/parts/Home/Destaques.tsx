@@ -29,7 +29,7 @@ export default function Destaques() {
             try {
                 setLoading(true);
                 // Substitua pela URL real da sua API externa ou interna
-                const response = await axios.get( process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/destaques');
+                const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/destaques');
                 setDestaques(response.data);
             } catch (error) {
                 console.error("Erro ao carregar os destaques do frontend:", error);

@@ -1,9 +1,9 @@
 import Banner from "./parts/Home/Banner";
-import Artigos from "./parts/Home/Artigos";
 import Destaques from "./parts/Home/Destaques";
 import Contato from "./parts/Home/Contato";
 import Categoria from "./parts/Home/Categoria";
 import Pesquisa from "./parts/pesquisa";
+import OfertasSemana from "./parts/Home/Ofertas";
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
             <Pesquisa />
             <Categoria />
             <Destaques  />
-            <Artigos  />
+            <OfertasSemana  />
             <Contato />
         </div>
     );
