@@ -3,6 +3,8 @@
 import Image from 'next/image';
 // @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
+import { ContentLinks } from '../dados/contentLinks';
+import Link from 'next/link';
 
 type Photo = {
   URLArquivo: string;
@@ -333,23 +335,24 @@ export default function ImovelPage({ imovel }: Props) {
                       </div>
                     )}
 
-                    <a
+                    {/*<a
                       href="https://wa.me/5521991257878?text=Olá,%20vim%20pelo%20site!"
                       target="_blank"
                     >
-                      <button className="my-4 block w-4/5 rounded-full bg-orange-500 px-16 py-2 text-lg font-medium uppercase text-gray-100 hover:bg-blue-600 mx-auto">
+                      <button className="my-4 block w-4/5 rounded-full bg-orange-500 px-16 py-2 text-lg font-medium uppercase text-gray-100 hover:bg-orange-600 mx-auto">
                         Quero visitar
                       </button>
                     </a>
+                     */}
 
-                    <a
-                      href="https://wa.me/5521991257878?text=Olá,%20vim%20pelo%20site!"
+                    <Link
+                      href={ContentLinks.whatsapp}
                       target="_blank"
                     >
-                      <button className="mx-auto my-4 block w-4/5 rounded-full bg-blue-500 px-16 py-2 text-lg font-medium uppercase text-gray-100 hover:bg-blue-600">
+                      <button className="mx-auto my-4 block w-4/5 rounded-full bg-orange-500 hover:bg-orange-600 px-16 py-2 text-lg font-medium uppercase text-gray-100 ">
                         Mais informações
                       </button>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import HeaderTitle from "@/app/parts/estrutura/headerTitle";
 import Image from "next/image";
+import Link from "next/link";
+import { ContentLinks } from "@/app/parts/dados/contentLinks";
 
 // Reutilizando ou estendendo a tipagem que você já usa no index
 type Photo = {
@@ -190,12 +192,14 @@ export default function ImovelSingle() {
                                         >
                                             Quero visitar
                                         </button>*/}
+                                        <Link href={ContentLinks.whatsapp} target="_blank">
                                         <button
                                             type="button"
                                             className="bg-orange-500 hover:bg-orange-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase w-4/5 transition"
                                         >
                                             Mais informações
                                         </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

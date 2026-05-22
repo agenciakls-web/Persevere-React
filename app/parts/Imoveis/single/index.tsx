@@ -5,6 +5,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ContentLinks } from '../../dados/contentLinks';
 
 export default function ImovelDetalhe({ imovel }: { imovel: any}) {
 
@@ -310,6 +311,7 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
 
                                     <div className="space-y-3">
 
+                                        {/*
                                         <Link
                                             href="https://wa.me/5521991257878?text=Olá,%20vim%20pelo%20site!"
                                             target="_blank"
@@ -318,12 +320,13 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
                                                 Quero visitar
                                             </button>
                                         </Link>
+                                        */}
 
                                         <Link
-                                            href="https://wa.me/5521991257878?text=Olá,%20vim%20pelo%20site!"
+                                            href={ContentLinks.whatsapp}
                                             target="_blank"
                                         >
-                                            <button className="w-full rounded-full bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700">
+                                            <button className="w-full rounded-full bg-orange-500 hover:bg-orange-600 px-6 py-3 font-semibold text-white transition ">
                                                 Mais informações
                                             </button>
                                         </Link>
