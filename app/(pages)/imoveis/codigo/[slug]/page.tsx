@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ContentLinks } from "@/app/parts/dados/contentLinks";
 
-// Reutilizando ou estendendo a tipagem que você já usa no index
+
 type Photo = {
     URLArquivo: string;
     Principal?: number;
@@ -27,13 +27,13 @@ type Imovel = {
     QtdVagas?: number;
     AreaTotal?: number;
     PrecoVenda?: number;
-    Descricao?: string; // Se você tiver um campo de descrição longa no banco
+    Descricao?: string; 
     photos: Photo[];
 };
 
 export default function ImovelSingle() {
     const params = useParams();
-    const slug = params?.slug; // Captura o [slug] vindo da URL
+    const slug = params?.slug; 
 
     const [imovel, setImovel] = useState<Imovel | null>(null);
     const [loading, setLoading] = useState(true);
@@ -44,7 +44,7 @@ export default function ImovelSingle() {
         async function carregarImovel() {
             try {
                 setLoading(true);
-                // Requisição buscando pelo slug específico do imóvel
+                
                 const response = await axios.get( process.env.NEXT_PUBLIC_API_BACKEND + `/imoveis/codigo/${slug}`);
                 setImovel(response.data);
             } catch (error) {
@@ -74,10 +74,10 @@ export default function ImovelSingle() {
         );
     }
 
-    // Define a foto de exibição (Busca a Principal ou pega a primeira do array)
+    
     const fotoExibicao = imovel.photos?.find((p) => p.Principal === 1)?.URLArquivo 
         || imovel.photos?.[0]?.URLArquivo 
-        || "/img/product-1.png"; // Fallback caso não haja nenhuma foto
+        || "/img/product-1.png"; 
 
     return (
         <main>
