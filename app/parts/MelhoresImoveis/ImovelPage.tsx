@@ -349,7 +349,7 @@ export default function ImovelPage({ imovel }: Props) {
                       href={ContentLinks.whatsapp}
                       target="_blank"
                     >
-                      <button className="mx-auto my-4 block w-4/5 rounded-full bg-orange-500 hover:bg-orange-600 px-16 py-2 text-lg font-medium uppercase text-gray-100 ">
+                      <button className="mx-auto my-4 block w-4/5 rounded-full bg-orange-500 hover:bg-orange-600 md:px-8 2xl:px-16 py-2 text-xs md:text-base 2xl:text-lg font-medium uppercase text-gray-100 ">
                         Mais informações
                       </button>
                     </Link>

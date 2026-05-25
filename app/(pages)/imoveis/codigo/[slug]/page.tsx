@@ -195,7 +195,7 @@ export default function ImovelSingle() {
                                         <Link href={ContentLinks.whatsapp} target="_blank">
                                         <button
                                             type="button"
-                                            className="bg-orange-500 hover:bg-orange-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-lg mx-auto uppercase w-4/5 transition"
+                                            className="bg-orange-500 hover:bg-orange-600 text-gray-100 font-medium rounded-full my-4 py-2  block md:px-8 2xl:px-16 text-xs md:text-base 2xl:text-lg  mx-auto uppercase w-4/5 transition"
                                         >
                                             Mais informações
                                         </button>
