@@ -3,16 +3,9 @@ import Link from "next/link";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 // @ts-ignore
 import "@splidejs/react-splide/css";
-export type SlideItem = {
-    codigo: string;
-    img: string;
-};
+import { PhotoType } from "./ImovelSingle";
 
-interface MainSliderProps {
-    slides: SlideItem[];
-}
-
-export default function MainSlider({ slides }: MainSliderProps) {
+export default function BannerSingle({ slides }: { slides: PhotoType[]}) {
     if (!slides || slides.length === 0) {
         return null;
     }
@@ -38,17 +31,10 @@ export default function MainSlider({ slides }: MainSliderProps) {
             <SplideTrack className="h-full w-full absolute">
                 {slides.map((slide, idx) => (
                     <SplideSlide key={idx} className="h-full w-full absolute">
-                        <Link
-                            href={`/imoveis/codigo/${slide.codigo}`}
-                            className="block h-full w-full"
-                        >
                             <div
                                 className="h-full w-full bg-black bg-cover bg-center transition-transform duration-500 hover:scale-105"
-                                style={{ backgroundImage: `url(${slide.img})` }}
-                                role="img"
-                                aria-label={`Imóvel código ${slide.codigo}`}
-                            ></div>
-                        </Link>
+                                style={{ backgroundImage: `url(${slide.URLArquivo})` }}
+                                role="img"></div>
                     </SplideSlide>
                 ))}
             </SplideTrack>

@@ -5,9 +5,10 @@ import HeaderTitle from "@/app/parts/estrutura/headerTitle";
 import Link from "next/link";
 import { ContentLinks } from "@/app/parts/dados/contentLinks";
 import { CopyButton } from "@/app/parts/Componentes/CopyButton";
+import BannerSingle from "./BannerSingle";
 
 
-type Photo = {
+export type PhotoType = {
     URLArquivo: string;
     Principal?: number;
 };
@@ -26,7 +27,7 @@ export type ImovelType = {
     AreaTotal?: number;
     PrecoVenda?: number;
     Descricao?: string; 
-    photos: Photo[];
+    photos: PhotoType[];
 };
 
 
@@ -131,7 +132,7 @@ export default function ImovelSingle({initialSlug }: { initialSlug: string}) {
                                     sizes="(max-width: 768px) 100vw, 66vw"
                                     priority
                                 /> */}
-                                
+                                <BannerSingle slides={imovel.photos} />
                             </div>
                             
                             <div className="py-4 text-base text-gray-500">
