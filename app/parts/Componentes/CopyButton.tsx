@@ -10,7 +10,7 @@ export function CopyButton({ imovel }: { imovel: ImovelType }) {
 
     const handleCopy = async () => {
         // Monta o link usando o slug
-        const link = `https://www.persevere.com/imoveis/codigo/${imovel.CodigoImovel}`;
+        const link = `https://www.persevere.com.br/imoveis/codigo/${imovel.CodigoImovel}`;
 
         const clipboardItems = [ new ClipboardItem({ "text/plain": link }) ];
         await navigator.clipboard.write(clipboardItems);
