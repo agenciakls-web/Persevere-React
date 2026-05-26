@@ -1,23 +1,6 @@
-"use client";
-
-import { useEffect } from "react";
-import Link from "next/link";
-import Splide from "@splidejs/splide";
-import "@splidejs/splide/dist/css/splide.min.css";
+import MainSlider from "../Componentes/MainSlider";
 
 export default function Banner() {
-    useEffect(() => {
-        const main = new Splide("#slide-main", {
-            type: "loop",
-            rewind: true,
-            pagination: false,
-            arrows: true,
-            autoplay: true,
-            interval: 2500,
-        });
-
-        main.mount();
-    }, []);
 
     const slides = [
         { codigo: "PSI004", img: "https://persevere.com.br/img/slide/PSI004.jpg" },
@@ -35,28 +18,7 @@ export default function Banner() {
 
     return (
         <div className="banner h-[16rem] sm:h-[20rem] md:h-[16rem] lg:h-[24rem] xl:h-[30rem] 2xl:h-[40rem] relative">
-            <section
-                className="splide object-cover h-full w-full absolute"
-                id="slide-main"
-            >
-                <div className="splide__track h-full w-full absolute">
-                    <ul className="splide__list h-full w-full absolute">
-                        {slides.map((slide, idx) => (
-                            <li
-                                key={idx}
-                                className="splide__slide h-full w-full absolute"
-                            >
-                                <Link href={`/imoveis/codigo/${slide.codigo}`}>
-                                    <div
-                                        className="h-full w-full bg-black bg-cover bg-center"
-                                        style={{ backgroundImage: `url(${slide.img})` }}
-                                    ></div>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
+            <MainSlider slides={slides} />
         </div>
     );
 }
