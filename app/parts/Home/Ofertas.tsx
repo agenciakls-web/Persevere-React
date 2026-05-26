@@ -91,9 +91,8 @@ export default function OfertasSemana() {
                 {/* Grid de 4 Colunas adaptável */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr mt-6">
                     {ofertas.map((imovel) => {
-                        // Resgata a foto principal ou usa a primeira disponível
+                        // Resgata a foto principal ou sem foto
                         const fotoCapa = imovel.photos?.find(p => p.Principal === 1)?.URLArquivo
-                            || imovel.photos?.[0]?.URLArquivo
                             || "/img/sem-foto.png";
 
                         return (
