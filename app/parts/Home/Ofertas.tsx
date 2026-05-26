@@ -94,7 +94,7 @@ export default function OfertasSemana() {
                         // Resgata a foto principal ou usa a primeira disponível
                         const fotoCapa = imovel.photos?.find(p => p.Principal === 1)?.URLArquivo
                             || imovel.photos?.[0]?.URLArquivo
-                            || "/img/product-2.png";
+                            || "/img/sem-foto.png";
 
                         return (
                             <div key={imovel.id} className="px-1 py-2 h-full">

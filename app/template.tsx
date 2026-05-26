@@ -1,7 +1,7 @@
 "use client";
 import Footer from "./parts/estrutura/Footer";
 import { usePathname } from "next/navigation";
-import MobileMenu from "./parts/estrutura/Menu";
+import MobileMenu from "./parts/estrutura/menu";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
