@@ -22,7 +22,7 @@ export default function BannerSingle({ slides }: { slides: PhotoType[]}) {
                 rewind: true,         
                 arrows: true,         
                 pagination: true,     
-                perPage: 3,           
+                perPage: 2,           
                 height: "100%",       
             }}
             className="object-cover rounded-xl h-full"
