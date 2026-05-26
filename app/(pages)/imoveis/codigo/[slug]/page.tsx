@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             openGraph: {
                 title: titulo,
                 description: descricao,
-                url: `https://seusite.com/imoveis/${slug}`, // Altere para o seu domínio real
+                url: `https://seusite.com/imoveis/codigo/${slug}`, // Altere para o seu domínio real
                 siteName: "Sua Imobiliária",
                 images: [
                     {
