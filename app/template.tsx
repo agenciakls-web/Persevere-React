@@ -6,7 +6,7 @@ import MobileMenu from "./parts/estrutura/Menu";
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  const OcultarRotas = ["/landing-page"]; 
+  const OcultarRotas = ["/melhores-imoveis"]; 
   const OcultarLayout = OcultarRotas.includes(pathname);
 
   return (
