@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { LinkIcon } from "lucide-react";
-import { ImovelType } from "@/app/(pages)/imoveis/codigo/[slug]/page";
+import { ImovelType } from "../Imoveis/single/ImovelSingle";
 
 export function CopyButton({ imovel }: { imovel: ImovelType }) {
     const [copiado, setCopiado] = useState(false);
