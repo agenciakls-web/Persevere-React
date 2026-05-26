@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { LinkIcon } from "lucide-react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function CopyButton({ imovel }: { imovel: any }) {
   const [copiado, setCopiado] = useState(false);
   const pathname = usePathname();
@@ -18,6 +19,7 @@ export function CopyButton({ imovel }: { imovel: any }) {
 
       // Pega a foto principal ou fallback
       const imagemUrl =
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         imovel.photos?.find((p: any) => p.Principal === 1)?.URLArquivo ||
         imovel.photos?.[0]?.URLArquivo ||
         "/img/product-1.png";

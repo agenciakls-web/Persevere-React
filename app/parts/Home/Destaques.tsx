@@ -87,7 +87,7 @@ export default function Destaques() {
                                 style={{ backgroundImage: `url('${fotoCapa}')` }}
                             >
                                 {/* Película escura gradual para dar leitura ao texto branco */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all"></div>
+                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all"></div>
 
                                 <div className="relative font-brandon text-white px-4 py-4 font-bold text-sm 2xl:text-xl z-10 w-full">
                                     <span className="text-xs font-medium text-orange-400 uppercase tracking-wider block mb-1">
