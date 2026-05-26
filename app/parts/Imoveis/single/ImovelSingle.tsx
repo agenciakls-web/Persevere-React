@@ -126,14 +126,15 @@ export default function ImovelSingle({initialSlug }: { initialSlug: string}) {
                     <div className="flex flex-wrap">
                         <div className="w-full md:w-2/3">
                             <div className="relative h-96 w-full">
-                                <Image
+                                {/* <Image
                                     src={fotoExibicao}
                                     alt={imovel.SubTipoImovel}
                                     fill
                                     className="object-cover rounded-xl"
                                     sizes="(max-width: 768px) 100vw, 66vw"
                                     priority
-                                />
+                                /> */}
+                                
                             </div>
                             
                             <div className="py-4 text-base text-gray-500">
