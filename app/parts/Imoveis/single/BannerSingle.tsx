@@ -25,7 +25,7 @@ export default function BannerSingle({ slides }: { slides: PhotoType[]}) {
                 perPage: 3,           
                 height: "100%",       
             }}
-            className="object-cover rounded-xl"
+            className="object-cover rounded-xl h-full"
             id="slide-main"
         >
             <SplideTrack className="h-full w-full absolute">
