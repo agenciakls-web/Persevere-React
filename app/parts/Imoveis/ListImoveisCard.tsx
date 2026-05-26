@@ -38,7 +38,7 @@ interface Props {
     imoveis: Imovel[];
 }
 
-export default function ListImoveisCard({ imovel }: { imovel: Imovel }) {
+export default function ListImoveisCard({ imovel, foto }: { imovel: Imovel, foto: string }) {
   // 🔑 Ajuste da lógica da imagem:
   const fotoCapa =
     imovel.photos?.find((p) => p.Principal === 1)?.URLArquivo ||
