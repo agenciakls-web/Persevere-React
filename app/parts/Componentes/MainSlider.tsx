@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 // @ts-ignore
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
