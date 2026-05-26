@@ -7,6 +7,7 @@ import HeaderTitle from "@/app/parts/estrutura/headerTitle";
 import Image from "next/image";
 import Link from "next/link";
 import { ContentLinks } from "@/app/parts/dados/contentLinks";
+import { CopyButton } from "@/app/parts/Componentes/CopyButton";
 
 
 type Photo = {
@@ -118,6 +119,7 @@ export default function ImovelSingle() {
                                         Ver no mapa
                                     </button>
                                 </div>
+                                <CopyButton imovel={imovel} />
                             </dd>
                         </dl>
                     </div>
