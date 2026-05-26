@@ -29,10 +29,10 @@ export default function MainSlider({ slides }: MainSliderProps) {
                 rewind: true,         
                 arrows: true,         
                 pagination: true,     
-                perPage: 1,           
+                perPage: 3,           
                 height: "100%",       
             }}
-            className="object-cover h-full w-full absolute"
+            className="object-cover rounded-xl"
             id="slide-main"
         >
             <SplideTrack className="h-full w-full absolute">
