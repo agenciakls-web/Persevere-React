@@ -1,47 +1,40 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { LinkIcon } from "lucide-react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function CopyButton({ imovel }: { imovel: any }) {
+export function CopyButton({ imovel, slug }: { imovel: any; slug: string }) {
   const [copiado, setCopiado] = useState(false);
-  const pathname = usePathname();
 
   const handleCopy = async () => {
-    try {
-      // Monta o link da página atual
-      const link = `https://www.persevere.com${pathname}`;
+    // Monta o link usando o slug
+    const link = `https://www.persevere.com/imovel/${slug}`;
 
-      // Texto do anúncio
-      const texto = `${imovel.SubTipoImovel} em ${imovel.Bairro} - ${imovel.Cidade}\n${link}`;
+    // Texto do anúncio
+    const texto = `${imovel.SubTipoImovel} em ${imovel.Bairro} - ${imovel.Cidade}\n${link}`;
 
-      // Pega a foto principal ou fallback
-      const imagemUrl =
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        imovel.photos?.find((p: any) => p.Principal === 1)?.URLArquivo ||
-        imovel.photos?.[0]?.URLArquivo ||
-        "/img/product-1.png";
+    // Pega a foto principal ou fallback
+    const imagemUrl =
+      imovel.photos?.find((p: any) => p.Principal === 1)?.URLArquivo ||
+      "/img/sem-foto.png";
 
-      // Faz o fetch da imagem
-      const resposta = await fetch(imagemUrl);
-      const blob = await resposta.blob();
+    // Faz o fetch da imagem
+    const resposta = await fetch(imagemUrl);
+    const blob = await resposta.blob();
 
-      // Copia texto + imagem
-      const clipboardItems = [
-        new ClipboardItem({
-          "text/plain": new Blob([texto], { type: "text/plain" }),
-          [blob.type]: blob,
-        }),
-      ];
+    // Copia texto + imagem
+    const clipboardItems = [
+      new ClipboardItem({
+        "text/plain": new Blob([texto], { type: "text/plain" }),
+        [blob.type]: blob,
+      }),
+    ];
 
-      await navigator.clipboard.write(clipboardItems);
-      setCopiado(true);
-      setTimeout(() => setCopiado(false), 2000);
-    } catch (err) {
-      console.error("Erro ao copiar:", err);
-    }
+    await navigator.clipboard.write(clipboardItems);
+
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 2000);
   };
 
   return (

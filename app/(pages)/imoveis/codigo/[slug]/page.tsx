@@ -119,7 +119,7 @@ export default function ImovelSingle() {
                                         Ver no mapa
                                     </button>
                                 </div>
-                                <CopyButton imovel={imovel} />
+                                <CopyButton imovel={imovel} slug={""} />
                             </dd>
                         </dl>
                     </div>
