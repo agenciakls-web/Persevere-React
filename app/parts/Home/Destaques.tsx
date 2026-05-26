@@ -76,8 +76,7 @@ export default function Destaques() {
                     {destaques.map((imovel) => {
                         // Define qual foto usar de fundo (Principal ou a primeira disponível)
                         const fotoCapa = imovel.photos?.find(p => p.Principal === 1)?.URLArquivo
-                            || imovel.photos?.[0]?.URLArquivo
-                            || "/img/product-1.png"; // Fallback padrão
+                            || "/img/sem-foto.png"; // Fallback padrão
 
                         return (
                             <Link
