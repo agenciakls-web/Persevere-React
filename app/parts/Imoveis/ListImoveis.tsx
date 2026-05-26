@@ -391,14 +391,8 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
                             ) : listaImoveis.length > 0 ? (
                                 <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                                     {listaImoveis.map((imovel) => {
-                                        const foto =
-                                            imovel.photos?.find(
-                                                (p) => p.Principal === 1
-                                            )?.URLArquivo ||
-                                            imovel.photos?.[0]?.URLArquivo;
-
                                         return (
-                                            <ListImoveisCard key={imovel.CodigoImovel} imovel={imovel} foto={foto} />
+                                            <ListImoveisCard key={imovel.CodigoImovel} imovel={imovel} />
                                         );
                                     })}
                                 </div>
