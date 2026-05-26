@@ -15,7 +15,7 @@ type Photo = {
     Principal?: number;
 };
 
-type Imovel = {
+export type ImovelType = {
     id: number;
     slug: string;
     Bairro: string;
@@ -36,7 +36,7 @@ export default function ImovelSingle() {
     const params = useParams();
     const slug = params?.slug; 
 
-    const [imovel, setImovel] = useState<Imovel | null>(null);
+    const [imovel, setImovel] = useState<ImovelType | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -119,7 +119,7 @@ export default function ImovelSingle() {
                                         Ver no mapa
                                     </button>
                                 </div>
-                                <CopyButton imovel={imovel} slug={""} />
+                                <CopyButton imovel={imovel} />
                             </dd>
                         </dl>
                     </div>

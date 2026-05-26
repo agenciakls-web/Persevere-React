@@ -3,13 +3,14 @@
 
 import { useState } from "react";
 import { LinkIcon } from "lucide-react";
+import { ImovelType } from "@/app/(pages)/imoveis/codigo/[slug]/page";
 
-export function CopyButton({ imovel, slug }: { imovel: any; slug: string }) {
+export function CopyButton({ imovel }: { imovel: ImovelType }) {
     const [copiado, setCopiado] = useState(false);
 
     const handleCopy = async () => {
         // Monta o link usando o slug
-        const link = `https://www.persevere.com/imovel/${slug}`;
+        const link = `https://www.persevere.com/imovel/${imovel.CodigoImovel}`;
 
         const clipboardItems = [ new ClipboardItem({ "text/plain": link }) ];
         await navigator.clipboard.write(clipboardItems);
