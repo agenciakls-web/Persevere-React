@@ -83,35 +83,40 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
     }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
 
     // Função que busca os dados no Backend via Axios
-    useEffect(() => {
-        async function carregarImoveis() {
-            setLoading(true);
-            try {
-                const response = await axios.get( process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
-                    params: {
-                        page: paginaAtual,
-                        limit: 12, 
-                        pesquisa: pesquisaAtual,
-                        TipoImovel: tipoAtual,
-                        PrecoVenda: precoAtual,
-                        quartos: quartosAtual,
-                        condominio: condominioAtual,
-                    }
-                });
-                console.log(response);
+useEffect(() => {
+    async function carregarImoveis() {
+        setLoading(true);
+        try {
+            const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
+                params: {
+                    page: paginaAtual,
+                    limit: 12, 
+                    pesquisa: pesquisaAtual,
+                    TipoImovel: tipoAtual,
+                    PrecoVenda: precoAtual,
+                    quartos: quartosAtual,
+                    condominio: condominioAtual,
+                }
+            });
+            console.log(response);
 
-                // Adapte o response abaixo de acordo com o retorno da sua API
-                setListaImoveis(response.data.resultado || response.data);
-                setTotalPaginas(response.data.totalPaginas || 1);
-            } catch (error) {
-                console.error("Erro ao buscar imóveis:", error);
-            } finally {
-                setLoading(false);
-            }
+            // Adapte o response abaixo de acordo com o retorno da sua API
+            const imoveis: Imovel[] = response.data.resultado || response.data;
+
+            // Ordena do menor para o maior valor
+            imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
+
+            setListaImoveis(imoveis);
+            setTotalPaginas(response.data.totalPaginas || 1);
+        } catch (error) {
+            console.error("Erro ao buscar imóveis:", error);
+        } finally {
+            setLoading(false);
         }
+    }
 
-        carregarImoveis();
-    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
+    carregarImoveis();
+}, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
 
     // Atualiza os inputs controlados
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
