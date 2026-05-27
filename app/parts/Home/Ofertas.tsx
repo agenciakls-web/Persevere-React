@@ -29,21 +29,25 @@ export default function OfertasSemana() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function carregarOfertas() {
-            try {
-                setLoading(true);
-                // Ajuste para a URL real da sua API Express
-                const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/ofertas');
-                setOfertas(response.data);
-            } catch (error) {
-                console.error("Erro ao buscar as ofertas no frontend:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
+    async function carregarOfertas() {
+        try {
+            setLoading(true);
+            const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/ofertas');
 
-        carregarOfertas();
-    }, []);
+            // Força o tipo e ordena por preço
+            const imoveis: ImovelOferta[] = response.data;
+            imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
+
+            setOfertas(imoveis);
+        } catch (error) {
+            console.error("Erro ao buscar as ofertas no frontend:", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    carregarOfertas();
+}, []);
 
     if (loading) {
         return (
