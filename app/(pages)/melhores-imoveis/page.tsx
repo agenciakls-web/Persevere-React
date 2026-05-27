@@ -104,11 +104,13 @@ export default function landingPage() {
                                     Trabalhe Conosco
                                 </a>
                             </li>
+                            {/*
                             <li className="mx-2">
                                 <a href="" className="py-1 flex items-center hover:text-orange">
                                     Avaliar Corretor
                                 </a>
                             </li>
+                            */}
                         </ul>
                     </div>
                     <div className="px-2 py-2">

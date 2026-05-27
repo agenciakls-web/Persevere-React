@@ -65,6 +65,7 @@ export default function MobileNav({
                   Trabalhe Conosco
                 </Link>
               </li>
+              {/*
               <li className="mx-2">
                 <Link
                   href="/avaliar"
@@ -73,6 +74,7 @@ export default function MobileNav({
                   Avaliar Corretor
                 </Link>
               </li>
+              */}
             </ul>
           </div>
 
