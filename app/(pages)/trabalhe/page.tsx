@@ -1,174 +1,224 @@
 "use client";
 
 import HeaderTitle from "@/app/parts/estrutura/headerTitle";
-import React, { useState } from "react";
+import Link from "next/link";
+import {
+  Briefcase,
+  Building2,
+  Megaphone,
+  TrendingUp,
+  ArrowRight,
+  Users,
+  Star,
+} from "lucide-react";
 
-export default function CurriculoForm() {
-    const [nome, setNome] = useState("");
-    const [mobile, setMobile] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [linkedin, setLinkedin] = useState("");
-    const [file, setFile] = useState<File | null>(null);
+const vagas = [
+  {
+    title: "Administrativo",
+    description:
+      "Atue nos bastidores garantindo organização, eficiência e suporte para todas as áreas da empresa.",
+    icon: Briefcase,
+    href: "https://forms.gle/9onou7wMCsTnd3AZ9",
+    color: "from-blue-500 to-blue-600",
+  },
+  {
+    title: "Consultor de Imóveis",
+    description:
+      "Conecte pessoas aos seus sonhos através de um atendimento consultivo e estratégico.",
+    icon: Building2,
+    href: "https://forms.gle/pSnWbuBMGyaUtB5L7",
+    color: "from-blue-500 to-blue-600",
+  },
+  {
+    title: "SDR - Desenvolvimento de Vendas",
+    description:
+      "Gere oportunidades, fortaleça relacionamentos e impulsione resultados comerciais.",
+    icon: TrendingUp,
+    href: "https://forms.gle/AjcNDu99chWMsjmJ7",
+    color: "from-blue-500 to-blue-600",
+  },
+  {
+    title: "Marketing",
+    description:
+      "Crie estratégias, campanhas e conteúdos que fortalecem a presença da Persevere.",
+    icon: Megaphone,
+    href: "https://forms.gle/EgNDVe8hLv3bY2xq5",
+    color: "from-blue-500 to-blue-600",
+  },
+];
 
-    const [responseMessage, setResponseMessage] = useState("");
-    const [responseType, setResponseType] = useState("danger");
-    const [sending, setSending] = useState(false);
+export default function TrabalheConosco() {
+  return (
+    <main className="bg-white">
+      <HeaderTitle title="Trabalhe Conosco" />
 
-    // Função de alerta (equivalente ao promotionAlert)
-    const promotionAlert = (message: string, action = "danger") => {
-        if (!message) {
-            message =
-                "Um ou mais campos possuem um erro. Verifique e tente novamente.";
-        }
-        setResponseMessage(message);
-        setResponseType(action);
-    };
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gray-50 py-20">
+        <div className="absolute inset-0 opacity-10 bg-[url('/images/pattern.png')]" />
 
-    // Envio do formulário
-    const handleSubmit = async (event: React.FormEvent) => {
-        event.preventDefault();
-        promotionAlert("Enviando...", "warning");
+        <div className="container relative mx-auto px-4">
+          <div className="mx-auto max-w-4xl text-center text-blue-600">
 
-        if (sending) {
-            promotionAlert("Aguarde, salvando seu cadastro...", "warning");
-            return;
-        }
+            <h1 className="mb-6 text-2xl font-bold leading-tight md:text-4xl">
+              Construa sua carreira com uma empresa que valoriza pessoas,
+              crescimento e resultados.
+            </h1>
 
-        setSending(true);
+            <p className="mx-auto max-w-3xl text-sm md:text-base leading-8 text-orange-500">
+              Na Persevere, acreditamos que grandes resultados são construídos
+              por profissionais comprometidos, inovadores e apaixonados pelo que
+              fazem. Nosso time trabalha diariamente para transformar
+              oportunidades em conquistas e sonhos em realidade.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        try {
-            const formData = new FormData();
-            formData.append("nome", nome);
-            formData.append("mobile", mobile);
-            formData.append("phone", phone);
-            formData.append("email", email);
-            formData.append("linkedin", linkedin);
-            if (file) formData.append("url", file);
-            formData.append("action", "works");
+      {/* SOBRE */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-blue-600">
+                Nossa Cultura
+              </span>
 
-            const params = new URLSearchParams(formData as any);
+              <h2 className="mb-6 text-3xl font-semibold text-gray-900 md:text-4xl">
+                Como é trabalhar na Persevere
+              </h2>
 
-            const response = await fetch("https://persevere.com.br/api/works", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Cache-Control": "no-cache",
-                    "X-CSRF-TOKEN": (window as any).csrfToken, // se necessário
+              <div className="space-y-5 text-lg leading-8 text-gray-600">
+                <p>
+                  Trabalhar na Persevere é fazer parte de um ambiente dinâmico,
+                  colaborativo e focado em crescimento constante. Valorizamos
+                  pessoas que tenham atitude, visão de futuro e vontade de
+                  evoluir profissionalmente.
+                </p>
+
+                <p>
+                  Nosso compromisso é desenvolver talentos, incentivar novas
+                  ideias e criar oportunidades reais de crescimento dentro da
+                  empresa.
+                </p>
+
+                <p>
+                  Aqui, acreditamos em relações transparentes, trabalho em
+                  equipe e excelência no atendimento. Mais do que colaboradores,
+                  buscamos parceiros de jornada.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              {[
+                {
+                  text: "Desenvolvimento profissional",
+                  icon: <Briefcase className="w-7 h-7" />,
                 },
-                body: params,
-            });
+                {
+                  text: "Ambiente colaborativo",
+                  icon: <Users className="w-7 h-7" />,
+                },
+                {
+                  text: "Crescimento constante",
+                  icon: <TrendingUp className="w-7 h-7" />,
+                },
+                {
+                  text: "Valorização de talentos",
+                  icon: <Star className="w-7 h-7" />,
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg shadow-blue-100/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                >
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl  text-blue-600">
+                    {item.icon}
+                  </div>
 
-            const data = await response.json();
-            if (data.status === true) {
-                promotionAlert(data.content, "success");
-                // resetar campos
-                setNome("");
-                setMobile("");
-                setPhone("");
-                setEmail("");
-                setLinkedin("");
-                setFile(null);
-            } else {
-                promotionAlert(data.content, "danger");
-            }
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (error) {
-            promotionAlert("Houve algum erro, tente novamente mais tarde!", "danger");
-        } finally {
-            setSending(false);
-        }
-    };
-
-    return (
-        <main>
-            <HeaderTitle title="Trabalhe Conosco" />
-            <section className="py-8">
-                <div className="container mx-auto px-4">
-                    <div className="flex justify-center">
-                        <div>
-                            <h3 className="my-4 font-medium text-2xl font-reading text-blue-500">
-                                Cadastrar Currículo
-                            </h3>
-                            <form id="form-works" onSubmit={handleSubmit}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <input
-                                        type="text"
-                                        name="nome"
-                                        id="nome"
-                                        value={nome}
-                                        onChange={(e) => setNome(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
-                                        placeholder="Nome"
-                                    />
-                                    <input
-                                        type="text"
-                                        name="mobile"
-                                        id="mobile"
-                                        value={mobile}
-                                        onChange={(e) => setMobile(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500"
-                                        placeholder="Celular"
-                                    />
-                                    <input
-                                        type="text"
-                                        name="phone"
-                                        id="phone"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500"
-                                        placeholder="Telefone"
-                                    />
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        id="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
-                                        placeholder="E-mail"
-                                    />
-                                    <input
-                                        type="text"
-                                        name="linkedin"
-                                        id="url"
-                                        value={linkedin}
-                                        onChange={(e) => setLinkedin(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
-                                        placeholder="URL do Linkedin"
-                                    />
-                                    <input
-                                        type="file"
-                                        name="url"
-                                        id="curriculo-works"
-                                        onChange={(e) => setFile(e.target.files?.[0] || null)}
-                                        className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase md:col-span-2 js-form-control"
-                                    />
-                                    <input
-                                        type="submit"
-                                        value="Enviar"
-                                        className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 block text-base uppercase md:col-span-2"
-                                    />
-                                </div>
-
-                                {/* Mensagem de resposta */}
-                                {responseMessage && (
-                                    <div
-                                        className={`w-full my-2 p-3 uppercase text-center font-bold rounded ${responseType === "success"
-                                                ? "bg-green-600 text-white"
-                                                : responseType === "warning"
-                                                    ? "bg-yellow-500 text-white"
-                                                    : "bg-red-600 text-white"
-                                            }`}
-                                    >
-                                        {responseMessage}
-                                    </div>
-                                )}
-                            </form>
-                        </div>
-                    </div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {item.text}
+                  </h3>
                 </div>
-            </section>
-        </main>
-    );
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* VAGAS */}
+      <section className="bg-gray-50 py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-blue-600">
+              Oportunidades
+            </span>
+
+            <h2 className="mb-5 text-3xl font-semibold text-gray-900 md:text-4xl">
+              Escolha a área que combina com você
+            </h2>
+
+            <p className="text-sm leading-8 text-gray-600">
+              Clique em uma das áreas abaixo para preencher o formulário e
+              iniciar sua jornada com a Persevere.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+            {vagas.map((vaga, index) => {
+              const Icon = vaga.icon;
+
+              return (
+                <Link
+                  key={index}
+                  href={vaga.href}
+                  target="_blank"
+                  className="group relative flex flex-col items-center text-center overflow-hidden rounded-xl bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                >
+                  <div
+                    className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br ${vaga.color} text-white shadow-lg`}
+                  >
+                    <Icon size={30} />
+                  </div>
+
+                  <h3 className="mb-4 text-base md:text-lg font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">
+                    {vaga.title}
+                  </h3>
+
+                  <p className="mb-8 text-sm md:text-base leading-7 text-gray-600">
+                    {vaga.description}
+                  </p>
+
+                  <div className="inline-flex items-center gap-3 rounded-md border border-blue-400 px-5 py-3 font-medium text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white text-xs md:text-sm">
+                    Enviar candidatura
+                    <ArrowRight
+                      size={18}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl text-center text-orange-500">
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+              Venha crescer com a Persevere
+            </h2>
+
+            <p className="text-lg leading-8 text-blue-600">
+              Estamos sempre em busca de profissionais talentosos, comprometidos
+              e com vontade de fazer a diferença. Faça parte da nossa história e
+              construa um futuro de grandes conquistas com a gente.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
