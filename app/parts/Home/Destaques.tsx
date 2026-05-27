@@ -25,21 +25,26 @@ export default function Destaques() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function carregarDestaques() {
-            try {
-                setLoading(true);
-                // Substitua pela URL real da sua API externa ou interna
-                const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/destaques');
-                setDestaques(response.data);
-            } catch (error) {
-                console.error("Erro ao carregar os destaques do frontend:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
+    async function carregarDestaques() {
+        try {
+            setLoading(true);
+            const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/destaques');
 
-        carregarDestaques();
-    }, []);
+            // Tipando e ordenando por preço
+            const imoveis = response.data as ImovelDestaque[];
+            imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
+
+            setDestaques(imoveis);
+        } catch (error) {
+            console.error("Erro ao carregar os destaques do frontend:", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    carregarDestaques();
+}, []);
+
 
     if (loading) {
         return (
