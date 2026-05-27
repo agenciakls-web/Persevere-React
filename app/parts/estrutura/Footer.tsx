@@ -81,7 +81,7 @@ export default function Footer() {
                       href={ContentLinks.email}
                       className="hover:text-orange-500 transition-colors wrap-break-word"
                     >
-                      <FontAwesomeIcon icon={faEnvelope} />
+                      <FontAwesomeIcon icon={faEnvelope} className="mr-2"/>
                       {ContentLinks.emailShow}
                     </a>
                   </li>
@@ -91,7 +91,7 @@ export default function Footer() {
                       target="_blank"
                       className="hover:text-orange-500 transition-colors"
                     >
-                      <FontAwesomeIcon icon={faWhatsapp} />
+                      <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
                       {ContentLinks.whatsappShow}
                     </a>
                   </li>
@@ -100,7 +100,7 @@ export default function Footer() {
                       href={ContentLinks.phone}
                       className="hover:text-orange-500 transition-colors"
                     >
-                      <FontAwesomeIcon icon={faPhone} />
+                      <FontAwesomeIcon icon={faPhone} className="mr-2" />
                       {ContentLinks.phoneShow}
                     </a>
                   </li>
