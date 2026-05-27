@@ -86,7 +86,7 @@ export default function Footer() {
                                             {ContentLinks.phoneShow}
                                         </a>
                                     </li>
-                                    <li className="2xl:text-lg">
+                                    <li className="2xl:text-base">
                                         <a
                                             href={`${ContentLinks.whatsapp}?text=Olá%2C%20vim%20pelo%20site.`}
                                             target="_blank"
