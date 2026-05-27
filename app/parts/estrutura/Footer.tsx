@@ -88,7 +88,7 @@ export default function Footer() {
                                     </li>
                                     <li>
                                         <a
-                                            href={ContentLinks.whatsapp}
+                                            href={`${ContentLinks.whatsapp}?text=Olá%2C%20vim%20pelo%20site.`}
                                             target="_blank"
                                             className="hover:text-orange-500 transition-colors"
                                         >

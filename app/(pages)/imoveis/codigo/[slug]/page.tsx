@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // app/imoveis/[slug]/page.tsx
 import { Metadata } from "next";
 import axios from "axios";
