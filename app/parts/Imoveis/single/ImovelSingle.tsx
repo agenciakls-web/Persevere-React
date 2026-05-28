@@ -177,7 +177,7 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                                 {imovel.PrecoVenda && imovel.AreaTotal && (
                                                     <p className="text-sm my-1 text-blue-500 ">
                                                         {(
-                                                            imovel.PrecoVenda / imovel.AreaTotal
+                                                            imovel.PrecoVenda / imovel.AreaUtil
                                                         ).toLocaleString("pt-BR", {
                                                             style: "currency",
                                                             currency: "BRL",
@@ -239,6 +239,12 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                                 🚿 Banheiros:{" "}
                                                 <span className="font-semibold">
                                                     {imovel.QtdBanheiros || 0}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                📐 Área Útil:{" "}
+                                                <span className="font-semibold">
+                                                    {imovel.AreaUtil || 0} m²
                                                 </span>
                                             </div>
                                             <div>
