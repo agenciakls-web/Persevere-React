@@ -1,4 +1,3 @@
-
 import HeaderTitle from '../app/parts/estrutura/headerTitle';
 
 export default function NotFound() {
