@@ -103,6 +103,7 @@ export default function PesquisaImovel() {
                                     </select>
                                 </div>
                                 <div>
+                                    <input type="hidden" name="action" value="comprar" />
                                     <button
                                         type="submit"
                                         className="bg-orange text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
@@ -127,7 +128,7 @@ export default function PesquisaImovel() {
                                     />
                                 </div>
                                 <div>
-                                    <input type="hidden" name="acao" value="code" />
+                                    <input type="hidden" name="action" value="codigo" />
                                     <button
                                         type="submit"
                                         className="bg-orange text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
