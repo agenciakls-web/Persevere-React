@@ -94,19 +94,20 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
 
     // Atualiza os inputs controlados
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        
-        setFormFilters(prev => {
-            const novosFiltros = { ...prev, [name]: value };
-            
-            // Regra inteligente: Se o usuário digitar no campo CodigoImovel, muda automaticamente a action para 'codigo'
-            if (name === 'CodigoImovel' && value.trim() !== '') {
-                novosFiltros.action = 'codigo';
-            } else if (name === 'CodigoImovel' && value.trim() === '') {
-                novosFiltros.action = 'comprar';
-            }
-            return novosFiltros;
-        });
+        const { name, value, type } = e.target;
+
+        const atualizado = {
+            ...formFilters,
+            [name]: value,
+        };
+
+        setFormFilters(atualizado);
+
+        // Se a alteração vier de um clique (radio) ou seleção (select), 
+        // ele já envia para a API na mesma hora!
+        if (type === 'radio' || e.target.tagName.toLowerCase() === 'select') {
+            aplicarFiltros(atualizado, 1);
+        }
     };
 
     // Atualiza a URL com os filtros quando o usuário clica em "Buscar"
@@ -127,8 +128,10 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        aplicarFiltros(formFilters, 1); 
+        aplicarFiltros(formFilters, 1);
     };
+
+
 
     return (
         <main>
@@ -140,127 +143,224 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
                         <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
                             <aside>
                                 <div className="mb-4 md:mb-10">
+                                    {/* ALTERNADOR DE BUSCA (TABS) */}
+                                    <div className="mb-6 flex gap-2 border-b border-gray-200 pb-2">
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                const atualizado = {
+                                                    pesquisa: '',
+                                                    TipoImovel: '',
+                                                    PrecoVenda: '',
+                                                    quartos: '',
+                                                    condominio: '',
+                                                    CodigoImovel: '',
+                                                    action: 'comprar'
+                                                };
+                                                setFormFilters(atualizado);
+                                                aplicarFiltros(atualizado, 1);
+                                            }}
+                                            className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${formFilters.action === 'comprar'
+                                                    ? 'bg-blue-500 text-white shadow'
+                                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                                                }`}
+                                        >
+                                            Pesquisa Geral
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                const atualizado = {
+                                                    pesquisa: '',
+                                                    TipoImovel: '',
+                                                    PrecoVenda: '',
+                                                    quartos: '',
+                                                    condominio: '',
+                                                    CodigoImovel: '',
+                                                    action: 'codigo'
+                                                };
+                                                setFormFilters(atualizado);
+                                                aplicarFiltros(atualizado, 1);
+                                            }}
+                                            className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${formFilters.action === 'codigo'
+                                                    ? 'bg-orange-500 text-white shadow'
+                                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                                                }`}
+                                        >
+                                            Por Código
+                                        </button>
+                                    </div>
+
                                     <form className="space-y-6" onSubmit={handleSubmit}>
-                                        
                                         {/* INPUT HIDDEN DA ACTION */}
                                         <input type="hidden" name="action" value={formFilters.action} />
 
-                                        {/* NOVO CAMPO: BUSCA POR CÓDIGO DO IMÓVEL */}
-                                        <div>
-                                            <h4 className="my-2 font-bold uppercase text-orange-500">
-                                                Buscar por Código
-                                            </h4>
-                                            <input
-                                                type="text"
-                                                name="CodigoImovel"
-                                                placeholder="Ex: PSI022"
-                                                value={formFilters.CodigoImovel}
-                                                onChange={handleChange}
-                                                className="w-full rounded-lg border border-orange-500 px-4 py-3 text-lg font-medium text-orange-600 placeholder-orange-300"
-                                            />
-                                        </div>
+                                        {/* VISÃO: BUSCA POR CÓDIGO */}
+                                        {formFilters.action === 'codigo' && (
+                                            <div className="space-y-4 valuation-fade-in">
+                                                <div>
+                                                    <h4 className="my-2 font-bold uppercase text-orange-500">
+                                                        Código do Imóvel
+                                                    </h4>
+                                                    <input
+                                                        type="text"
+                                                        name="CodigoImovel"
+                                                        placeholder="Ex: PSI022"
+                                                        value={formFilters.CodigoImovel}
+                                                        onChange={handleChange}
+                                                        className="w-full rounded-lg border border-orange-500 px-4 py-3 text-lg font-medium text-orange-600 placeholder-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                                    />
+                                                </div>
 
-                                        <hr className="border-gray-200 my-4" />
-
-                                        {/* PESQUISA GERAL */}
-                                        <div>
-                                            <h4 className="my-2 font-bold uppercase text-blue-500">
-                                                Pesquisa Geral
-                                            </h4>
-                                            <input
-                                                type="text"
-                                                name="pesquisa"
-                                                placeholder="Digite condomínio, região..."
-                                                value={formFilters.pesquisa}
-                                                onChange={handleChange}
-                                                disabled={formFilters.CodigoImovel.trim() !== ''} // Desabilita se estiver buscando por código
-                                                className="w-full rounded-lg border border-blue-500 px-4 py-3 text-lg font-medium text-blue-500 disabled:opacity-50"
-                                            />
-                                        </div>
-
-                                        {/* TIPO */}
-                                        <div>
-                                            <h4 className="my-2 font-bold uppercase text-blue-500">
-                                                Tipo de Imóvel
-                                            </h4>
-                                            <div className="hidden md:block">
-                                                {tiposImoveis.map((tipo, index) => (
-                                                    <label key={index} className="block py-1">
-                                                        <input
-                                                            type="radio"
-                                                            name="TipoImovel"
-                                                            value={tipo.TipoImovel}
-                                                            checked={formFilters.TipoImovel === tipo.TipoImovel}
-                                                            onChange={handleChange}
-                                                            disabled={formFilters.CodigoImovel.trim() !== ''}
-                                                            className="mr-2"
-                                                        />
-                                                        {tipo.TipoImovel}
-                                                    </label>
-                                                ))}
+                                                <button
+                                                    type="submit"
+                                                    className="block w-full text-center rounded-full bg-orange-500 px-4 py-3 text-lg font-medium uppercase text-gray-100 hover:bg-orange-600 transition shadow-md"
+                                                >
+                                                    Buscar Código
+                                                </button>
                                             </div>
-                                        </div>
+                                        )}
 
-                                        {/* PREÇO */}
-                                        <div>
-                                            <h4 className="my-2 font-bold uppercase text-blue-500">
-                                                Preço de Venda
-                                            </h4>
-                                            <div className="hidden md:block space-y-2">
-                                                {[
-                                                    'Até 200.000',
-                                                    '200.000 até 400.000',
-                                                    '400.000 até 600.000',
-                                                    '600.000 até 800.000',
-                                                    '800.000 até 1.000.000',
-                                                    'Acima de 1.000.000',
-                                                ].map((label, index) => (
-                                                    <label key={index} className="block">
-                                                        <input
-                                                            type="radio"
-                                                            name="PrecoVenda"
-                                                            value={index + 1}
-                                                            checked={formFilters.PrecoVenda === (index + 1).toString()}
-                                                            onChange={handleChange}
-                                                            disabled={formFilters.CodigoImovel.trim() !== ''}
-                                                            className="mr-2"
-                                                        />
-                                                        {label}
-                                                    </label>
-                                                ))}
+                                        {/* VISÃO: PESQUISA PADRÃO / COMPRAR */}
+                                        {formFilters.action === 'comprar' && (
+                                            <div className="space-y-6">
+                                                {/* PESQUISA GERAL */}
+                                                <div>
+                                                    <h4 className="my-2 font-bold uppercase text-blue-500">
+                                                        Termo de pesquisa
+                                                    </h4>
+                                                    <input
+                                                        type="text"
+                                                        name="pesquisa"
+                                                        placeholder="Digite condomínio, região, bairro..."
+                                                        value={formFilters.pesquisa}
+                                                        onChange={handleChange}
+                                                        className="w-full rounded-lg border border-blue-500 px-4 py-3 text-lg font-medium text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                    />
+                                                </div>
+
+                                                {/* TIPO */}
+                                                <div>
+                                                    <h4 className="my-2 font-bold uppercase text-blue-500">
+                                                        Tipo de Imóvel
+                                                    </h4>
+                                                    <div className="hidden md:block space-y-1">
+                                                        {tiposImoveis.map((tipo, index) => (
+                                                            <label key={index} className="flex items-center py-1 cursor-pointer hover:text-blue-600 font-medium text-gray-700">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="TipoImovel"
+                                                                    value={tipo.TipoImovel}
+                                                                    checked={formFilters.TipoImovel === tipo.TipoImovel}
+                                                                    onChange={handleChange}
+                                                                    className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400"
+                                                                />
+                                                                {tipo.TipoImovel}
+                                                            </label>
+                                                        ))}
+                                                    </div>
+
+                                                    <select
+                                                        name="TipoImovel"
+                                                        value={formFilters.TipoImovel}
+                                                        onChange={handleChange}
+                                                        className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
+                                                    >
+                                                        <option value="">Tipo de imóvel</option>
+                                                        {tiposImoveis.map((tipo, index) => (
+                                                            <option key={index} value={tipo.TipoImovel}>
+                                                                {tipo.TipoImovel}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+
+                                                {/* PREÇO */}
+                                                <div>
+                                                    <h4 className="my-2 font-bold uppercase text-blue-500">
+                                                        Preço de Venda
+                                                    </h4>
+                                                    <div className="hidden md:block space-y-2">
+                                                        {[
+                                                            'Até 200.000',
+                                                            '200.000 até 400.000',
+                                                            '400.000 até 600.000',
+                                                            '600.000 até 800.000',
+                                                            '800.000 até 1.000.000',
+                                                            'Acima de 1.000.000',
+                                                        ].map((label, index) => (
+                                                            <label key={index} className="flex items-center cursor-pointer hover:text-blue-600 font-medium text-gray-700">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="PrecoVenda"
+                                                                    value={index + 1}
+                                                                    checked={formFilters.PrecoVenda === (index + 1).toString()}
+                                                                    onChange={handleChange}
+                                                                    className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400"
+                                                                />
+                                                                {label}
+                                                            </label>
+                                                        ))}
+                                                    </div>
+
+                                                    <select
+                                                        name="PrecoVenda"
+                                                        value={formFilters.PrecoVenda}
+                                                        onChange={handleChange}
+                                                        className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
+                                                    >
+                                                        <option value="">Preço de compra</option>
+                                                        <option value="1">Até 200.000</option>
+                                                        <option value="2">200.000 até 400.000</option>
+                                                        <option value="3">400.000 até 600.000</option>
+                                                        <option value="4">600.000 até 800.000</option>
+                                                        <option value="5">800.000 até 1.000.000</option>
+                                                        <option value="6">Acima de 1.000.000</option>
+                                                    </select>
+                                                </div>
+
+                                                {/* QUARTOS */}
+                                                <div>
+                                                    <h4 className="my-2 font-bold uppercase text-blue-500">
+                                                        Mínimo de Quartos
+                                                    </h4>
+                                                    <div className="hidden md:block space-y-2">
+                                                        {[1, 2, 3, 4, 5].map((q) => (
+                                                            <label key={q} className="flex items-center cursor-pointer hover:text-blue-600 font-medium text-gray-700">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="quartos"
+                                                                    value={q}
+                                                                    checked={formFilters.quartos === q.toString()}
+                                                                    onChange={handleChange}
+                                                                    className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400"
+                                                                />
+                                                                {q} ou +
+                                                            </label>
+                                                        ))}
+                                                    </div>
+
+                                                    <select
+                                                        name="quartos"
+                                                        value={formFilters.quartos}
+                                                        onChange={handleChange}
+                                                        className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
+                                                    >
+                                                        <option value="">Mínimo de Quartos</option>
+                                                        {[1, 2, 3, 4, 5].map((q) => (
+                                                            <option key={q} value={q}>{q} ou +</option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+
+                                                <button
+                                                    type="submit"
+                                                    className="block w-full text-center rounded-full bg-blue-500 px-4 py-3 text-lg font-medium uppercase text-gray-100 hover:bg-blue-600 transition shadow-md"
+                                                >
+                                                    Filtrar Resultados
+                                                </button>
                                             </div>
-                                        </div>
-
-                                        {/* QUARTOS */}
-                                        <div>
-                                            <h4 className="my-2 font-bold uppercase text-blue-500">
-                                                Mínimo de Quartos
-                                            </h4>
-                                            <div className="hidden md:block space-y-2">
-                                                {[1, 2, 3, 4, 5].map((q) => (
-                                                    <label key={q} className="block">
-                                                        <input
-                                                            type="radio"
-                                                            name="quartos"
-                                                            value={q}
-                                                            checked={formFilters.quartos === q.toString()}
-                                                            onChange={handleChange}
-                                                            disabled={formFilters.CodigoImovel.trim() !== ''}
-                                                            className="mr-2"
-                                                        />
-                                                        {q} ou +
-                                                    </label>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        {/* BOTÃO */}
-                                        <button
-                                            type="submit"
-                                            className="block w-full text-center rounded-full bg-orange-500 px-4 py-3 text-lg font-medium uppercase text-gray-100 evaluation-btn hover:bg-orange-600 transition"
-                                        >
-                                            Buscar
-                                        </button>
+                                        )}
                                     </form>
                                 </div>
                             </aside>
