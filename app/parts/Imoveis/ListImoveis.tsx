@@ -5,7 +5,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
 import HeaderTitle from '../estrutura/headerTitle';
 import ListImoveisCard from './ListImoveisCard';
-import SidebarFiltros from './SidebarFiltros'; // Importando os novos componentes
+import SidebarFiltros from './SidebarFiltros';
 import Paginacao from './Paginacao';
 import { ImovelType } from '../tipagem/imoveis';
 
@@ -13,12 +13,22 @@ type TipoImovel = {
     TipoImovel: string;
 };
 
+interface FormFiltersType {
+    pesquisa: string;
+    TipoImovel: string;
+    PrecoVenda: string;
+    quartos: string;
+    condominio: string;
+    CodigoImovel: string;
+    action: string;
+}
+
 export default function ListImoveis() {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Parâmetros da URL
+    // Valores atuais vindos da URL do Next.js
     const paginaAtual = parseInt(searchParams.get('page') || '1');
     const pesquisaAtual = searchParams.get('pesquisa') || '';
     const tipoAtual = searchParams.get('TipoImovel') || '';
@@ -28,14 +38,14 @@ export default function ListImoveis() {
     const codigoImovelAtual = searchParams.get('CodigoImovel') || '';
     const actionAtual = searchParams.get('action') || 'comprar';
 
-    // Estados locais de dados
+    // Estados de controle de dados da API
     const [listaImoveis, setListaImoveis] = useState<ImovelType[]>([]);
     const [totalPaginas, setTotalPaginas] = useState(1);
     const [loading, setLoading] = useState(true);
     const [tiposDisponiveis, setTiposDisponiveis] = useState<TipoImovel[]>([]);
 
-    // Estado do formulário
-    const [formFilters, setFormFilters] = useState({
+    // Objeto central do estado do formulário
+    const [formFilters, setFormFilters] = useState<FormFiltersType>({
         pesquisa: pesquisaAtual,
         TipoImovel: tipoAtual,
         PrecoVenda: precoAtual,
@@ -45,7 +55,7 @@ export default function ListImoveis() {
         action: actionAtual,
     });
 
-    // Sincroniza o formulário se a URL mudar externamente
+    // Sincroniza o estado interno se a URL do navegador mudar
     useEffect(() => {
         setFormFilters({
             pesquisa: pesquisaAtual,
@@ -58,7 +68,7 @@ export default function ListImoveis() {
         });
     }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual]);
 
-    // Carrega tipos dinâmicos do banco
+    // Busca os tipos distintos cadastrados no banco de dados
     useEffect(() => {
         async function carregarTipos() {
             try {
@@ -71,7 +81,7 @@ export default function ListImoveis() {
         carregarTipos();
     }, []);
 
-    // Carrega imóveis de acordo com os filtros ativos
+    // Busca a lista de imóveis com base nos filtros da URL
     useEffect(() => {
         async function carregarImoveis() {
             setLoading(true);
@@ -98,22 +108,25 @@ export default function ListImoveis() {
             } catch (error) {
                 console.error("Erro ao buscar imóveis:", error);
             } finally {
-                setLoading(false);
+                setLoading(false); // Corrigido aqui de 'finaly' para 'finally'
             }
         }
         carregarImoveis();
     }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual]);
 
+    // Trata as alterações de inputs do formulário
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
         const atualizado = { ...formFilters, [name]: value };
         setFormFilters(atualizado);
 
+        // Dispara o filtro em tempo de execução ao clicar em itens objetivos (Radio/Select)
         if (type === 'radio' || e.target.tagName.toLowerCase() === 'select') {
             aplicarFiltros(atualizado, 1);
         }
     };
 
+    // Monta a QueryString e injeta os parâmetros na rota do Next.js
     const aplicarFiltros = (novosFiltros = formFilters, novaPagina = 1) => {
         const params = new URLSearchParams();
         if (novaPagina > 1) params.set('page', novaPagina.toString());
@@ -140,10 +153,9 @@ export default function ListImoveis() {
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap">
                         
-                        {/* SIDEBAR ISOLADA */}
+                        {/* SIDEBAR CONTAINER */}
                         <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
                             <SidebarFiltros
-                                actionAtual={actionAtual}
                                 formFilters={formFilters}
                                 setFormFilters={setFormFilters}
                                 tiposDisponiveis={tiposDisponiveis}
@@ -153,10 +165,12 @@ export default function ListImoveis() {
                             />
                         </div>
 
-                        {/* SEÇÃO DA LISTAGEM DE CARDS */}
+                        {/* LISTAGEM CONTAINER */}
                         <div className="w-full md:w-2/3 lg:w-3/4">
                             {loading ? (
-                                <div className="py-12 text-center text-blue-500 font-medium">Carregando imóveis...</div>
+                                <div className="py-12 text-center text-blue-500 font-medium">
+                                    Carregando imóveis...
+                                </div>
                             ) : listaImoveis.length > 0 ? (
                                 <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                                     {listaImoveis.map((imovel) => (
@@ -170,7 +184,7 @@ export default function ListImoveis() {
                                 </div>
                             )}
 
-                            {/* PAGINAÇÃO ISOLADA */}
+                            {/* PAGINAÇÃO CONTAINER */}
                             <Paginacao
                                 paginaAtual={paginaAtual}
                                 totalPaginas={totalPaginas}

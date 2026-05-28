@@ -1,17 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 type TipoImovel = {
     TipoImovel: string;
 };
 
+interface FormFiltersType {
+    pesquisa: string;
+    TipoImovel: string;
+    PrecoVenda: string;
+    quartos: string;
+    condominio: string;
+    CodigoImovel: string;
+    action: string;
+}
+
 interface SidebarFiltrosProps {
-    actionAtual: string;
-    formFilters: any;
-    setFormFilters: React.Dispatch<React.SetStateAction<any>>;
+    formFilters: FormFiltersType;
+    setFormFilters: React.Dispatch<React.SetStateAction<FormFiltersType>>;
     tiposDisponiveis: TipoImovel[];
-    aplicarFiltros: (novosFiltros?: any, novaPagina?: number) => void;
+    aplicarFiltros: (novosFiltros?: FormFiltersType, novaPagina?: number) => void;
     handleSubmit: (e: React.FormEvent) => void;
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
@@ -44,10 +51,11 @@ export default function SidebarFiltros({
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
                         }}
-                        className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${formFilters.action === 'comprar'
+                        className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${
+                            formFilters.action === 'comprar'
                                 ? 'bg-blue-500 text-white shadow'
                                 : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                            }`}
+                        }`}
                     >
                         Pesquisa Geral
                     </button>
@@ -66,10 +74,11 @@ export default function SidebarFiltros({
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
                         }}
-                        className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${formFilters.action === 'codigo'
+                        className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${
+                            formFilters.action === 'codigo'
                                 ? 'bg-orange-500 text-white shadow'
                                 : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                            }`}
+                        }`}
                     >
                         Por Código
                     </button>
