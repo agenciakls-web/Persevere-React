@@ -216,8 +216,6 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Detalhes de Cômodos adicionais */}
                             <div className="px-2 pb-6">
                                 <div className="rounded-xl h-full overflow-hidden shadow-lg shadow-gray-300 bg-white">
                                     <div className="px-6 py-4">
