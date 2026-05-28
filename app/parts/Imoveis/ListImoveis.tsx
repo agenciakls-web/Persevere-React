@@ -111,7 +111,7 @@ export default function ListImoveis() {
     // Atualiza os inputs controlados e dispara busca instantânea se for Radio ou Select
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
-
+        
         const atualizado = {
             ...formFilters,
             [name]: value,
@@ -143,7 +143,7 @@ export default function ListImoveis() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        aplicarFiltros(formFilters, 1);
+        aplicarFiltros(formFilters, 1); 
     };
 
     return (
@@ -152,12 +152,13 @@ export default function ListImoveis() {
             <section className="py-8">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap">
-
+                        
+                        
                         {/* SIDEBAR */}
                         <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
                             <aside>
                                 <div className="mb-4 md:mb-10">
-
+                                    
                                     {/* ALTERNADOR DE BUSCA (TABS) */}
                                     <div className="mb-6 flex gap-2 border-b border-gray-200 pb-2">
                                         <button
@@ -175,10 +176,11 @@ export default function ListImoveis() {
                                                 setFormFilters(atualizado);
                                                 aplicarFiltros(atualizado, 1);
                                             }}
-                                            className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${formFilters.action === 'comprar'
+                                            className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${
+                                                formFilters.action === 'comprar'
                                                     ? 'bg-blue-500 text-white shadow'
                                                     : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                                                }`}
+                                            }`}
                                         >
                                             Pesquisa Geral
                                         </button>
@@ -197,10 +199,11 @@ export default function ListImoveis() {
                                                 setFormFilters(atualizado);
                                                 aplicarFiltros(atualizado, 1);
                                             }}
-                                            className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${formFilters.action === 'codigo'
+                                            className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${
+                                                formFilters.action === 'codigo'
                                                     ? 'bg-orange-500 text-white shadow'
                                                     : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                                                }`}
+                                            }`}
                                         >
                                             Por Código
                                         </button>
