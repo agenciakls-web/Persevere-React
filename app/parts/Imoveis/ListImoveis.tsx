@@ -24,6 +24,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
     const precoAtual = searchParams.get('PrecoVenda') || '';
     const quartosAtual = searchParams.get('quartos') || '';
     const condominioAtual = searchParams.get('condominio') || '';
+    const codigoImovelAtual = searchParams.get('CodigoImovel') || '';
 
     // Estados locais para controlar os dados da API
     const [listaImoveis, setListaImoveis] = useState<ImovelType[]>([]);
@@ -37,6 +38,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
         PrecoVenda: precoAtual,
         quartos: quartosAtual,
         condominio: condominioAtual,
+        CodigoImovel: codigoImovelAtual,
     });
 
     // Sincroniza o formulário se a URL mudar externamente
@@ -47,6 +49,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
             PrecoVenda: precoAtual,
             quartos: quartosAtual,
             condominio: condominioAtual,
+            CodigoImovel: codigoImovelAtual,
         });
     }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
 
@@ -64,6 +67,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
                         PrecoVenda: precoAtual,
                         quartos: quartosAtual,
                         condominio: condominioAtual,
+                        CodigoImovel: codigoImovelAtual,
                     }
                 });
                 console.log(response);
@@ -84,7 +88,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
     }
 
     carregarImoveis();
-}, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
+}, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual]);
 
     // Atualiza os inputs controlados
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -104,6 +108,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
         if (novosFiltros.PrecoVenda) params.set('PrecoVenda', novosFiltros.PrecoVenda);
         if (novosFiltros.quartos) params.set('quartos', novosFiltros.quartos);
         if (novosFiltros.condominio) params.set('condominio', novosFiltros.condominio);
+        if (novosFiltros.CodigoImovel) params.set('CodigoImovel', novosFiltros.CodigoImovel);
 
         router.push(`${pathname}?${params.toString()}`);
     };
