@@ -8,11 +8,12 @@ import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ContentLinks } from '../../dados/contentLinks';
+import { ImovelType } from '../../tipagem/imoveis';
 
-export default function ImovelDetalhe({ imovel }: { imovel: any}) {
+export default function ImovelDetalhe({ imovel }: { imovel: ImovelType}) {
 
     const fotos = useMemo(() => {
-        return imovel?.photos || [];
+        return imovel?.Photos || [];
     }, [imovel]);
 
     const vantagens = [
@@ -43,9 +44,6 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
         { label: 'Garagem', active: imovel?.QtdVagas },
         { label: 'Elevador', active: imovel?.QtdElevador },
         { label: 'Ar Condicionado', active: imovel?.ArCondicionado },
-        { label: 'Varanda', active: imovel?.Varanda },
-        { label: 'Pronto pra morar', active: imovel?.ProntoMorar },
-        { label: 'Lavabo', active: imovel?.Lavabo },
         { label: 'Churrasqueira', active: imovel?.Churrasqueira },
         { label: 'Piscina', active: imovel?.Piscina },
         { label: 'Playground', active: imovel?.Playground },
@@ -55,8 +53,6 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
         { label: 'Salão de Festas', active: imovel?.SalaoFestas },
         { label: 'Salão de Jogos', active: imovel?.SalaoJogos },
         { label: 'Interfone', active: imovel?.Interfone },
-        { label: 'Campo de Futebol', active: imovel?.campodefutebol },
-        { label: 'Banheiro Empregada', active: imovel?.WCEmpregada },
     ];
 
     return (
@@ -216,7 +212,7 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
                             )}
 
                             {/* VIDEO */}
-                            {imovel?.video && (
+                            {/* {imovel?.video && (
                                 <div className="mt-10">
 
                                     <h3 className="mb-4 text-2xl font-semibold text-blue-600">
@@ -235,7 +231,7 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
 
                                     </div>
                                 </div>
-                            )}
+                            )} */}
                         </div>
 
                         {/* SIDEBAR */}
@@ -267,7 +263,7 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
 
                                     <div className="space-y-5 py-6">
 
-                                        {imovel?.PrecoCondominio && (
+                                        {/* {imovel?.PrecoCondominio && (
                                             <div>
                                                 <p className="text-sm text-gray-400">
                                                     Condomínio
@@ -283,7 +279,7 @@ export default function ImovelDetalhe({ imovel }: { imovel: any}) {
                                                     /mês
                                                 </p>
                                             </div>
-                                        )}
+                                        )} */}
 
                                         {imovel?.AreaTotal && (
                                             <div>

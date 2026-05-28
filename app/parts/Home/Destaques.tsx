@@ -3,25 +3,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-
-type Photo = {
-    URLArquivo: string;
-    Principal?: number;
-};
-
-type ImovelDestaque = {
-    id: number;
-    CodigoImovel: string;
-    slug: string;
-    Bairro: string;
-    Cidade: string;
-    PrecoVenda?: number;
-    SubTipoImovel: string;
-    photos: Photo[];
-};
+import { ImovelType } from "../tipagem/imoveis";
 
 export default function Destaques() {
-    const [destaques, setDestaques] = useState<ImovelDestaque[]>([]);
+    const [destaques, setDestaques] = useState<ImovelType[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -31,7 +16,7 @@ export default function Destaques() {
             const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/destaques');
 
             // Tipando e ordenando por preço
-            const imoveis = response.data as ImovelDestaque[];
+            const imoveis = response.data as ImovelType[];
             imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
 
             setDestaques(imoveis);
@@ -80,13 +65,13 @@ export default function Destaques() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {destaques.map((imovel) => {
                         // Define qual foto usar de fundo (Principal ou a primeira disponível)
-                        const fotoCapa = imovel.photos?.find(p => p.Principal === 1)?.URLArquivo
+                        const fotoCapa = imovel.Photos?.find(p => p.Principal === 1)?.URLArquivo
                             || "/img/sem-foto.png"; // Fallback padrão
 
                         return (
                             <Link
                                 href={`/imoveis/codigo/${imovel.CodigoImovel}`}
-                                key={imovel.id}
+                                key={imovel.CodigoImovel}
                                 className="group relative bg-black bg-cover bg-center h-80 flex items-end rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-md"
                                 style={{ backgroundImage: `url('${fotoCapa}')` }}
                             >

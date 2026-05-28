@@ -6,60 +6,9 @@ import Image from 'next/image';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { ContentLinks } from '../dados/contentLinks';
 import Link from 'next/link';
+import { ImovelType } from '../tipagem/imoveis';
 
-type Photo = {
-  URLArquivo: string;
-  Principal?: number;
-};
-
-type Imovel = {
-  Bairro: string;
-  Cidade: string;
-  SubTipoImovel: string;
-  CategoriaImovel: string;
-  CodigoImovel: string;
-
-  AreaTotal?: number;
-  AreaUtil?: number;
-
-  QtdDormitorios?: number;
-  QtdBanheiros?: number;
-  QtdVagas?: number;
-  QtdSuites?: number;
-
-  Observacao?: string;
-  video?: string;
-
-  PrecoVenda?: number;
-  PrecoCondominio?: number;
-
-  QtdElevador?: boolean;
-  ArCondicionado?: boolean;
-  Varanda?: boolean;
-  ProntoMorar?: boolean;
-  Lavabo?: boolean;
-  Churrasqueira?: boolean;
-  Copa?: boolean;
-  Piscina?: boolean;
-  EstacionamentoVisitantes?: boolean;
-  Playground?: boolean;
-  QuadraTenis?: boolean;
-  QuadraPoliEsportiva?: boolean;
-  SalaGinastica?: boolean;
-  SalaoFestas?: boolean;
-  SalaoJogos?: boolean;
-  Interfone?: boolean;
-  campodefutebol?: boolean;
-  WCEmpregada?: boolean;
-
-  photos: Photo[];
-};
-
-interface Props {
-  imovel: Imovel;
-}
-
-export default function ImovelPage({ imovel }: Props) {
+export default function ImovelPage({ imovel }: { imovel: ImovelType}) {
   const vantagens = [
     {
       label: 'Área',
@@ -89,11 +38,7 @@ export default function ImovelPage({ imovel }: Props) {
     imovel.QtdVagas && 'Garagem',
     imovel.QtdElevador && 'Elevador',
     imovel.ArCondicionado && 'Ar Condicionado',
-    imovel.Varanda && 'Varanda',
-    imovel.ProntoMorar && 'Pronto pra morar',
-    imovel.Lavabo && 'Lavabo',
     imovel.Churrasqueira && 'Churrasqueira',
-    imovel.Copa && 'Copa',
     imovel.Piscina && 'Piscina',
     imovel.EstacionamentoVisitantes && 'Estacionamento (Visitantes)',
     imovel.Playground && 'Playground',
@@ -103,8 +48,6 @@ export default function ImovelPage({ imovel }: Props) {
     imovel.SalaoFestas && 'Salão de Festa',
     imovel.SalaoJogos && 'Salão de Jogos',
     imovel.Interfone && 'Interfone',
-    imovel.campodefutebol && 'Campo de Futebol',
-    imovel.WCEmpregada && 'Banheiro (Empregada)',
   ].filter(Boolean);
 
   return (
@@ -158,7 +101,7 @@ export default function ImovelPage({ imovel }: Props) {
             {/* LEFT */}
             <div className="w-full md:w-2/3">
               {/* GALERIA */}
-              {imovel.photos?.length > 0 && (
+              {imovel.Photos?.length > 0 && (
                 <div>
                   <Splide
                     options={{
@@ -171,7 +114,7 @@ export default function ImovelPage({ imovel }: Props) {
                     hasTrack={false}
                   >
                     <SplideTrack>
-                      {imovel.photos.map((foto, index) => (
+                      {imovel.Photos.map((foto, index) => (
                         <SplideSlide key={index}>
                           <div className="relative h-64 sm:h-80 md:h-64 lg:h-80 xl:h-104 2xl:h-120">
                             <Image
@@ -203,7 +146,7 @@ export default function ImovelPage({ imovel }: Props) {
                     }}
                     className="mt-4"
                   >
-                    {imovel.photos.map((foto, index) => (
+                    {imovel.Photos.map((foto, index) => (
                       <SplideSlide key={index}>
                         <div className="relative h-15 w-full overflow-hidden rounded-lg">
                           <Image
@@ -262,7 +205,7 @@ export default function ImovelPage({ imovel }: Props) {
               )}
 
               {/* VIDEO */}
-              {imovel.video && (
+              {/* {imovel.video && (
                 <div className="py-4 text-base text-gray-500">
                   <h3 className="my-2 text-2xl text-blue-500">Vídeo</h3>
 
@@ -274,7 +217,7 @@ export default function ImovelPage({ imovel }: Props) {
                     allowFullScreen
                   />
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* RIGHT */}
@@ -298,7 +241,7 @@ export default function ImovelPage({ imovel }: Props) {
                       )}
                     </div>
 
-                    {imovel.PrecoCondominio && (
+                    {/* {imovel.PrecoCondominio && (
                       <div className="py-3">
                         <h4 className="text-sm text-gray-400">Condomínio</h4>
 
@@ -310,7 +253,7 @@ export default function ImovelPage({ imovel }: Props) {
                           /mês
                         </h3>
                       </div>
-                    )}
+                    )} */}
 
                     {imovel.AreaTotal && (
                       <div className="py-3">

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 // @ts-ignore
 import "@splidejs/react-splide/css";
-import { PhotoType } from "./ImovelSingle";
+import { PhotosType } from "../../tipagem/imoveis";
 
-export default function BannerSingle({ slides }: { slides: PhotoType[]}) {
+export default function BannerSingle({ slides }: { slides: PhotosType[]}) {
     if (!slides || slides.length === 0) {
         return null;
     }

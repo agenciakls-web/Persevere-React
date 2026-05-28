@@ -3,29 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-
-type Photo = {
-    URLArquivo: string;
-    Principal?: number;
-};
-
-type ImovelOferta = {
-    id: number;
-    CodigoImovel: string;
-    slug: string;
-    Bairro: string;
-    Cidade: string;
-    SubTipoImovel: string;
-    PrecoVenda?: number;
-    AreaTotal?: number;
-    QtdDormitorios?: number;
-    QtdBanheiros?: number;
-    QtdVagas?: number;
-    photos: Photo[];
-};
+import { ImovelType } from "../tipagem/imoveis";
 
 export default function OfertasSemana() {
-    const [ofertas, setOfertas] = useState<ImovelOferta[]>([]);
+    const [ofertas, setOfertas] = useState<ImovelType[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -35,7 +16,7 @@ export default function OfertasSemana() {
             const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/ofertas');
 
             // Força o tipo e ordena por preço
-            const imoveis: ImovelOferta[] = response.data;
+            const imoveis: ImovelType[] = response.data;
             imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
 
             setOfertas(imoveis);
@@ -95,11 +76,11 @@ export default function OfertasSemana() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr mt-6">
                     {ofertas.map((imovel) => {
                         // Resgata a foto principal ou sem foto
-                        const fotoCapa = imovel.photos?.find(p => p.Principal === 1)?.URLArquivo
+                        const fotoCapa = imovel.Photos?.find(p => p.Principal === 1)?.URLArquivo
                             || "/img/sem-foto.png";
 
                         return (
-                            <div key={imovel.id} className="px-1 py-2 h-full">
+                            <div key={imovel.CodigoImovel} className="px-1 py-2 h-full">
                                 <Link href={`/imoveis/codigo/${imovel.CodigoImovel}`} className="flex flex-col h-full group">
                                     <div className="rounded-xl h-full overflow-hidden shadow-lg shadow-gray-200 bg-white flex flex-col justify-between transition-all duration-300 hover:shadow-gray-300 group-hover:-translate-y-1">
 
