@@ -2,14 +2,14 @@ import Banner from "./parts/Home/Banner";
 import Destaques from "./parts/Home/Destaques";
 import Contato from "./parts/Home/Contato";
 import Categoria from "./parts/Home/Categoria";
-import Pesquisa from "./parts/pesquisa";
 import OfertasSemana from "./parts/Home/Ofertas";
+import PesquisaImovel from "./parts/Home/Pesquisa";
 
 export default function Home() {
     return (
         <div>
             <Banner />
-            <Pesquisa />
+            <PesquisaImovel />
             <Categoria />
             <Destaques  />
             <OfertasSemana  />
