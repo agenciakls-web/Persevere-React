@@ -106,7 +106,7 @@ export default function PesquisaImovel() {
                                     <input type="hidden" name="action" value="comprar" />
                                     <button
                                         type="submit"
-                                        className="bg-orange text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
+                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
                                     >
                                         <i className="fa fa-search mx-2"></i>
                                         Buscar
@@ -131,7 +131,7 @@ export default function PesquisaImovel() {
                                     <input type="hidden" name="action" value="codigo" />
                                     <button
                                         type="submit"
-                                        className="bg-orange text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
+                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
                                     >
                                         <i className="fa fa-search mx-2"></i>
                                         Buscar
