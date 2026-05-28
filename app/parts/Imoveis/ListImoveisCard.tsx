@@ -1,50 +1,15 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ImovelType } from '../tipagem/imoveis';
 
-type TipoImovel = {
-    TipoImovel: string;
-};
-
-type Photo = {
-    URLArquivo: string;
-    Principal?: number;
-};
-
-type Imovel = {
-    id: number;
-    slug: string;
-
-    Bairro: string;
-    Cidade: string;
-    SubTipoImovel: string;
-    CategoriaImovel: string;
-
-    CodigoImovel: string;
-
-    QtdDormitorios?: number;
-    QtdBanheiros?: number;
-    QtdVagas?: number;
-
-    AreaTotal?: number;
-
-    PrecoVenda?: number;
-
-    photos: Photo[];
-};
-
-interface Props {
-    tiposImoveis: TipoImovel[];
-    imoveis: Imovel[];
-}
-
-export default function ListImoveisCard({ imovel }: { imovel: Imovel }) {
-  const fotoCapa = imovel.photos?.find((p) => p.Principal === 1)?.URLArquivo || "/img/sem-foto.png"; 
+export default function ListImoveisCard({ imovel }: { imovel: ImovelType }) {
+  const fotoCapa = imovel.Photos?.find((p) => p.Principal === 1)?.URLArquivo || "/img/sem-foto.png"; 
 
     return (
         <Link
             href={`/imoveis/codigo/${imovel.CodigoImovel}`}
-            key={imovel.id}
+            key={imovel.CodigoImovel}
             className="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:-translate-y-1"
         >
             <div className="relative h-64">

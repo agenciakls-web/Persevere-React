@@ -1,48 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
 import HeaderTitle from '../estrutura/headerTitle';
 import ListImoveisCard from './ListImoveisCard';
+import { ImovelType } from '../tipagem/imoveis';
 
 type TipoImovel = {
     TipoImovel: string;
 };
 
-type Photo = {
-    URLArquivo: string;
-    Principal?: number;
-};
-
-type Imovel = {
-    id: number;
-    slug: string;
-
-    Bairro: string;
-    Cidade: string;
-    SubTipoImovel: string;
-    CategoriaImovel: string;
-
-    CodigoImovel: string;
-
-    QtdDormitorios?: number;
-    QtdBanheiros?: number;
-    QtdVagas?: number;
-
-    AreaTotal?: number;
-
-    PrecoVenda?: number;
-
-    photos: Photo[];
-};
-
-interface Props {
-    tiposImoveis: TipoImovel[];
-    imoveis: Imovel[];
-}
 
 export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel[] }) {
     const router = useRouter();
@@ -58,7 +26,7 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
     const condominioAtual = searchParams.get('condominio') || '';
 
     // Estados locais para controlar os dados da API
-    const [listaImoveis, setListaImoveis] = useState<Imovel[]>([]);
+    const [listaImoveis, setListaImoveis] = useState<ImovelType[]>([]);
     const [totalPaginas, setTotalPaginas] = useState(1);
     const [loading, setLoading] = useState(true);
 
@@ -83,25 +51,25 @@ export default function ListImoveis({ tiposImoveis }: { tiposImoveis: TipoImovel
     }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual]);
 
     // Função que busca os dados no Backend via Axios
-useEffect(() => {
-    async function carregarImoveis() {
-        setLoading(true);
-        try {
-            const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
-                params: {
-                    page: paginaAtual,
-                    limit: 12, 
-                    pesquisa: pesquisaAtual,
-                    TipoImovel: tipoAtual,
-                    PrecoVenda: precoAtual,
-                    quartos: quartosAtual,
-                    condominio: condominioAtual,
-                }
-            });
-            console.log(response);
+    useEffect(() => {
+        async function carregarImoveis() {
+            setLoading(true);
+            try {
+                const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
+                    params: {
+                        page: paginaAtual,
+                        limit: 12,
+                        pesquisa: pesquisaAtual,
+                        TipoImovel: tipoAtual,
+                        PrecoVenda: precoAtual,
+                        quartos: quartosAtual,
+                        condominio: condominioAtual,
+                    }
+                });
+                console.log(response);
 
             // Adapte o response abaixo de acordo com o retorno da sua API
-            const imoveis: Imovel[] = response.data.resultado || response.data;
+            const imoveis: ImovelType[] = response.data.resultado || response.data;
 
             // Ordena do menor para o maior valor
             imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
