@@ -1,5 +1,3 @@
-"use client";
-
 import ListImoveis from "@/app/parts/Imoveis/ListImoveis";
 import { Suspense } from "react";
 
