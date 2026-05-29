@@ -247,24 +247,6 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                                 </div>
                                             )}
 
-                                            {/* ADICIONADO: Código do Cliente de Integração / CEP */}
-                                            {(imovel.CodigoCliente || imovel.CEP) && (
-                                                <div className="py-3 border-t border-gray-100 flex justify-between items-center text-sm">
-                                                    {imovel.CodigoCliente && (
-                                                        <div>
-                                                            <span className="block text-gray-400 text-xs">Ref. Cliente</span>
-                                                            <span className="font-medium text-gray-600">{imovel.CodigoCliente}</span>
-                                                        </div>
-                                                    )}
-                                                    {imovel.CEP && (
-                                                        <div className="text-right">
-                                                            <span className="block text-gray-400 text-xs">Região (CEP)</span>
-                                                            <span className="font-medium text-gray-600">{imovel.CEP}</span>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            )}
-
                                             {/* ADICIONADO: Facilidades de Negociação (Apenas se forem 1 no banco) */}
                                             {(imovel.AceitaPermuta === 1 || imovel.UtilizeFGTS === 1) && (
                                                 <div className="py-3 border-t border-gray-100 space-y-1.5">
