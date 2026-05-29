@@ -295,11 +295,11 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                                 temCaracteristica(imovel.SalaGinastica) ||
                                                 temCaracteristica(imovel.SalaoJogos) ||
                                                 temCaracteristica(imovel.Jardim) ||
-                                                temCaracteristica(imovel.Sauna) || {/* Adicionado do XML */ }
-                  temCaracteristica(imovel.Varanda) ||        {/* Adicionado do XML */}
-                                            temCaracteristica(imovel.Terraco) ||        {/* Adicionado do XML */}
-                                            temCaracteristica(imovel.Lavabo) ||         {/* Adicionado do XML */}
-                                            temCaracteristica(imovel.campodefutebol)) && ( {/* Adicionado do XML */}
+                                                temCaracteristica(imovel.Sauna) || 
+                                            temCaracteristica(imovel.Varanda) ||        
+                                            temCaracteristica(imovel.Terraco) ||        
+                                            temCaracteristica(imovel.Lavabo) ||         
+                                            temCaracteristica(imovel.campodefutebol)) && ( 
                                             <div className="pt-2 border-t border-gray-100">
                                                 <h4 className="text-sm font-bold uppercase text-blue-500 mb-1">Comodidades & Lazer</h4>
                                                 <ul className="list-disc pl-5 space-y-1 text-sm">
