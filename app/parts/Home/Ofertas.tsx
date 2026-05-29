@@ -10,25 +10,25 @@ export default function OfertasSemana() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-    async function carregarOfertas() {
-        try {
-            setLoading(true);
-            const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/ofertas');
+        async function carregarOfertas() {
+            try {
+                setLoading(true);
+                const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/ofertas');
 
-            // Força o tipo e ordena por preço
-            const imoveis: ImovelType[] = response.data;
-            imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
+                // Força o tipo e ordena por preço
+                const imoveis: ImovelType[] = response.data;
+                imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
 
-            setOfertas(imoveis);
-        } catch (error) {
-            console.error("Erro ao buscar as ofertas no frontend:", error);
-        } finally {
-            setLoading(false);
+                setOfertas(imoveis);
+            } catch (error) {
+                console.error("Erro ao buscar as ofertas no frontend:", error);
+            } finally {
+                setLoading(false);
+            }
         }
-    }
 
-    carregarOfertas();
-}, []);
+        carregarOfertas();
+    }, []);
 
     if (loading) {
         return (
@@ -48,16 +48,16 @@ export default function OfertasSemana() {
                             Nossos Imóveis
                         </h2>
                         <div className="flex flex-wrap justify-center bg-gray-100/80 px-4 py-1.5 rounded-full text-sm">
-                            <Link href="/imoveis?status=ofertas" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
-                                Ofertas da Semana
+                            <Link href="/imoveis?estilo=oportunidades" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
+                                Oportunidades da Semana
                             </Link>
                             <span className="text-gray-300">|</span>
-                            <Link href="/imoveis?finalidade=comprar" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
-                                Para Comprar
+                            <Link href="/imoveis?estilo=permuta" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
+                                Aceita Permuta
                             </Link>
                             <span className="text-gray-300">|</span>
-                            <Link href="/imoveis?finalidade=alugar" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
-                                Para Alugar
+                            <Link href="/imoveis?estilo=fgts" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
+                                Financiamento e FGTS
                             </Link>
                         </div>
                     </div>

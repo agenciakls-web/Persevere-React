@@ -46,17 +46,17 @@ export default function Destaques() {
                 <div className="flex justify-center">
                     <div className="bg-gray-100 py-3 px-6 my-3 rounded-full uppercase font-semibold text-orange-500">
                         <div className="flex items-center text-xs sm:text-sm">
-                            <a href="#" className="px-4 hover:text-orange-600 transition">
-                                Prontos Para Morar
-                            </a>
+                            <Link href="/imoveis?estilo=condominio" className="px-4 hover:text-orange-600 transition">
+                                Casas em Condomínio
+                            </Link>
                             <hr className="h-6 border-gray-300 border border-solid rounded-full" />
-                            <a href="#" className="px-4 hover:text-orange-600 transition">
-                                Em construção
-                            </a>
+                            <Link href="/imoveis?estilo=lazer" className="px-4 hover:text-orange-600 transition">
+                                Com Área de Lazer
+                            </Link>
                             <hr className="h-6 border-gray-300 border border-solid rounded-full" />
-                            <a href="#" className="px-4 hover:text-orange-600 transition">
-                                Lançamentos
-                            </a>
+                            <Link href="/imoveis?estilo=espacoso" className="px-4 hover:text-orange-600 transition">
+                                Ideais para Família
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import HeaderTitle from "@/app/parts/estrutura/headerTitle";
 import Link from "next/link";
-import { ContentLinks } from "@/app/parts/dados/contentLinks";
 import { CopyButton } from "@/app/parts/Componentes/CopyButton";
 import BannerSingle from "./BannerSingle";
 import { ImovelType } from "../../tipagem/imoveis";
