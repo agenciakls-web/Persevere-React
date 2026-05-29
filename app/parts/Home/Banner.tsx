@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
 import MainSlider from "../Componentes/MainSlider";
 
@@ -7,11 +6,10 @@ interface Slide {
     img: string;
 }
 
-export default function Banner() {
-    const [slides, setSlides] = useState<Slide[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    // Sua lista local mantida estritamente no Front-end
+// O componente agora é uma função assíncrona (Async Component)
+export default async function Banner() {
+    
+    // Sua lista local mantida no servidor do Front-end
     const slidesLocais: Slide[] = [
         { codigo: "PSI004", img: "https://persevere.com.br/img/slide/PSI004.jpg" },
         { codigo: "ps850", img: "https://persevere.com.br/img/slide/ps850.jpg" },
@@ -26,33 +24,24 @@ export default function Banner() {
         { codigo: "ps688", img: "https://persevere.com.br/img/slide/ps688.jpg" },
     ];
 
-    useEffect(() => {
-        async function carregarBannersInteligentes() {
-            try {
-                setLoading(true);
+    let slides: Slide[] = [];
 
-                // Enviamos a lista local para o back-end validar
-                const response = await axios.post(
-                    process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/banners',
-                    { slides: slidesLocais }
-                );
+    try {
+        // Faz a busca direto no servidor
+        const response = await axios.post(
+            `${process.env.NEXT_PUBLIC_API_BACKEND}/imoveis/banners`, 
+            { slides: slidesLocais }
+        );
+        slides = response.data;
+    } catch (error) {
+        console.error("Erro ao carregar banners no servidor:", error);
+        // Fallback seguro caso o back-end falhe
+        slides = slidesLocais;
+    }
 
-                // O back-end já devolve tudo mapeado e substituído no mesmo formato [{codigo, img}]
-                setSlides(response.data);
-            } catch (error) {
-                console.error("Erro ao carregar banners validados pelo back-end:", error);
-                // Se a API falhar, usamos a lista local como fallback para o usuário não ver uma tela em branco
-                setSlides(slidesLocais);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        carregarBannersInteligentes();
-    }, []);
-
-    if (loading || slides.length === 0) {
-        return <div className="banner h-[16rem] sm:h-[20rem] md:h-[16rem] lg:h-[24rem] xl:h-[30rem] 2xl:h-[40rem] bg-gray-100 animate-pulse" />;
+    // Se por algum motivo o retorno vier vazio, exibe a lista local
+    if (!slides || slides.length === 0) {
+        slides = slidesLocais;
     }
 
     return (
