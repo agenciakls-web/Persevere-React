@@ -84,6 +84,12 @@ export default function ListImoveis() {
     // Busca a lista de imóveis com base nos filtros da URL
     useEffect(() => {
         async function carregarImoveis() {
+            // Se a variável não existir no momento do build, cancela a execução para não quebrar
+            if (!process.env.NEXT_PUBLIC_API_BACKEND) {
+                console.warn("API URL não definida.");
+                return;
+            }
+
             setLoading(true);
             try {
                 const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
@@ -107,6 +113,7 @@ export default function ListImoveis() {
                 setTotalPaginas(response.data.totalPaginas || 1);
             } catch (error) {
                 console.error("Erro ao buscar imóveis:", error);
+                setListaImoveis([]);
             } finally {
                 setLoading(false); // Corrigido aqui de 'finaly' para 'finally'
             }
