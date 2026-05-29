@@ -97,7 +97,7 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                     <path d="M18 11.034C18 14.897 12 19 12 19s-6-4.103-6-7.966C6 7.655 8.819 5 12 5s6 2.655 6 6.034Z" />
                                     <path d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
                                 </svg>
-                                {imovel.Cidade} - Rio de Janeiro {imovel.CEP && `(CEP: ${imovel.CEP})`}
+                                {imovel.Cidade} - Rio de Janeiro 
                                 <div className="mx-2 float-left">
                                     <button
                                         type="button"
