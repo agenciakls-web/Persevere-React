@@ -72,7 +72,7 @@ export default function Destaques() {
                             <Link
                                 href={`/imoveis/codigo/${imovel.CodigoImovel}`}
                                 key={imovel.CodigoImovel}
-                                className="group relative bg-black bg-cover bg-center h-80 flex items-end rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-md"
+                                className="group relative bg-black bg-cover bg-center h-64 flex items-end rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-md"
                                 style={{ backgroundImage: `url('${fotoCapa}')` }}
                             >
                                 {/* Película escura gradual para dar leitura ao texto branco */}
