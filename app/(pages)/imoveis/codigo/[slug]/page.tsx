@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// app/imoveis/[slug]/page.tsx
 import { Metadata } from "next";
 import axios from "axios";
 import ImovelSingle from "@/app/parts/Imoveis/single/ImovelSingle";
+import HeaderTitle from "@/app/parts/estrutura/headerTitle";
 
 type Props = {
     params: Promise<{ slug: string }>;
 };
 
-// 1. Essa função roda no servidor e gera as tags que o WhatsApp lê
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
 
@@ -19,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
         if (!imovel) return { title: "Imóvel não encontrado" };
 
-        const fotoExibicao = imovel.photos?.find((p: any) => p.Principal === 1)?.URLArquivo 
-            || imovel.photos?.[0]?.URLArquivo 
+        const fotoExibicao = imovel.photos?.find((p: any) => p.Principal === 1)?.URLArquivo
+            || imovel.photos?.[0]?.URLArquivo
             || "https://seusite.com/img/product-1.png"; // Use URL absoluta para a imagem padrão
 
         const titulo = `${imovel.SubTipoImovel} à venda em ${imovel.Bairro} - ${imovel.Cidade}`;
@@ -56,5 +53,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // 2. O componente principal apenas renderiza a página passando os parâmetros
 export default async function Page({ params }: Props) {
     const { slug } = await params;
-    return <ImovelSingle initialSlug={slug} />;
+    return (
+        <main>
+            <HeaderTitle title={"Imóvel Atual"} />
+            <section className="py-8 text-gray-500" id="imoveis">
+                <div className="container mx-auto px-4">
+                    <ImovelSingle initialSlug={slug} />
+                </div>
+            </section>
+        </main >
+    );
 }
