@@ -28,7 +28,7 @@ export default function Contato() {
                                 type="button"
                                 className="bg-blue-500 hover:bg-blue-600 text-gray-100 font-medium rounded-full my-4 py-3 px-16 block text-base 2xl:text-lg mx-auto uppercase"
                             >
-                                Solicite um orçamento
+                                Agende Jä
                             </button>
                         </a>
                     </div>
