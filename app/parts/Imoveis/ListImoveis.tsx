@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
 import HeaderTitle from '../estrutura/headerTitle';
@@ -143,7 +143,7 @@ export default function ListImoveis() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        aplicarFiltros(formFilters, 1); 
+        aplicarFiltros(formFilters, 1);
     };
 
     return (
@@ -152,18 +152,21 @@ export default function ListImoveis() {
             <section className="py-8">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap">
-                        
+
                         {/* SIDEBAR CONTAINER */}
-                        <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
-                            <SidebarFiltros
-                                formFilters={formFilters}
-                                setFormFilters={setFormFilters}
-                                tiposDisponiveis={tiposDisponiveis}
-                                aplicarFiltros={aplicarFiltros}
-                                handleSubmit={handleSubmit}
-                                handleChange={handleChange}
-                            />
-                        </div>
+
+                        <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
+                            <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
+                                <SidebarFiltros
+                                    formFilters={formFilters}
+                                    setFormFilters={setFormFilters}
+                                    tiposDisponiveis={tiposDisponiveis}
+                                    aplicarFiltros={aplicarFiltros}
+                                    handleSubmit={handleSubmit}
+                                    handleChange={handleChange}
+                                />
+                            </div>
+                        </Suspense>
 
                         {/* LISTAGEM CONTAINER */}
                         <div className="w-full md:w-2/3 lg:w-3/4">
@@ -185,12 +188,14 @@ export default function ListImoveis() {
                             )}
 
                             {/* PAGINAÇÃO CONTAINER */}
-                            <Paginacao
-                                paginaAtual={paginaAtual}
-                                totalPaginas={totalPaginas}
-                                formFilters={formFilters}
-                                aplicarFiltros={aplicarFiltros}
-                            />
+                            <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
+                                <Paginacao
+                                    paginaAtual={paginaAtual}
+                                    totalPaginas={totalPaginas}
+                                    formFilters={formFilters}
+                                    aplicarFiltros={aplicarFiltros}
+                                />
+                            </Suspense>
                         </div>
 
                     </div>
