@@ -97,7 +97,7 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                     <path d="M18 11.034C18 14.897 12 19 12 19s-6-4.103-6-7.966C6 7.655 8.819 5 12 5s6 2.655 6 6.034Z" />
                                     <path d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
                                 </svg>
-                                {imovel.Cidade} - Rio de Janeiro 
+                                {imovel.Cidade} - Rio de Janeiro
                                 <div className="mx-2 float-left">
                                     <button
                                         type="button"
@@ -224,6 +224,67 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                                     {imovel.CodigoImovel}
                                                 </h3>
                                             </div>
+
+                                            {/* ADICIONADO: Informações Financeiras Adicionais do Condomínio */}
+                                            {((imovel.PrecoCondominio && imovel.PrecoCondominio > 0) || imovel.NomeCondominio) && (
+                                                <div className="py-3 border-t border-gray-100">
+                                                    <h4 className="text-sm text-gray-400">
+                                                        Condomínio
+                                                    </h4>
+                                                    {imovel.NomeCondominio && (
+                                                        <h3 className="text-base text-gray-600 font-medium">
+                                                            {imovel.NomeCondominio}
+                                                        </h3>
+                                                    )}
+                                                    {imovel.PrecoCondominio && imovel.PrecoCondominio > 0 && (
+                                                        <h3 className="text-base text-gray-700 font-semibold mt-0.5">
+                                                            Taxa: {imovel.PrecoCondominio.toLocaleString("pt-BR", {
+                                                                style: "currency",
+                                                                currency: "BRL",
+                                                            })}
+                                                        </h3>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {/* ADICIONADO: Código do Cliente de Integração / CEP */}
+                                            {(imovel.CodigoCliente || imovel.CEP) && (
+                                                <div className="py-3 border-t border-gray-100 flex justify-between items-center text-sm">
+                                                    {imovel.CodigoCliente && (
+                                                        <div>
+                                                            <span className="block text-gray-400 text-xs">Ref. Cliente</span>
+                                                            <span className="font-medium text-gray-600">{imovel.CodigoCliente}</span>
+                                                        </div>
+                                                    )}
+                                                    {imovel.CEP && (
+                                                        <div className="text-right">
+                                                            <span className="block text-gray-400 text-xs">Região (CEP)</span>
+                                                            <span className="font-medium text-gray-600">{imovel.CEP}</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {/* ADICIONADO: Facilidades de Negociação (Apenas se forem 1 no banco) */}
+                                            {(imovel.AceitaPermuta === 1 || imovel.UtilizeFGTS === 1) && (
+                                                <div className="py-3 border-t border-gray-100 space-y-1.5">
+                                                    <h4 className="text-xs font-bold uppercase text-gray-400 tracking-wider">
+                                                        Condições Especiais
+                                                    </h4>
+                                                    <div className="flex flex-wrap gap-1.5">
+                                                        {imovel.AceitaPermuta === 1 && (
+                                                            <span className="bg-blue-50 text-blue-600 text-xs font-medium px-2.5 py-1 rounded-md border border-blue-100 block w-full text-center">
+                                                                🔄 Aceita Permuta
+                                                            </span>
+                                                        )}
+                                                        {imovel.UtilizeFGTS === 1 && (
+                                                            <span className="bg-green-50 text-green-700 text-xs font-medium px-2.5 py-1 rounded-md border border-green-100 block w-full text-center">
+                                                                💰 Aceita FGTS
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
 
                                         <Link href="#" target="_blank">
@@ -295,30 +356,30 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                                 temCaracteristica(imovel.SalaGinastica) ||
                                                 temCaracteristica(imovel.SalaoJogos) ||
                                                 temCaracteristica(imovel.Jardim) ||
-                                                temCaracteristica(imovel.Sauna) || 
-                                            temCaracteristica(imovel.Varanda) ||        
-                                            temCaracteristica(imovel.Terraco) ||        
-                                            temCaracteristica(imovel.Lavabo) ||         
-                                            temCaracteristica(imovel.campodefutebol)) && ( 
-                                            <div className="pt-2 border-t border-gray-100">
-                                                <h4 className="text-sm font-bold uppercase text-blue-500 mb-1">Comodidades & Lazer</h4>
-                                                <ul className="list-disc pl-5 space-y-1 text-sm">
-                                                    {temCaracteristica(imovel.ArCondicionado) && <li>Ar Condicionado</li>}
-                                                    {temCaracteristica(imovel.Lavabo) && <li>Lavabo Interno</li>}
-                                                    {temCaracteristica(imovel.Varanda) && <li>Varanda</li>}
-                                                    {temCaracteristica(imovel.Terraco) && <li>Terraço</li>}
-                                                    {temCaracteristica(imovel.Churrasqueira) && <li>Churrasqueira</li>}
-                                                    {temCaracteristica(imovel.Piscina) && <li>Piscina</li>}
-                                                    {temCaracteristica(imovel.Sauna) && <li>Sauna</li>}
-                                                    {temCaracteristica(imovel.Playground) && <li>Playground</li>}
-                                                    {temCaracteristica(imovel.campodefutebol) && <li>Campo de Futebol</li>}
-                                                    {temCaracteristica(imovel.SalaoFestas) && <li>Salão de Festas</li>}
-                                                    {temCaracteristica(imovel.SalaGinastica) && <li>Espaço Fitness / Academia</li>}
-                                                    {temCaracteristica(imovel.SalaoJogos) && <li>Salão de Jogos</li>}
-                                                    {temCaracteristica(imovel.Jardim) && <li>Jardim</li>}
-                                                </ul>
-                                            </div>
-                )}
+                                                temCaracteristica(imovel.Sauna) ||
+                                                temCaracteristica(imovel.Varanda) ||
+                                                temCaracteristica(imovel.Terraco) ||
+                                                temCaracteristica(imovel.Lavabo) ||
+                                                temCaracteristica(imovel.campodefutebol)) && (
+                                                    <div className="pt-2 border-t border-gray-100">
+                                                        <h4 className="text-sm font-bold uppercase text-blue-500 mb-1">Comodidades & Lazer</h4>
+                                                        <ul className="list-disc pl-5 space-y-1 text-sm">
+                                                            {temCaracteristica(imovel.ArCondicionado) && <li>Ar Condicionado</li>}
+                                                            {temCaracteristica(imovel.Lavabo) && <li>Lavabo Interno</li>}
+                                                            {temCaracteristica(imovel.Varanda) && <li>Varanda</li>}
+                                                            {temCaracteristica(imovel.Terraco) && <li>Terraço</li>}
+                                                            {temCaracteristica(imovel.Churrasqueira) && <li>Churrasqueira</li>}
+                                                            {temCaracteristica(imovel.Piscina) && <li>Piscina</li>}
+                                                            {temCaracteristica(imovel.Sauna) && <li>Sauna</li>}
+                                                            {temCaracteristica(imovel.Playground) && <li>Playground</li>}
+                                                            {temCaracteristica(imovel.campodefutebol) && <li>Campo de Futebol</li>}
+                                                            {temCaracteristica(imovel.SalaoFestas) && <li>Salão de Festas</li>}
+                                                            {temCaracteristica(imovel.SalaGinastica) && <li>Espaço Fitness / Academia</li>}
+                                                            {temCaracteristica(imovel.SalaoJogos) && <li>Salão de Jogos</li>}
+                                                            {temCaracteristica(imovel.Jardim) && <li>Jardim</li>}
+                                                        </ul>
+                                                    </div>
+                                                )}
 
                                             {/* Infraestrutura Externa / Condomínio / Urbano */}
                                             {(temCaracteristica(imovel.Interfone) ||
