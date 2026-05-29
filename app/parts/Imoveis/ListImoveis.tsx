@@ -147,7 +147,7 @@ export default function ListImoveis() {
     };
 
     return (
-        <main>
+        <main key={searchParams.toString()}>
             <HeaderTitle title='Imóveis' />
             <section className="py-8">
                 <div className="container mx-auto px-4">
