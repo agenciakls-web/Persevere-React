@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import axios from "axios";
 import ImovelSingle from "@/app/parts/Imoveis/single/ImovelSingle";
 import HeaderTitle from "@/app/parts/estrutura/headerTitle";
+import Contato from "@/app/parts/Home/Contato";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -61,6 +62,7 @@ export default async function Page({ params }: Props) {
                     <ImovelSingle initialSlug={slug} />
                 </div>
             </section>
+            <Contato />
         </main >
     );
 }
