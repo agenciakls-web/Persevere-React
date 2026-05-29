@@ -1,9 +1,7 @@
 'use client';
-
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
-import HeaderTitle from '../estrutura/headerTitle';
 import ListImoveisCard from './ListImoveisCard';
 import SidebarFiltros from './SidebarFiltros';
 import Paginacao from './Paginacao';
@@ -154,60 +152,46 @@ export default function ListImoveis() {
     };
 
     return (
-        <main key={searchParams.toString()}>
-            <HeaderTitle title='Imóveis' />
-            <section className="py-8">
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-wrap">
-
-                        {/* SIDEBAR CONTAINER */}
-
-                        <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
-                            <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
-                                <SidebarFiltros
-                                    formFilters={formFilters}
-                                    setFormFilters={setFormFilters}
-                                    tiposDisponiveis={tiposDisponiveis}
-                                    aplicarFiltros={aplicarFiltros}
-                                    handleSubmit={handleSubmit}
-                                    handleChange={handleChange}
-                                />
-                            </div>
-                        </Suspense>
-
-                        {/* LISTAGEM CONTAINER */}
-                        <div className="w-full md:w-2/3 lg:w-3/4">
-                            {loading ? (
-                                <div className="py-12 text-center text-blue-500 font-medium">
-                                    Carregando imóveis...
-                                </div>
-                            ) : listaImoveis.length > 0 ? (
-                                <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                                    {listaImoveis.map((imovel) => (
-                                        <ListImoveisCard key={imovel.CodigoImovel} imovel={imovel} />
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="py-12 text-center">
-                                    <h1 className="text-2xl font-bold">Não há imóveis nessa área</h1>
-                                    <p className="mt-2 text-gray-500">Infelizmente não temos imóveis disponíveis nessa seção.</p>
-                                </div>
-                            )}
-
-                            {/* PAGINAÇÃO CONTAINER */}
-                            <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
-                                <Paginacao
-                                    paginaAtual={paginaAtual}
-                                    totalPaginas={totalPaginas}
-                                    formFilters={formFilters}
-                                    aplicarFiltros={aplicarFiltros}
-                                />
-                            </Suspense>
-                        </div>
-
-                    </div>
+        <div key={searchParams.toString()} className="flex flex-wrap">
+            <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
+                <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
+                    <SidebarFiltros
+                        formFilters={formFilters}
+                        setFormFilters={setFormFilters}
+                        tiposDisponiveis={tiposDisponiveis}
+                        aplicarFiltros={aplicarFiltros}
+                        handleSubmit={handleSubmit}
+                        handleChange={handleChange}
+                    />
                 </div>
-            </section>
-        </main>
+            </Suspense>
+            <div className="w-full md:w-2/3 lg:w-3/4">
+                {loading ? (
+                    <div className="py-12 text-center text-blue-500 font-medium">
+                        Carregando imóveis...
+                    </div>
+                ) : listaImoveis.length > 0 ? (
+                    <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {listaImoveis.map((imovel) => (
+                            <ListImoveisCard key={imovel.CodigoImovel} imovel={imovel} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="py-12 text-center">
+                        <h1 className="text-2xl font-bold">Não há imóveis nessa área</h1>
+                        <p className="mt-2 text-gray-500">Infelizmente não temos imóveis disponíveis nessa seção.</p>
+                    </div>
+                )}
+                <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
+                    <Paginacao
+                        paginaAtual={paginaAtual}
+                        totalPaginas={totalPaginas}
+                        formFilters={formFilters}
+                        aplicarFiltros={aplicarFiltros}
+                    />
+                </Suspense>
+            </div>
+
+        </div>
     );
 }
