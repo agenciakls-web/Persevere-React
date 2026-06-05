@@ -126,7 +126,21 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                         </h3>
 
                         {imovel.Observacao ? (
-                            <p className="py-1 whitespace-pre-line">{imovel.Observacao}</p>
+                            <div className="space-y-3 text-gray-700">
+                                {imovel.Observacao.split('\n').map((paragrafo, index) => {
+                                    // Remove espaços em branco extras nas pontas
+                                    const textoLimpo = paragrafo.trim();
+
+                                    // Só renderiza se o parágrafo não estiver vazio (evita espaços brancos gigantes)
+                                    if (!textoLimpo) return null;
+
+                                    return (
+                                        <p key={index} className="leading-relaxed">
+                                            {textoLimpo}
+                                        </p>
+                                    );
+                                })}
+                            </div>
                         ) : (
                             <>
                                 <p className="py-1">
