@@ -27,7 +27,7 @@ export default function BannerSingle({ slides }: { slides: PhotosType[] }) {
                 breakpoints: {
                     640: { // Quando a tela for menor ou igual a 640px (Celulares)
                         perPage: 1, // Mostra apenas 1 slide
-                        arrows: false, // Opcional: esconde as setas no celular para sobrar mais espaço
+                        pagination: false, // Opcional: esconde as setas no celular para sobrar mais espaço
                     },
                 }
             }}
