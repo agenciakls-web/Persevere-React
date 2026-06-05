@@ -64,6 +64,42 @@ export default function PainelSincronizacao() {
                         </button>
                     </div>
 
+                    {/* TELA DE LOADING INTEGRADA (GIRANDO) */}
+                    {loading && (
+                        <div className="bg-white rounded-2xl p-12 shadow-md border border-gray-100 flex flex-col items-center justify-center space-y-4 animate-pulse">
+                            <svg
+                                className="animate-spin h-12 w-12 text-orange-500"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                {/* Círculo de fundo (fundo cinza/opaco discreto) */}
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                />
+                                {/* Arco que gira (O caminho corrigido) */}
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                />
+                            </svg>
+
+                            {/* Mensagens Solicitadas */}
+                            <div className="text-center">
+                                <h3 className="text-lg font-semibold text-gray-700">Sincronização em andamento</h3>
+                                <p className="text-sm text-gray-400 mt-1">
+                                    Estamos atualizando os imóveis, isso pode demorar um pouco...
+                                </p>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Mensagem de Erro */}
                     {erro && (
                         <div className="bg-red-50 text-red-600 border border-red-200 p-4 rounded-xl font-medium mb-6">
@@ -72,7 +108,7 @@ export default function PainelSincronizacao() {
                     )}
 
                     {/* Resultado da Carga de Dados */}
-                    {dados && dados.success && (
+                    {dados && dados.success && !loading && (
                         <div className="space-y-6 animate-fadeIn">
                             {/* Grid de Contadores Visuais */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
