@@ -19,6 +19,9 @@ interface FormFiltersType {
     condominio: string;
     CodigoImovel: string;
     action: string;
+    // Novos campos adicionados na tipagem
+    orderBy: string;
+    orderDirection: string;
 }
 
 export default function ListImoveis() {
@@ -26,7 +29,7 @@ export default function ListImoveis() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Valores atuais vindos da URL do Next.js
+    // Valores atuais vindos da URL do Next.js (com fallbacks padrão solicitados)
     const paginaAtual = parseInt(searchParams.get('page') || '1');
     const pesquisaAtual = searchParams.get('pesquisa') || '';
     const tipoAtual = searchParams.get('TipoImovel') || '';
@@ -35,6 +38,10 @@ export default function ListImoveis() {
     const condominioAtual = searchParams.get('condominio') || '';
     const codigoImovelAtual = searchParams.get('CodigoImovel') || '';
     const actionAtual = searchParams.get('action') || 'comprar';
+    
+    // Padrão: Preço de forma Crescente (asc)
+    const orderByAtual = searchParams.get('orderBy') || 'PrecoVenda';
+    const orderDirectionAtual = searchParams.get('orderDirection') || 'asc';
 
     // Estados de controle de dados da API
     const [listaImoveis, setListaImoveis] = useState<ImovelType[]>([]);
@@ -51,6 +58,8 @@ export default function ListImoveis() {
         condominio: condominioAtual,
         CodigoImovel: codigoImovelAtual,
         action: actionAtual,
+        orderBy: orderByAtual,
+        orderDirection: orderDirectionAtual,
     });
 
     // Sincroniza o estado interno se a URL do navegador mudar
@@ -63,8 +72,10 @@ export default function ListImoveis() {
             condominio: condominioAtual,
             CodigoImovel: codigoImovelAtual,
             action: actionAtual,
+            orderBy: orderByAtual,
+            orderDirection: orderDirectionAtual,
         });
-    }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual]);
+    }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
     // Busca os tipos distintos cadastrados no banco de dados
     useEffect(() => {
@@ -82,7 +93,6 @@ export default function ListImoveis() {
     // Busca a lista de imóveis com base nos filtros da URL
     useEffect(() => {
         async function carregarImoveis() {
-            // Se a variável não existir no momento do build, cancela a execução para não quebrar
             if (!process.env.NEXT_PUBLIC_API_BACKEND) {
                 console.warn("API URL não definida.");
                 return;
@@ -90,6 +100,7 @@ export default function ListImoveis() {
 
             setLoading(true);
             try {
+                // Passamos orderBy e orderDirection para a API também (caso o back-end já queira ordenar no banco)
                 const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
                     params: {
                         page: paginaAtual,
@@ -101,11 +112,33 @@ export default function ListImoveis() {
                         condominio: condominioAtual,
                         CodigoImovel: codigoImovelAtual,
                         action: actionAtual,
+                        orderBy: orderByAtual,
+                        orderDirection: orderDirectionAtual,
                     }
                 });
 
-                const imoveis: ImovelType[] = response.data.resultado || response.data;
-                imoveis.sort((a, b) => Number(a.PrecoVenda) - Number(b.PrecoVenda));
+                let imoveis: ImovelType[] = response.data.resultado || response.data;
+
+                // Ordenação dinâmica feita no Front-end (Garante o funcionamento mesmo se o back não tiver pronto)
+                imoveis.sort((a, b) => {
+                    let valorA = a[orderByAtual as keyof ImovelType];
+                    let valorB = b[orderByAtual as keyof ImovelType];
+
+                    // Tratamento caso o campo seja numérico (ex: Preço)
+                    if (orderByAtual === 'PrecoVenda' || orderByAtual === 'PrecoLocacao') {
+                        return orderDirectionAtual === 'asc' 
+                            ? Number(valorA) - Number(valorB) 
+                            : Number(valorB) - Number(valorA);
+                    }
+
+                    // Tratamento padrão para strings (ex: Titulo ou Bairro)
+                    valorA = String(valorA ?? '').toLowerCase();
+                    valorB = String(valorB ?? '').toLowerCase();
+
+                    if (valorA < valorB) return orderDirectionAtual === 'asc' ? -1 : 1;
+                    if (valorA > valorB) return orderDirectionAtual === 'asc' ? 1 : -1;
+                    return 0;
+                });
 
                 setListaImoveis(imoveis);
                 setTotalPaginas(response.data.totalPaginas || 1);
@@ -113,11 +146,11 @@ export default function ListImoveis() {
                 console.error("Erro ao buscar imóveis:", error);
                 setListaImoveis([]);
             } finally {
-                setLoading(false); // Corrigido aqui de 'finaly' para 'finally'
+                setLoading(false);
             }
         }
         carregarImoveis();
-    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual]);
+    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
     // Trata as alterações de inputs do formulário
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -125,10 +158,17 @@ export default function ListImoveis() {
         const atualizado = { ...formFilters, [name]: value };
         setFormFilters(atualizado);
 
-        // Dispara o filtro em tempo de execução ao clicar em itens objetivos (Radio/Select)
         if (type === 'radio' || e.target.tagName.toLowerCase() === 'select') {
             aplicarFiltros(atualizado, 1);
         }
+    };
+
+    // Nova função auxiliar para capturar o select de ordenação isolado
+    const handleOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const [campo, direcao] = e.target.value.split('-');
+        const atualizado = { ...formFilters, orderBy: campo, orderDirection: direcao };
+        setFormFilters(atualizado);
+        aplicarFiltros(atualizado, 1);
     };
 
     // Monta a QueryString e injeta os parâmetros na rota do Next.js
@@ -142,6 +182,10 @@ export default function ListImoveis() {
         if (novosFiltros.quartos) params.set('quartos', novosFiltros.quartos);
         if (novosFiltros.condominio) params.set('condominio', novosFiltros.condominio);
         if (novosFiltros.CodigoImovel) params.set('CodigoImovel', novosFiltros.CodigoImovel);
+        
+        // Mantém a ordenação viva nos parâmetros da URL
+        if (novosFiltros.orderBy) params.set('orderBy', novosFiltros.orderBy);
+        if (novosFiltros.orderDirection) params.set('orderDirection', novosFiltros.orderDirection);
 
         router.push(`${pathname}?${params.toString()}`);
     };
@@ -165,9 +209,31 @@ export default function ListImoveis() {
                     />
                 </div>
             </Suspense>
-            <div className="w-full md:w-2/3 lg:w-3/4">
+            <div className="w-full md:w-2/3 lg:w-3/4 px-4">
+                
+                {/* BARRA DE ORDENAÇÃO COMPLEMENTAR */}
+                <div className="flex justify-between items-center mb-6 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                    <span className="text-sm text-gray-500 font-medium">
+                        {listaImoveis.length > 0 ? `${listaImoveis.length} imóveis encontrados` : ''}
+                    </span>
+                    <div className="flex items-center space-x-2">
+                        <label htmlFor="ordenacao" className="text-sm font-semibold text-gray-600 whitespace-nowrap">Ordenar por:</label>
+                        <select 
+                            id="ordenacao"
+                            value={`${formFilters.orderBy}-${formFilters.orderDirection}`}
+                            onChange={handleOrderChange}
+                            className="text-sm bg-gray-50 border border-gray-200 rounded-lg p-2 text-gray-700 outline-none focus:border-orange-500 transition"
+                        >
+                            <option value="PrecoVenda-asc">Menor Preço ↑</option>
+                            <option value="PrecoVenda-desc">Maior Preço ↓</option>
+                            <option value="titulo-asc">Título (A-Z)</option>
+                            <option value="titulo-desc">Título (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+
                 {loading ? (
-                    <div className="py-12 text-center text-blue-500 font-medium">
+                    <div className="py-12 text-center text-orange-500 font-medium">
                         Carregando imóveis...
                     </div>
                 ) : listaImoveis.length > 0 ? (
@@ -191,7 +257,6 @@ export default function ListImoveis() {
                     />
                 </Suspense>
             </div>
-
         </div>
     );
 }

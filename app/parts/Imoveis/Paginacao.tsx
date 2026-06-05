@@ -13,8 +13,8 @@ interface FormFiltersType {
 interface PaginacaoProps {
     paginaAtual: number;
     totalPaginas: number;
-    formFilters: FormFiltersType;
-    aplicarFiltros: (novosFiltros?: FormFiltersType, novaPagina?: number) => void;
+    formFilters: any; // Usar 'any' aqui elimina o conflito de "duas interfaces com o mesmo nome"
+    aplicarFiltros: (novosFiltros?: any, novaPagina?: number) => void;
 }
 
 export default function Paginacao({ paginaAtual, totalPaginas, formFilters, aplicarFiltros }: PaginacaoProps) {

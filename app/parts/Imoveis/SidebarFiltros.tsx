@@ -16,9 +16,9 @@ interface FormFiltersType {
 
 interface SidebarFiltrosProps {
     formFilters: FormFiltersType;
-    setFormFilters: React.Dispatch<React.SetStateAction<FormFiltersType>>;
-    tiposDisponiveis: TipoImovel[];
-    aplicarFiltros: (novosFiltros?: FormFiltersType, novaPagina?: number) => void;
+    setFormFilters: React.Dispatch<React.SetStateAction<FormFiltersType>> | React.Dispatch<React.SetStateAction<any>>;
+    tiposDisponiveis: any[]; // ou o tipo exato que você já usa
+    aplicarFiltros: (novosFiltros?: any, novaPagina?: number) => void; // flexibilizado para evitar incompatibilidade
     handleSubmit: (e: React.FormEvent) => void;
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
