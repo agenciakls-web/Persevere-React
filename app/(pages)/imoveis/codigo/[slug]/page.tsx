@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         if (!imovel) return { title: "Imóvel não encontrado" };
 
         const fotoExibicao = imovel.photos?.find((p: any) => p.Principal === 1)?.URLArquivo
-            || imovel.photos?.[0]?.URLArquivo
+            || imovel.Photos?.[0]?.URLArquivo
             || "https://seusite.com/img/product-1.png"; // Use URL absoluta para a imagem padrão
 
         const titulo = `${imovel.SubTipoImovel} à venda em ${imovel.Bairro} - ${imovel.Cidade}`;
