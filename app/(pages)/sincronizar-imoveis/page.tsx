@@ -30,7 +30,7 @@ export default function PainelSincronizacao() {
 
         try {
             // Substitua pela URL correta da sua API da Persevere
-            const response = await axios.get<SyncResponse>('http://localhost:3333/getimoveis-api');
+            const response = await axios.get<SyncResponse>(process.env.NEXT_PUBLIC_API_BACKEND + '/getimoveis-api');
             setDados(response.data);
         } catch (err: any) {
             setErro(err.response?.data?.error || 'Erro de comunicação com o servidor.');
