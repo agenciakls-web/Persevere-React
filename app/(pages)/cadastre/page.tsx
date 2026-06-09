@@ -166,7 +166,7 @@ const ProposalForm = () => {
                                         <input
                                             type="text"
                                             name="codigo"
-                                            className="w-full my-2 py-3 px-4 text-sm md:text-base rounded-lg border text-gray-500 placeholder:uppercase"
+                                            className="w-full my-2 py-3 px-2 md:px-4 text-sm md:text-base rounded-lg border text-gray-500 placeholder:uppercase"
                                             placeholder="Código do Imóvel"
                                             required
                                         />

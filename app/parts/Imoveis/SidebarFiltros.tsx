@@ -100,7 +100,7 @@ export default function SidebarFiltros({
                                     placeholder="Ex: PSI022"
                                     value={formFilters.CodigoImovel}
                                     onChange={handleChange}
-                                    className="w-full rounded-lg border border-orange-500  py-2 md:py-3 px-2 md:px-4 text-sm md:text-lg font-medium text-orange-600 placeholder-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 "
+                                    className="w-full rounded-lg border border-orange-500  py-3 px-2 md:px-4 text-sm md:text-lg font-medium text-orange-600 placeholder-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 "
                                 />
 
 
@@ -128,7 +128,7 @@ export default function SidebarFiltros({
                                     placeholder="Digite condomínio, região, bairro..."
                                     value={formFilters.pesquisa}
                                     onChange={handleChange}
-                                    className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                    className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 />
                             </div>
 
@@ -169,7 +169,7 @@ export default function SidebarFiltros({
                                     name="TipoImovel"
                                     value={formFilters.TipoImovel}
                                     onChange={handleChange}
-                                    className="block md:hidden w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 >
                                     <option value="">Todos os tipos</option>
                                     {tiposDisponiveis.map((tipo, index) => (
@@ -212,7 +212,7 @@ export default function SidebarFiltros({
                                     name="PrecoVenda"
                                     value={formFilters.PrecoVenda}
                                     onChange={handleChange}
-                                    className="block md:hidden w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 >
                                     <option value="">Preço de compra</option>
                                     <option value="1">Até 200.000</option>
@@ -249,7 +249,7 @@ export default function SidebarFiltros({
                                     name="quartos"
                                     value={formFilters.quartos}
                                     onChange={handleChange}
-                                    className="block md:hidden w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 >
                                     <option value="">Mínimo de Quartos</option>
                                     {[1, 2, 3, 4, 5].map((q) => (

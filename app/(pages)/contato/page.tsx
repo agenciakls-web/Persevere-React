@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookSquare, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import HeaderTitle from "@/app/parts/estrutura/headerTitle";
+import { ContentLinks } from "@/app/parts/dados/contentLinks";
 
 const ContactPage = () => {
     const {
@@ -61,7 +62,7 @@ const ContactPage = () => {
             <HeaderTitle title="Contato" />
             <section className="py-8">
                 <div className="container mx-auto px-4">
-                    <h3 className="my-4 font-medium text-2xl font-reading text-blue-500">
+                    <h3 className="my-4 font-medium text-lg md:text-2xl  font-reading text-blue-500">
                         Entre em contato
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4">
@@ -71,27 +72,27 @@ const ContactPage = () => {
                                     <input
                                         type="text"
                                         {...register("nome", { required: "Nome é obrigatório" })}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-2 md:px-4 text-sm md:text-base rounded-lg font-medium border text-gray-500 md:col-span-2"
                                         placeholder="NOME"
                                     />
 
                                     <input
                                         type="email"
                                         {...register("email", { required: "E-mail é obrigatório" })}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500"
+                                        className="w-full py-3 px-2 md:px-4 text-sm md:text-base rounded-lg font-medium border text-gray-500"
                                         placeholder="E-MAIL"
                                     />
 
                                     <input
                                         type="text"
                                         {...register("phone")}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500"
+                                        className="w-full py-3 px-2 md:px-4 text-sm md:text-base rounded-lg font-medium border text-gray-500"
                                         placeholder="TELEFONE"
                                     />
 
                                     <select
                                         {...register("motivo", { required: "Selecione um motivo" })}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-2 md:px-4 text-sm md:text-base rounded-lg font-medium border text-gray-500 md:col-span-2"
                                     >
                                         <option value="">MOTIVO DO CONTATO</option>
                                         <option value="Atendimento ao consumidor - SAC">
@@ -111,7 +112,7 @@ const ContactPage = () => {
                                         {...register("mensagem", {
                                             required: "Mensagem é obrigatória",
                                         })}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-2 md:px-4 text-sm md:text-base rounded-lg font-medium border text-gray-500 md:col-span-2"
                                         placeholder="MENSAGEM"
                                     ></textarea>
 
@@ -142,30 +143,30 @@ const ContactPage = () => {
                                 )}
                             </form>
                         </div>
-                        <div className="text-xl text-black rounded-xl font-brandon">
-                            <div className="border-orange-500 border-2 rounded-xl text-lg p-6 my-3 md:mt-0">
-                                <div className="text-xl pb-2">
+                        <div className="text-md md:text-lg text-black rounded-xl font-brandon">
+                            <div className="border-orange-500 border-2 rounded-xl text-sm md:text-lg p-2 md:p-6 my-3 md:mt-0 ">
+                                <div className="text-base md:text-xl px-4 md:px-0 md:pb-2">
                                     <h3 className="font-bold uppercase">
                                         Informações de contato
                                     </h3>
-                                    <p>
+                                    <p className="text-sm md:text-base">
                                         Entre em contato conosco também pelas informações abaixo:
                                     </p>
                                 </div>
 
                                 {/* Telefone */}
-                                <a href="tel:+552126340075" target="_blank" rel="noreferrer">
-                                    <div className="flex justify-start items-center pt-4 pb-6 rounded-lg hover:bg-gray-100">
-                                        <div className="px-6 text-4xl text-blue-500">
+                                <a href={ContentLinks.phone} target="_blank" rel="noreferrer">
+                                    <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
+                                        <div className="px-4 md:px-6 text-xl md:text-4xl text-blue-500">
                                             <FontAwesomeIcon
                                                 icon={faPhone}
                                                 aria-hidden="true"
                                                 className="text-blue-500 h-10 w-10"
-                                            ></FontAwesomeIcon>
+                                            />
                                         </div>
                                         <div>
                                             <div className="py-1 font-bold uppercase">Telefone:</div>
-                                            <div>(21) 2634-0075</div>
+                                            <div>{ContentLinks.phoneShow}</div>
                                         </div>
                                     </div>
                                 </a>
@@ -176,13 +177,13 @@ const ContactPage = () => {
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <div className="flex justify-start items-center pt-4 pb-6 rounded-lg hover:bg-gray-100">
+                                    <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                         <div className="px-4 md:px-6 text-xl md:text-4xl text-blue-500">
                                             <FontAwesomeIcon
                                                 icon={faWhatsapp}
                                                 aria-hidden="true"
                                                 className="text-blue-500 h-10 w-10"
-                                            ></FontAwesomeIcon>
+                                            />
                                         </div>
                                         <div>
                                             <div className="py-1 font-bold uppercase">WhatsApp:</div>
@@ -193,45 +194,45 @@ const ContactPage = () => {
 
                                 {/* Email */}
                                 <a
-                                    href="mailto:contato@persevere.com.br"
+                                    href={ContentLinks.email}
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <div className="flex justify-start items-center pt-4 pb-6 rounded-lg hover:bg-gray-100">
+                                    <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                         <div className="px-4 md:px-6 text-xl md:text-4xl text-blue-500">
                                             <FontAwesomeIcon
                                                 icon={faEnvelope}
                                                 aria-hidden="true"
                                                 className="text-blue-500 h-10 w-10"
-                                            ></FontAwesomeIcon>
+                                            />
                                         </div>
                                         <div>
                                             <div className="py-1 font-bold uppercase">E-mail:</div>
-                                            <div>contato@persevere.com.br</div>
+                                            <div>{ContentLinks.emailShow}</div>
                                         </div>
                                     </div>
                                 </a>
 
                                 {/* Endereço */}
                                 <a
-                                    href="https://goo.gl/maps/rRD1rMnrD6xJRQmA8"
+                                    href={ContentLinks.maps}
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <div className="flex justify-start items-center pt-4 pb-6 rounded-lg hover:bg-gray-100">
+                                    <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                         <div className="px-4 md:px-6 text-xl md:text-4xl text-blue-500">
                                             <FontAwesomeIcon
                                                 icon={faLocationDot}
                                                 aria-hidden="true"
                                                 className="text-blue-500 h-10 w-10"
-                                            ></FontAwesomeIcon>
+                                            />
                                         </div>
                                         <div>
                                             <div className="py-1 font-bold uppercase">Endereço:</div>
                                             <div>
-                                                Rua Prof. Cardoso de Menezes, QD 115 - LT 6 - Loja 1,
-                                                Bairro: Jardim Atlântico - Itaipuaçu - Maricá/RJ - CEP:
-                                                24935-425
+                                                {ContentLinks.address1}
+                                                {ContentLinks.address2}
+                                                {ContentLinks.address3}
                                             </div>
                                         </div>
                                     </div>
@@ -239,42 +240,42 @@ const ContactPage = () => {
 
                                 {/* Facebook */}
                                 <a
-                                    href="https://www.facebook.com/persevereimoveis"
+                                    href={ContentLinks.facebook}
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <div className="flex justify-start items-center pt-4 pb-6 rounded-lg hover:bg-gray-100">
+                                    <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                         <div className="px-4 md:px-6 text-xl md:text-4xl text-blue-500">
                                             <FontAwesomeIcon
                                                 icon={faFacebookSquare}
                                                 aria-hidden="true"
                                                 className="text-blue-500 h-10 w-10"
-                                            ></FontAwesomeIcon>
+                                            />
                                         </div>
                                         <div>
                                             <div className="py-1 font-bold uppercase">Facebook:</div>
-                                            <div>/persevereimoveis</div>
+                                            <div>{ContentLinks.facebookShow}</div>
                                         </div>
                                     </div>
                                 </a>
 
                                 {/* Instagram */}
                                 <a
-                                    href="https://www.instagram.com/persevere.imoveis/"
+                                    href={ContentLinks.instagram}
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <div className="flex justify-start items-center pt-4 pb-6 rounded-lg hover:bg-gray-100">
+                                    <div className="flex justify-start items-center px-2 pt-4 pb-6 rounded-lg hover:bg-gray-100 break-all">
                                         <div className="px-4 md:px-6 text-xl md:text-4xl text-blue-500">
                                             <FontAwesomeIcon
                                                 icon={faInstagram}
                                                 aria-hidden="true"
                                                 className="text-blue-500 h-10 w-10"
-                                            ></FontAwesomeIcon>
+                                            />
                                         </div>
                                         <div>
                                             <div className="py-1 font-bold uppercase">Instagram:</div>
-                                            <div>@persevereimoveis</div>
+                                            <div>{ContentLinks.instagramShow}</div>
                                         </div>
                                     </div>
                                 </a>

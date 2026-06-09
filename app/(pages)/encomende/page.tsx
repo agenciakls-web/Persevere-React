@@ -87,7 +87,7 @@ const OrderForm = () => {
                                         id="description"
                                         value={description}
                                         onChange={(e) => setDescription(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
                                         cols={30}
                                         rows={5}
                                         placeholder="Descreva as características aqui"
@@ -99,7 +99,7 @@ const OrderForm = () => {
                                         id="nome"
                                         value={nome}
                                         onChange={(e) => setNome(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
                                         placeholder="Nome"
                                     />
 
@@ -109,7 +109,7 @@ const OrderForm = () => {
                                         id="mobile"
                                         value={mobile}
                                         onChange={(e) => setMobile(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500"
+                                        className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500"
                                         placeholder="Celular"
                                     />
 
@@ -119,7 +119,7 @@ const OrderForm = () => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500"
+                                        className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500"
                                         placeholder="Telefone"
                                     />
 
@@ -129,7 +129,7 @@ const OrderForm = () => {
                                         id="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
                                         placeholder="E-mail"
                                     />
 
