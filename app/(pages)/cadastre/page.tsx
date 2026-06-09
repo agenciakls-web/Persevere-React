@@ -87,7 +87,7 @@ const ProposalForm = () => {
             <HeaderTitle title="Cadastre" />
             <section className="py-3 md:py-8">
                 <div className="container mx-auto px-4 max-w-xl">
-                    <h3 className="my-4 py-4 text-center font-medium text-2xl font-reading text-blue-500">
+                    <h3 className="my-4 py-4 text-center font-medium text-lg md:text-2xl font-reading text-blue-500">
                         Envie sua proposta
                     </h3>
 
@@ -106,7 +106,7 @@ const ProposalForm = () => {
 
                                 {/* Bolinha */}
                                 <div
-                                    className={`step-icon w-10 h-10 mx-auto rounded-full flex items-center justify-center transition-colors duration-500 ${step >= idx
+                                    className={`step-icon w-8 h-8 md:w-10 md:h-10 mx-auto rounded-full flex items-center justify-center transition-colors duration-500 ${step >= idx
                                             ? "bg-blue-500 text-white"
                                             : "bg-white border-2 border-gray-100 text-gray-600"
                                         }`}
@@ -136,11 +136,11 @@ const ProposalForm = () => {
                         {/* Step 1 */}
                         {step === 0 && (
                             <div className="step is-active" data-step="0">
-                                <h2 className="py-3 font-medium text-xl font-reading text-blue-500">
+                                <h2 className="py-3 font-medium text-base md:text-xl font-reading text-blue-500">
                                     Informações Pessoais
                                 </h2>
                                 <div className="grid grid-cols-1 md:gap-4">
-                                    <div>
+                                    <div className="text-base md:text-xl">
                                         <span className="px-2">
                                             <input
                                                 type="radio"
@@ -166,7 +166,7 @@ const ProposalForm = () => {
                                         <input
                                             type="text"
                                             name="codigo"
-                                            className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500 placeholder:uppercase"
+                                            className="w-full my-2 py-3 px-4 text-sm md:text-base rounded-lg border text-gray-500 placeholder:uppercase"
                                             placeholder="Código do Imóvel"
                                             required
                                         />
@@ -178,7 +178,7 @@ const ProposalForm = () => {
                         {/* Step 2 */}
                         {step === 1 && (
                             <div className="step" data-step="1">
-                                <h2 className="py-3 font-medium text-xl font-reading text-blue-500">
+                                <h2 className="py-3 font-medium text-base md:text-xl font-reading text-blue-500">
                                     Clientes
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
@@ -187,56 +187,56 @@ const ProposalForm = () => {
                                         name="nome"
                                         placeholder="Nome Completo"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                     <input
                                         type="text"
                                         name="email"
                                         placeholder="E-mail"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                     <input
                                         type="tel"
                                         name="telefone"
                                         placeholder="Telefone"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                     <input
                                         type="text"
                                         name="celular"
                                         placeholder="Celular"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                     <input
                                         type="text"
                                         name="cpf"
                                         placeholder="CPF"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                     <input
                                         type="text"
                                         name="rg"
                                         placeholder="RG"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                     <input
                                         type="text"
                                         name="nascimento"
                                         placeholder="Data de Nascimento"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                     <input
                                         type="text"
                                         name="estadoCivil"
                                         placeholder="Estado Civil"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg border text-gray-500"
                                     />
                                 </div>
                             </div>
@@ -244,14 +244,14 @@ const ProposalForm = () => {
                         {/* Step 3 */}
                         {step === 2 && (
                             <div className="step" data-step="2">
-                                <h2 className="py-3 font-medium text-xl font-reading text-blue-500">
+                                <h2 className="py-3 font-medium text-base md:text-xl font-reading text-blue-500">
                                     Escolaridade
                                 </h2>
                                 <div className="grid grid-cols-1 md:gap-4">
                                     <textarea
                                         name="message"
                                         placeholder="MENSAGEM"
-                                        className="w-full py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 text-sm md:text-lg rounded-lg border text-gray-500"
                                         rows={5}
                                     ></textarea>
                                     <input
@@ -259,19 +259,19 @@ const ProposalForm = () => {
                                         name="valido"
                                         placeholder="Proposta válida até"
                                         required
-                                        className="w-full my-2 py-3 px-4 rounded-lg border text-gray-500"
+                                        className="w-full my-2 py-2 md:py-3 px-2 md:px-4 text-sm md:text-lg rounded-lg border text-gray-500"
                                     />
                                 </div>
                             </div>
                         )}
 
                         {/* Navegação */}
-                        <div className="input-group text-right">
+                        <div className="input-group text-right flex justify-center md:justify-end gap-4">
                             {step > 0 && (
                                 <button
                                     type="button"
                                     onClick={prevStep}
-                                    className="bg-blue-500 text-gray-100 hover:bg-red-800 rounded-full my-4 py-2 px-10"
+                                    className="bg-blue-500 text-gray-100 hover:bg-red-800 rounded-full text-sm md:text-base py-1 px-8 md:my-4 md:py-2 md:px-10"
                                 >
                                     Anterior
                                 </button>
@@ -279,7 +279,7 @@ const ProposalForm = () => {
                             <button
                                 type="button"
                                 onClick={nextStep}
-                                className="bg-blue-500 text-gray-100 hover:bg-red-800 rounded-full my-4 py-2 px-10"
+                                className="bg-blue-500 text-gray-100 hover:bg-red-800 rounded-full text-sm md:text-base py-1 px-8 md:my-4 md:py-2 md:px-10"
                             >
                                 {step < 2 ? "Próximo" : "Enviar"}
                             </button>
@@ -288,7 +288,7 @@ const ProposalForm = () => {
                         {/* Mensagem de resposta */}
                         {responseMessage && (
                             <div
-                                className={`w-full my-2 p-3 uppercase text-center font-bold rounded ${responseType === "success"
+                                className={`w-full my-2 p-3  uppercase text-center font-bold rounded ${responseType === "success"
                                         ? "bg-green-600 text-white"
                                         : responseType === "warning"
                                             ? "bg-yellow-500 text-white"

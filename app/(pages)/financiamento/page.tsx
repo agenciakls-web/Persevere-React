@@ -8,7 +8,7 @@ export default function Financiamento() {
             <section className="py-8 text-gray-500">
                 <div className="container mx-auto px-4">
                     <div className="flex justify-center">
-                        <div className="w-1/2 text-center">
+                        <div className="md:w-1/2 text-center">
                             <h2 className="py-2 font-bold font-brandon uppercase">
                                 Escolha um banco e faça a sua simulação.
                             </h2>
