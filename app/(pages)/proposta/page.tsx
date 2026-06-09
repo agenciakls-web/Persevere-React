@@ -31,11 +31,11 @@ export default function Proposta() {
             <HeaderTitle title="Enviar Proposta" />
             <section className="py-3 md:py-8">
                 <div className="container mx-auto px-4 max-w-xl">
-                    <h3 className="my-4 py-4 text-center font-medium text-2xl font-reading text-blue-500">Envie sua proposta</h3>
+                    <h3 className="my-4 py-4 text-center font-medium text-lg md:text-2xl  font-reading text-blue-500">Envie sua proposta</h3>
                     <div className="grid grid-cols-3 justify-center">
                         <div className="step-single">
                             <div className="relative mb-2">
-                                <div className="step-icon transition delay-300 w-10 h-10 mx-auto rounded-full text-lg flex items-center bg-blue-500 text-white">
+                                <div className="step-icon transition delay-300 w-8 h-8 md:w-10 md:h-10 mx-auto rounded-full text-lg flex items-center bg-blue-500 text-white">
                                     <span className="text-center w-full">
                                         <FontAwesomeIcon icon={faUser} className="fa-regular fa-user" />
                                     </span>
@@ -52,7 +52,7 @@ export default function Proposta() {
                                     </div>
                                 </div>
 
-                                <div className="step-icon transition delay-300 w-10 h-10 mx-auto rounded-full text-lg flex items-center bg-white border-2 border-gray-100 text-gray-600">
+                                <div className="step-icon transition delay-300 w-8 h-8 md:w-10 md:h-10 mx-auto rounded-full text-lg flex items-center bg-white border-2 border-gray-100 text-gray-600">
                                     <span className="text-center w-full">
                                         <FontAwesomeIcon icon={faLocationDot} className="fa-solid fa-location-dot" />
                                     </span>
@@ -70,7 +70,7 @@ export default function Proposta() {
                                     </div>
                                 </div>
 
-                                <div className="step-icon transition delay-300 w-10 h-10 mx-auto rounded-full text-lg flex items-center bg-white border-2 border-gray-100 text-gray-600">
+                                <div className="step-icon transition delay-300 w-8 h-8 md:w-10 md:h-10 mx-auto rounded-full text-lg flex items-center bg-white border-2 border-gray-100 text-gray-600">
                                     <span className="text-center w-full">
                                         <FontAwesomeIcon icon={faGraduationCap} className="fa-solid fa-graduation-cap" />
                                     </span>
@@ -90,10 +90,10 @@ export default function Proposta() {
                         <form action="/" method="post" id="form-proposal" className="form-wizard js-form-wizard" noValidate encType="multipart/form-data">
 
                             <div className="step js-step is-active">
-                                <h2 className="py-3 font-medium text-xl font-reading text-blue-500">Informações Pessoais</h2>
+                                <h2 className="py-3 font-medium text-base md:text-xl font-reading text-blue-500">Informações Pessoais</h2>
 
                                 <div className="grid grid-cols-1 md:gap-4">
-                                    <div className="lg:col-span-2 text-gray-500">
+                                    <div className="text-base md:text-xl lg:col-span-2 text-gray-500">
                                         <span className="px-2">
                                             <input type="radio" id="comprar" name="proposito" value="comprar" /> <label>Comprar</label>
                                         </span>
@@ -107,7 +107,7 @@ export default function Proposta() {
                                         <input
                                             type="text"
                                             name="codigo"
-                                            className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control"
+                                            className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control"
                                             required
                                             placeholder="Código do Imóvel"
                                         />
@@ -116,62 +116,62 @@ export default function Proposta() {
                             </div>
 
                             <div className="step js-step">
-                                <h2 className="py-3 font-medium text-xl font-reading text-blue-500">Clientes</h2>
+                                <h2 className="py-3 font-medium text-base md:text-xl font-reading text-blue-500">Clientes</h2>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
 
                                     <div className="lg:col-span-2">
-                                        <input type="text" name="nome" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Nome Completo" />
+                                        <input type="text" name="nome" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Nome Completo" />
                                     </div>
 
                                     <div className="lg:col-span-2">
-                                        <input type="text" name="email" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="E-mail" />
+                                        <input type="text" name="email" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="E-mail" />
                                     </div>
 
                                     <div>
-                                        <input type="tel" name="telefone" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Telefone" id="field-telefone" />
+                                        <input type="tel" name="telefone" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Telefone" id="field-telefone" />
                                     </div>
 
                                     <div>
-                                        <input type="text" name="celular" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Celular" id="field-celular" />
+                                        <input type="text" name="celular" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Celular" id="field-celular" />
                                     </div>
 
                                     <div>
-                                        <input type="text" name="cpf" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="CPF" id="field-cpf" />
+                                        <input type="text" name="cpf" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="CPF" id="field-cpf" />
                                     </div>
 
                                     <div>
-                                        <input type="text" name="rg" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="RG" id="field-rg" />
+                                        <input type="text" name="rg" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="RG" id="field-rg" />
                                     </div>
 
                                     <div>
-                                        <input type="text" name="nascimento" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Data de Nascimento" id="field-nascimento" />
+                                        <input type="text" name="nascimento" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Data de Nascimento" id="field-nascimento" />
                                     </div>
 
                                     <div>
-                                        <input type="text" name="Estado Civil" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Estado Civil" />
+                                        <input type="text" name="Estado Civil" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Estado Civil" />
                                     </div>
                                 </div>
                             </div>
 
                             <div className="step js-step">
-                                <h2 className="py-3 font-medium text-xl font-reading text-blue-500">Escolaridade</h2>
+                                <h2 className="py-3 font-medium text-base md:text-xl font-reading text-blue-500">Escolaridade</h2>
 
                                 <div className="grid grid-cols-1 md:gap-4">
                                     <div>
-                                        <textarea name="message" id="message" className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2" placeholder="MENSAGEM"></textarea>
+                                        <textarea name="message" id="message" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2" placeholder="MENSAGEM"></textarea>
                                     </div>
 
                                     <div>
-                                        <input type="text" name="valido" className="w-full my-2 py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Proposta válida até" />
+                                        <input type="text" name="valido" className="w-full my-2 py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 placeholder:uppercase js-form-control" required placeholder="Proposta válida até" />
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="input-group text-right flex justify-end gap-4">
+                            <div className="input-group text-right flex justify-center md:justify-end gap-4 ">
                                 <button
                                     type="button"
-                                    className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 text-base uppercase inline-block btn-prev js-btn-prev"
+                                    className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-8 md:px-10 text-base md:text-xl uppercase inline-block btn-prev js-btn-prev"
                                 >
                                     Anterior
                                 </button>
@@ -179,7 +179,7 @@ export default function Proposta() {
                                 <button
                                     type="button"
                                     onClick={validateForm}
-                                    className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 text-base uppercase inline-block js-btn-next"
+                                    className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-8 md:px-10 text-base md:text-xl uppercase inline-block js-btn-next"
                                     data-step-text="Próximo"
                                     data-final-step-text="Enviar"
                                 >
