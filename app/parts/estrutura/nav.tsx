@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -13,37 +12,21 @@ export default function MobileNav({
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 }) {
-  // Bloqueia o scroll e força a página para o topo quando o menu abre
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-      window.scrollTo(0, 0);
-    } else {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    };
-  }, [isOpen]);
-
   return (
     <>
-      {/* Overlay para fechar ao clicar fora */}
+      {/* Overlay só em mobile */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300"
+          className="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300 md:hidden"
         ></div>
       )}
 
       {/* Menu lateral com rolagem interna */}
       <nav
-        className={`fixed top-0 h-screen w-full bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open ${
+        className={`fixed top-0 h-screen w-full md:w-96 bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open ${
           isOpen ? "right-0" : "-right-full"
-        } overflow-y-auto max-h-screen`}
+        } overflow-hidden md:overflow-auto max-h-screen`}
       >
         {/* Botão fechar */}
         <div
@@ -87,7 +70,10 @@ export default function MobileNav({
                 </Link>
               </li>
               <li className="mx-2">
-                <Link href="/imoveis?action=comprar&TipoImovel=Casa+de+Condominio" className="py-1 flex items-center hover:text-orange-500">
+                <Link
+                  href="/imoveis?action=comprar&TipoImovel=Casa+de+Condominio"
+                  className="py-1 flex items-center hover:text-orange-500"
+                >
                   Condomínios
                 </Link>
               </li>
