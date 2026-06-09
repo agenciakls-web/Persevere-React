@@ -87,7 +87,7 @@ export default function MobileNav({
                 </Link>
               </li>
               <li className="mx-2">
-                <Link href="/imoveis" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/imoveis?action=comprar&TipoImovel=Casa+de+Condominio" className="py-1 flex items-center hover:text-orange-500">
                   Condomínios
                 </Link>
               </li>
@@ -159,7 +159,7 @@ export default function MobileNav({
 
           {/* Redes sociais */}
           <div className="pre-socials-container">
-            <ul className="text-white flex justify-center items-center my-4 text-xl">
+            <ul className="text-black flex justify-center items-center my-4 text-xl">
               <li className="m-2">
                 <a
                   href={ContentLinks.facebook}

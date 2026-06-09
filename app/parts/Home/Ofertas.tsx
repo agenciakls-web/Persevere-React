@@ -51,11 +51,11 @@ export default function OfertasSemana() {
                             <Link href="/imoveis?estilo=oportunidades" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
                                 Oportunidades da Semana
                             </Link>
-                            <span className="text-gray-300">|</span>
+                            <span className="text-gray-300 hidden md:block">|</span>
                             <Link href="/imoveis?estilo=permuta" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
                                 Aceita Permuta
                             </Link>
-                            <span className="text-gray-300">|</span>
+                            <span className="text-gray-300 hidden md:block">|</span>
                             <Link href="/imoveis?estilo=fgts" className="py-1 mx-3 text-orange-500 font-medium hover:text-orange-600 transition">
                                 Financiamento e FGTS
                             </Link>

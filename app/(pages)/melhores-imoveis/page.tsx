@@ -174,7 +174,7 @@ export default function landingPage() {
           <div id="pre-socials-container" className="pre-socials-container">
             <ul
               id="pre-list-ul"
-              className="text-white flex justify-center items-center my-4 text-xl"
+              className="text-black flex justify-center items-center my-4 text-xl"
             >
               <li className="m-2">
                 <a

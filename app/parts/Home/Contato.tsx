@@ -4,7 +4,7 @@ import { ContentLinks } from "@/app/parts/dados/contentLinks";
 
 export default function Contato() {
     return (
-        <section className="bg-gray-100 py-14 font-brandon">
+        <section className="bg-gray-100 py-10 md:py-14 font-brandon">
             <div className="container mx-auto px-4">
                 <div className="flex flex-wrap justify-center">
                     {/* Texto */}
