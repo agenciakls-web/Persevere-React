@@ -51,7 +51,7 @@ export default function SidebarFiltros({
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
                         }}
-                        className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${
+                        className={`w-1/2 rounded-lg py-2.5 text-xs md:text-sm font-bold uppercase transition ${
                             formFilters.action === 'comprar'
                                 ? 'bg-blue-500 text-white shadow'
                                 : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
@@ -74,7 +74,7 @@ export default function SidebarFiltros({
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
                         }}
-                        className={`w-1/2 rounded-lg py-2.5 text-sm font-bold uppercase transition ${
+                        className={`w-1/2 rounded-lg py-2.5 text-xs md:text-sm font-bold uppercase transition ${
                             formFilters.action === 'codigo'
                                 ? 'bg-orange-500 text-white shadow'
                                 : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
@@ -91,7 +91,7 @@ export default function SidebarFiltros({
                     {formFilters.action === 'codigo' && (
                         <div className="space-y-4">
                             <div>
-                                <h4 className="my-2 font-bold uppercase text-orange-500">
+                                <h4 className="text-sm md:text-base my-2 font-bold uppercase text-orange-500">
                                     Código do Imóvel
                                 </h4>
                                 <input
@@ -100,12 +100,14 @@ export default function SidebarFiltros({
                                     placeholder="Ex: PSI022"
                                     value={formFilters.CodigoImovel}
                                     onChange={handleChange}
-                                    className="w-full rounded-lg border border-orange-500 px-4 py-3 text-lg font-medium text-orange-600 placeholder-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    className="w-full rounded-lg border border-orange-500  py-2 md:py-3 px-2 md:px-4 text-sm md:text-lg font-medium text-orange-600 placeholder-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 "
                                 />
+
+
                             </div>
                             <button
                                 type="submit"
-                                className="block w-full text-center rounded-full bg-orange-500 px-4 py-3 text-lg font-medium uppercase text-gray-100 hover:bg-orange-600 transition shadow-md"
+                                className="block w-full text-center rounded-full bg-orange-500 px-4 py-3 text-sm md:text-lg font-medium uppercase text-gray-100 hover:bg-orange-600 transition shadow-md"
                             >
                                 Buscar Código
                             </button>
@@ -117,7 +119,7 @@ export default function SidebarFiltros({
                         <div className="space-y-6">
                             {/* PESQUISA GERAL */}
                             <div>
-                                <h4 className="my-2 font-bold uppercase text-blue-500">
+                                <h4 className= " text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Termo de pesquisa
                                 </h4>
                                 <input
@@ -126,13 +128,13 @@ export default function SidebarFiltros({
                                     placeholder="Digite condomínio, região, bairro..."
                                     value={formFilters.pesquisa}
                                     onChange={handleChange}
-                                    className="w-full rounded-lg border border-blue-500 px-4 py-3 text-lg font-medium text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 />
                             </div>
 
                             {/* TIPO DINÂMICO DO BANCO */}
                             <div>
-                                <h4 className="my-2 font-bold uppercase text-blue-500">
+                                <h4 className= " text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Tipo de Imóvel
                                 </h4>
                                 <div className="hidden md:block space-y-1">
@@ -167,7 +169,7 @@ export default function SidebarFiltros({
                                     name="TipoImovel"
                                     value={formFilters.TipoImovel}
                                     onChange={handleChange}
-                                    className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
+                                    className="block md:hidden w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 >
                                     <option value="">Todos os tipos</option>
                                     {tiposDisponiveis.map((tipo, index) => (
@@ -180,7 +182,7 @@ export default function SidebarFiltros({
 
                             {/* PREÇO */}
                             <div>
-                                <h4 className="my-2 font-bold uppercase text-blue-500">
+                                <h4 className="text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Preço de Venda
                                 </h4>
                                 <div className="hidden md:block space-y-2">
@@ -210,7 +212,7 @@ export default function SidebarFiltros({
                                     name="PrecoVenda"
                                     value={formFilters.PrecoVenda}
                                     onChange={handleChange}
-                                    className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
+                                    className="block md:hidden w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 >
                                     <option value="">Preço de compra</option>
                                     <option value="1">Até 200.000</option>
@@ -224,7 +226,7 @@ export default function SidebarFiltros({
 
                             {/* QUARTOS */}
                             <div>
-                                <h4 className="my-2 font-bold uppercase text-blue-500">
+                                <h4 className= " text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Mínimo de Quartos
                                 </h4>
                                 <div className="hidden md:block space-y-2">
@@ -247,7 +249,7 @@ export default function SidebarFiltros({
                                     name="quartos"
                                     value={formFilters.quartos}
                                     onChange={handleChange}
-                                    className="block w-full rounded-lg border border-blue-500 px-2 py-2 text-lg font-medium text-blue-500 md:hidden"
+                                    className="block md:hidden w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 >
                                     <option value="">Mínimo de Quartos</option>
                                     {[1, 2, 3, 4, 5].map((q) => (
@@ -258,7 +260,7 @@ export default function SidebarFiltros({
 
                             <button
                                 type="submit"
-                                className="block w-full text-center rounded-full bg-blue-500 px-4 py-3 text-lg font-medium uppercase text-gray-100 hover:bg-blue-600 transition shadow-md"
+                                className="block w-full text-center rounded-full bg-blue-500 px-4 py-3 text-sm md:text-lg font-medium uppercase text-gray-100 hover:bg-blue-600 transition shadow-md"
                             >
                                 Filtrar Resultados
                             </button>

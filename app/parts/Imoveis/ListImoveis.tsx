@@ -213,7 +213,7 @@ export default function ListImoveis() {
             <div className="w-full md:w-2/3 lg:w-3/4 px-4">
                 
                 {/* BARRA DE ORDENAÇÃO COMPLEMENTAR */}
-                <div className="flex justify-between items-center mb-6 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center mb-6 bg-white p-2 md:p-4 rounded-xl shadow-sm border border-gray-100">
                     <span className="text-sm text-gray-500 font-medium">
                         {listaImoveis.length > 0 ? `${listaImoveis.length} imóveis encontrados` : ''}
                     </span>
