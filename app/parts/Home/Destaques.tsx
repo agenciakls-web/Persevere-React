@@ -44,17 +44,17 @@ export default function Destaques() {
             <div className="container mx-auto px-4">
                 {/* Menu de categorias */}
                 <div className="flex justify-center">
-                    <div className="bg-gray-100 py-3 px-6 my-3 rounded-full uppercase font-semibold text-orange-500">
-                        <div className="flex items-center text-xs sm:text-sm">
-                            <Link href="/imoveis?estilo=condominio" className="px-4 hover:text-orange-600 transition">
+                    <div className="bg-gray-100 py-3 px-6 my-3 rounded-full uppercase font-medium text-orange-500">
+                        <div className="flex flex-wrap justify-center bg-gray-100/80 px-4 py-1.5 rounded-full text-sm">
+                            <Link href="/imoveis?estilo=condominio" className="py-1 mx-3 hover:text-orange-600 transition">
                                 Casas em Condomínio
                             </Link>
-                            <hr className="h-6 border-gray-300 border border-solid rounded-full" />
-                            <Link href="/imoveis?estilo=lazer" className="px-4 hover:text-orange-600 transition">
+                            <hr className="hidden md:block h-6 border-gray-300 border border-solid rounded-full" />
+                            <Link href="/imoveis?estilo=lazer" className="py-1 mx-3 hover:text-orange-600 transition">
                                 Com Área de Lazer
                             </Link>
-                            <hr className="h-6 border-gray-300 border border-solid rounded-full" />
-                            <Link href="/imoveis?estilo=espacoso" className="px-4 hover:text-orange-600 transition">
+                            <hr className="hidden md:block h-6 border-gray-300 border border-solid rounded-full" />
+                            <Link href="/imoveis?estilo=espacoso" className="py-1 mx-3 hover:text-orange-600 transition">
                                 Ideais para Família
                             </Link>
                         </div>
