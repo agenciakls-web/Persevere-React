@@ -7,7 +7,7 @@ export default function Sobre() {
     return (
         <main>
             <HeaderTitle title="Sobre" />
-            <section className="py-16" id="#sobre">
+            <section className="py-10 md:py-16" id="#sobre">
                 <div className="container mx-auto px-4">
                     <div className="block justify-center items-center lg:flex lg:flex-row-reverse gap-4">
                         <div className="lg:w-1/2 flex justify-content items-center">
@@ -19,8 +19,8 @@ export default function Sobre() {
                                 height={300}
                             />
                         </div>
-                        <div className="lg:w-1/2 px-2">
-                            <div className="text-base text-justify md:text-left md:text-xl text-zinc-700 font-reading">
+                        <div className="pt-6 md:pt-0lg:w-1/2 px-2">
+                            <div className="text-sm text-justify md:text-left md:text-xl text-zinc-700 font-reading">
                                 <p className="py-2">
                                     Somos uma empresa perseverante e inovadora, pertencente a um
                                     grupo empresarial que atua e investe no mercado imobiliário há
@@ -44,12 +44,12 @@ export default function Sobre() {
                     </div>
                 </div>
             </section>
-            <section className="py-16 bg-gray-100">
+            <section className="py-10 md:py-16 bg-gray-100">
                 <div className="container mx-auto px-4 text-center text-xl">
-                    <h3 className="text-2xl text-blue-500 uppercase font-brandon">
+                    <h3 className="text-lg md:text-2xl text-blue-500 uppercase font-brandon">
                         Missão
                     </h3>
-                    <p className="py-2 text-gray-500">
+                    <p className="text-sm md:text-xl py-2 text-gray-500">
                         Nossa missão é satisfazer as necessidades de nossos estimados
                         clientes, preservando os fatores éticos e morais que são as
                         premissas básicas dos nossos negócios, destacados pela excelência no
@@ -59,14 +59,14 @@ export default function Sobre() {
                         meta principal sermos uma empresa diferenciada e inovadora, bem
                         como, uma grande referência no mercado imobiliário.
                     </p>
-                    <p className="py-2">
-                        <strong>Tenha Fé e PERSEVERE!</strong>
+                    <p className="text-base md:text-xl py-2">
+                        <strong>Tenha fé e PERSEVERE!</strong>
                     </p>
                 </div>
             </section>
-            <section className="py-20">
+            <section className="py-10 md:py-20">
                 <div className="container mx-auto px-4">
-                    <h3 className="text-center uppercase text-xl md:text-3xl mb-8 font-bold text-blue-500">
+                    <h3 className="text-center uppercase text-lg md:text-3xl mb-6 md:mb-8 font-bold text-blue-500">
                         SIGA-NOS NAS REDES SOCIAIS
                     </h3>
                     <div className="font-bold py-2 bg-pink md:text-lg flex text-blue-500 gap-6 md:gap-12 justify-center">
