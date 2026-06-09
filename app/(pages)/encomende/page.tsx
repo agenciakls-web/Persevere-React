@@ -76,8 +76,8 @@ const OrderForm = () => {
             <section className="py-8">
                 <div className="container mx-auto px-4">
                     <div className="flex justify-center">
-                        <div className="w-1/2">
-                            <h3 className="my-4 font-medium text-2xl font-reading text-blue-500">
+                        <div className="md:w-1/2">
+                            <h3 className="my-4 font-medium text-base md:text-2xl font-reading text-blue-500">
                                 Descreva as características do Imóvel que deseja
                             </h3>
                             <form onSubmit={handleSubmit} id="form-orders">
@@ -87,7 +87,7 @@ const OrderForm = () => {
                                         id="description"
                                         value={description}
                                         onChange={(e) => setDescription(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
                                         cols={30}
                                         rows={5}
                                         placeholder="Descreva as características aqui"
@@ -99,7 +99,7 @@ const OrderForm = () => {
                                         id="nome"
                                         value={nome}
                                         onChange={(e) => setNome(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
                                         placeholder="Nome"
                                     />
 
@@ -109,7 +109,7 @@ const OrderForm = () => {
                                         id="mobile"
                                         value={mobile}
                                         onChange={(e) => setMobile(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500"
+                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500"
                                         placeholder="Celular"
                                     />
 
@@ -119,7 +119,7 @@ const OrderForm = () => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500"
+                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500"
                                         placeholder="Telefone"
                                     />
 
@@ -129,14 +129,14 @@ const OrderForm = () => {
                                         id="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full py-3 px-4 rounded-lg text-lg font-medium border text-gray-500 md:col-span-2"
+                                        className="w-full py-3 px-4 rounded-lg text-sm md:text-lg font-medium border text-gray-500 md:col-span-2"
                                         placeholder="E-mail"
                                     />
 
                                     <input
                                         type="submit"
                                         value="Enviar"
-                                        className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full my-4 py-2 px-10 block text-base uppercase md:col-span-2"
+                                        className="bg-blue-500 text-gray-100 hover:bg-red-800 hover:text-gray-100 font-medium rounded-full py-2 px-16 block text-base uppercase md:col-span-2"
                                     />
                                 </div>
 
