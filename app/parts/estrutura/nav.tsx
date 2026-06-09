@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { ContentLinks } from "../dados/contentLinks";
 
 export default function MobileNav({
   isOpen,
@@ -11,70 +13,67 @@ export default function MobileNav({
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 }) {
+  // Bloqueia o scroll e força a página para o topo quando o menu abre
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      window.scrollTo(0, 0);
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <>
       {/* Overlay para fechar ao clicar fora */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-opacity-40 z-40 transition-opacity duration-300"
+          className="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300"
         ></div>
       )}
 
-      {/* Menu lateral */}
+      {/* Menu lateral com rolagem interna */}
       <nav
-        onClick={() => setIsOpen(false)}
-        className={`fixed top-0 h-screen w-96 bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open ${
+        className={`fixed top-0 h-screen w-full bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open ${
           isOpen ? "right-0" : "-right-full"
-        }`}
+        } overflow-y-auto max-h-screen`}
       >
         {/* Botão fechar */}
         <div
           onClick={() => setIsOpen(false)}
-          className="absolute top-0 right-0 px-4 py-2 my-2 mx-4 text-2xl rounded-md text-orange-500 transition duration-300 ease-in-out cursor-pointer"
+          className="absolute top-0 right-0 px-4 py-2 my-2 mx-4 text-2xl rounded-md text-orange-500 cursor-pointer"
         >
           <FontAwesomeIcon icon={faXmark} />
         </div>
 
+        {/* Conteúdo rolável */}
         <div className="block">
           {/* Institucional */}
           <div className="px-2 py-2">
             <h3 className="text-blue-400 text-left font-bold">Institucional</h3>
             <ul className="text-white">
               <li className="mx-2">
-                <Link
-                  href="/"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/" className="py-1 flex items-center hover:text-orange-500">
                   Início
                 </Link>
               </li>
               <li className="mx-2">
-                <Link
-                  href="/sobre"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/sobre" className="py-1 flex items-center hover:text-orange-500">
                   Quem Somos
                 </Link>
               </li>
               <li className="mx-2">
-                <Link
-                  href="/trabalhe"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/trabalhe" className="py-1 flex items-center hover:text-orange-500">
                   Trabalhe Conosco
                 </Link>
               </li>
-              {/*
-              <li className="mx-2">
-                <Link
-                  href="/avaliar"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
-                  Avaliar Corretor
-                </Link>
-              </li>
-              */}
             </ul>
           </div>
 
@@ -83,26 +82,17 @@ export default function MobileNav({
             <h3 className="text-blue-400 text-left font-bold">Imóveis</h3>
             <ul className="text-white">
               <li className="mx-2">
-                <Link
-                  href="/imoveis"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/imoveis" className="py-1 flex items-center hover:text-orange-500">
                   Venda
                 </Link>
               </li>
               <li className="mx-2">
-                <Link
-                  href="/imoveis"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/imoveis" className="py-1 flex items-center hover:text-orange-500">
                   Condomínios
                 </Link>
               </li>
               <li className="mx-2">
-                <Link
-                  href="/encomende"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/encomende" className="py-1 flex items-center hover:text-orange-500">
                   Encomende seu imóvel
                 </Link>
               </li>
@@ -114,26 +104,17 @@ export default function MobileNav({
             <h3 className="text-blue-400 text-left font-bold">Serviços</h3>
             <ul className="text-white ">
               <li className="mx-2">
-                <Link
-                  href="/cadastre"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/cadastre" className="py-1 flex items-center hover:text-orange-500">
                   Cadastre seu imóvel
                 </Link>
               </li>
               <li className="mx-2">
-                <Link
-                  href="/proposta"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/proposta" className="py-1 flex items-center hover:text-orange-500">
                   Enviar Proposta
                 </Link>
               </li>
               <li className="mx-2">
-                <Link
-                  href="/financiamento"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/financiamento" className="py-1 flex items-center hover:text-orange-500">
                   Financiamento
                 </Link>
               </li>
@@ -145,49 +126,30 @@ export default function MobileNav({
             <h3 className="text-blue-400 text-left font-bold">Contato</h3>
             <ul className="text-white">
               <li className="mx-2">
-                <Link
-                  href="/contato"
-                  className="py-1 flex items-center hover:text-orange-500"
-                >
+                <Link href="/contato" className="py-1 flex items-center hover:text-orange-500">
                   Fale Conosco
                 </Link>
               </li>
             </ul>
           </div>
-          {/* Contato */}
+
+          {/* Avaliação */}
           <div className="px-2 py-2">
-            <h3 className="text-blue-400 text-left font-bold">
-              Avalie a empresa
-            </h3>
+            <h3 className="text-blue-400 text-left font-bold">Avalie a empresa</h3>
             <ul className="text-white">
               <li>
                 <a
-                  href="https://g.page/r/CTv4ZYHj0FqvEAE/review"
+                  href={ContentLinks.avaliacao}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex justify-start items-center gap-2 hover:text-orange-500 transition-colors"
                 >
                   <div className="text-sm">
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      className="text-yellow-300"
-                    />
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      className="text-yellow-300"
-                    />
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      className="text-yellow-300"
-                    />
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      className="text-yellow-300"
-                    />
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      className="text-yellow-300"
-                    />
+                    <FontAwesomeIcon icon={faStar} className="text-yellow-300" />
+                    <FontAwesomeIcon icon={faStar} className="text-yellow-300" />
+                    <FontAwesomeIcon icon={faStar} className="text-yellow-300" />
+                    <FontAwesomeIcon icon={faStar} className="text-yellow-300" />
+                    <FontAwesomeIcon icon={faStar} className="text-yellow-300" />
                   </div>
                   Deixe sua avaliação
                 </a>
@@ -200,7 +162,7 @@ export default function MobileNav({
             <ul className="text-white flex justify-center items-center my-4 text-xl">
               <li className="m-2">
                 <a
-                  href="https://www.facebook.com/persevereimoveis"
+                  href={ContentLinks.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="menu-link main-menu-link"
@@ -210,7 +172,7 @@ export default function MobileNav({
               </li>
               <li className="m-2">
                 <a
-                  href="https://www.instagram.com/persevere.imoveis/"
+                  href={ContentLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="menu-link main-menu-link"
@@ -235,7 +197,7 @@ export default function MobileNav({
               </li>
               <li className="m-2">
                 <a
-                  href="mailto:contato@persevere.com.br"
+                  href={ContentLinks.email}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="menu-link main-menu-link"

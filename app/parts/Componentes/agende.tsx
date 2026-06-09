@@ -9,7 +9,7 @@ export function Agende () {
             </div>
             <div className="lg:w-5/12">
                 <a href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!" className="conversion" target="_blank">
-                    <button type="button" className="bg-blue-500 hover:bg-blue-600 text-gray-100 font-medium rounded-full my-4 py-3 px-16 block text-base md:text-lg mx-auto uppercase">Solicite um orçamento</button>
+                    <button type="button" className="bg-blue-500 hover:bg-blue-600 text-gray-100 font-medium rounded-full my-4 py-2 px-16 block text-base md:text-lg mx-auto uppercase">Solicite um orçamento</button>
                 </a>
             </div>
         </div>

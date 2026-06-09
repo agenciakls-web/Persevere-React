@@ -14,7 +14,7 @@ export default function PesquisaImovel() {
                 <div className="text-left md:text-right text-sm mx-2 md:mx-0 md:text-xl uppercase font-semibold text-blue-500">
                     CJ: 10624
                 </div>
-                <h3 className="text-blue-500 text-2xl md:text-3xl uppercase pb-8 font-medium text-center">
+                <h3 className="text-blue-500 text-xl md:text-3xl uppercase py-3 font-medium text-center">
                     Pesquisar imóvel
                 </h3>
                 <ul className="grid justify-center grid-cols-2 md:grid-cols-3 lg:grid-cols-3 px-4 md:px-16">
@@ -50,7 +50,7 @@ export default function PesquisaImovel() {
                                 <div>
                                     <select
                                         name="TipoImovel"
-                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-lg font-medium border text-blue-500 border-blue-500"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     >
                                         <option value="">Tipo</option>
                                         {/* Exemplo de opções estáticas */}
@@ -62,13 +62,13 @@ export default function PesquisaImovel() {
                                     <input
                                         name="pesquisa"
                                         placeholder="Digite condomínio, região, bairro ou cidade"
-                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-lg font-medium border text-blue-500 border-blue-500"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     />
                                 </div>
                                 <div>
                                     <select
                                         name="PrecoVenda"
-                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-lg font-medium border text-blue-500 border-blue-500"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     >
                                         <option value="">Preço de compra</option>
                                         <option value="1">Até 200.000</option>
@@ -82,7 +82,7 @@ export default function PesquisaImovel() {
                                 <div>
                                     <select
                                         name="quartos"
-                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-lg font-medium border text-blue-500 border-blue-500"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     >
                                         <option value="">Mínimo de Quartos</option>
                                         <option value="1">1 ou +</option>
@@ -95,20 +95,20 @@ export default function PesquisaImovel() {
                                 <div>
                                     <select
                                         name="condominio"
-                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-lg font-medium border text-blue-500 border-blue-500"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     >
                                         <option value="">Em condomínio fechado</option>
                                         <option value="1">Sim</option>
                                         <option value="0">Não</option>
                                     </select>
                                 </div>
-                                <div>
+                                <div className="flex items-center justify-center md:justify-start">
                                     <input type="hidden" name="action" value="comprar" />
                                     <button
                                         type="submit"
-                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
+                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-2 px-16 block text-sm md:text-lg uppercase"
                                     >
-                                        <i className="fa fa-search mx-2"></i>
+                                        <i className="fa fa-search"></i>
                                         Buscar
                                     </button>
                                 </div>
@@ -124,16 +124,16 @@ export default function PesquisaImovel() {
                                         type="text"
                                         name="CodigoImovel"
                                         placeholder="Digite o código do imóvel"
-                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-lg font-medium border text-blue-500 border-blue-500"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     />
                                 </div>
-                                <div>
+                                <div className="flex items-center justify-center md:justify-start">
                                     <input type="hidden" name="action" value="codigo" />
                                     <button
                                         type="submit"
-                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-3 px-16 block text-lg uppercase"
+                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-2 px-16 block text-sm md:text-lg uppercase"
                                     >
-                                        <i className="fa fa-search mx-2"></i>
+                                        <i className="fa fa-search"></i>
                                         Buscar
                                     </button>
                                 </div>

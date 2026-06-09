@@ -6,30 +6,31 @@ export default function Categoria() {
     return (
         <section className="my-10">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-5 gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                     <Link href="/imoveis?action=comprar&TipoImovel=Casa+Padrao">
-                        <div className="bg-black bg-[url(/img/categoria-2.png)] bg-cover h-42 rounded-xl text-center flex items-center justify-center text-white font-brandon uppercase text-base 2xl:text-lg">
+                        <div className="bg-black bg-[url(/img/categoria-2.png)] bg-cover h-36 sm:h-64 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-base md:text-2xl">
                             Casas
                         </div>
                     </Link>
                     <Link href="/imoveis?action=comprar&TipoImovel=Apartamento+Padrao">
-                        <div className="bg-black bg-[url(/img/categoria-3.png)] bg-cover h-42 rounded-xl text-center flex items-center justify-center text-white font-brandon uppercase text-base 2xl:text-lg">
+                        <div className="bg-black bg-[url(/img/categoria-3.png)] bg-cover h-36 sm:h-64 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-base md:text-2xl">
                             Apartamentos
                         </div>
                     </Link>
                     <Link href="/imoveis?action=comprar&TipoImovel=Casa+de+Condominio">
-                        <div className="bg-black bg-[url(/img/categoria-4.png)] bg-cover h-42 rounded-xl text-center flex items-center justify-center text-white font-brandon uppercase text-base 2xl:text-lg">
+                        <div className="bg-black bg-[url(/img/categoria-4.png)] bg-cover h-36 sm:h-64 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-base md:text-2xl">
                             Casa de Condomínio
                         </div>
                     </Link>
                     <Link href="/imoveis?action=comprar&TipoImovel=Terreno+Padrao">
-                        <div className="bg-black bg-[url(/img/categoria-1.png)] bg-cover h-42 rounded-xl text-center flex items-center justify-center text-white font-brandon uppercase text-base 2xl:text-lg">
+                        <div className="bg-black bg-[url(/img/categoria-1.png)] bg-cover h-36 sm:h-64 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-base md:text-2xl">
                             Terrenos
                         </div>
                     </Link>
                     <Link href="/imoveis?action=comprar&TipoImovel=Loteamento%2FCondominio">
-                        <div className="bg-black bg-[url(/img/categoria-4.png)] bg-cover h-42 rounded-xl text-center flex items-center justify-center text-white font-brandon uppercase text-base 2xl:text-lg">
-                            Loteamento/Condomínio
+                        <div className="bg-black bg-[url(/img/categoria-4.png)] bg-cover h-36 sm:h-64 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-base md:text-2xl">
+                            Loteamento/ <br />
+                            Condomínio
                         </div>
                     </Link>
                 </div>

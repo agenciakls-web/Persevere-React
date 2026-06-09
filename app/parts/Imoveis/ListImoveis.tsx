@@ -64,6 +64,7 @@ export default function ListImoveis() {
 
     // Sincroniza o estado interno se a URL do navegador mudar
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setFormFilters({
             pesquisa: pesquisaAtual,
             TipoImovel: tipoAtual,
@@ -117,7 +118,7 @@ export default function ListImoveis() {
                     }
                 });
 
-                let imoveis: ImovelType[] = response.data.resultado || response.data;
+                const imoveis: ImovelType[] = response.data.resultado || response.data;
 
                 // Ordenação dinâmica feita no Front-end (Garante o funcionamento mesmo se o back não tiver pronto)
                 imoveis.sort((a, b) => {

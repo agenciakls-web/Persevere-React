@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { ContentLinks } from "../dados/contentLinks";
 
 export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => void }) {
     return (
@@ -22,21 +23,21 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
                     </div>
                     <div className="flex items-center">
                         <a
-                            href="https://www.instagram.com/persevere.imoveis/"
+                            href={ContentLinks.instagram}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <button className="flex justify-center items-center mx-2 py-3 rounded-full text-lg text-blue-500 font-brandon uppercase">
+                            <button className="flex justify-center items-center mx-1 md:mx-2 py-3 rounded-full text-lg text-blue-500 font-brandon uppercase">
                                 <FontAwesomeIcon icon={faInstagram} className=" px-2 text-2xl" />
                                 <span className="hidden lg:block">Instagram</span>
                             </button>
                         </a>
                         <a
-                            href="https://www.facebook.com/persevereimoveis"
+                            href={ContentLinks.facebook}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <button className="flex justify-center items-center mx-2 py-3 rounded-full text-lg text-blue-500 font-brandon uppercase">
+                            <button className="flex justify-center items-center mx-1 md:mx-2 py-3 rounded-full text-lg text-blue-500 font-brandon uppercase">
                                 <FontAwesomeIcon icon={faFacebook} className=" px-2 text-2xl" />
                                 <span className="hidden lg:block">Facebook</span>
                             </button>
@@ -46,13 +47,13 @@ export default function Header({ setIsOpen }: { setIsOpen: (open: boolean) => vo
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <button className="flex justify-center items-center mx-4 bg-blue-500 py-3 px-4 md:px-8 rounded-full text-lg text-white font-brandon uppercase">
+                            <button className="flex justify-center items-center mx-4 bg-blue-500 p-2 md:px-8 rounded-full text-lg text-white font-brandon uppercase">
                                 <Image
                                     src="/img/whatsapp.png"
                                     width={24}
                                     height={24}
                                     alt="WhatsApp"
-                                    className="w-6 mr-4"
+                                    className="w-6 mx-2"
                                 />
                                 <span className="hidden lg:block">(21) 99125-7878</span>
                             </button>

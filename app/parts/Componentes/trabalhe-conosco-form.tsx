@@ -1,4 +1,5 @@
-{/* 
+{/*  PAGE COMENTADA PARA EVITAR ERROS DE ROTEAMENTO
+    
     "use client";
     
     import HeaderTitle from "@/app/parts/estrutura/headerTitle";

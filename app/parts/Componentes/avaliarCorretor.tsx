@@ -1,5 +1,5 @@
 {
-  /*
+  /* PAGE COMENTADA PARA EVITAR ERROS DE ROTEAMENTO
     "use client";
 
 import React, { useState } from "react";
