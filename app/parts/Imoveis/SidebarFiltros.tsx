@@ -1,9 +1,5 @@
 'use client';
 
-type TipoImovel = {
-    TipoImovel: string;
-};
-
 interface FormFiltersType {
     pesquisa: string;
     TipoImovel: string;

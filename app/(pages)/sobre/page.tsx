@@ -14,7 +14,7 @@ export default function Sobre() {
                             <Image
                                 alt=""
                                 src="/img/loja.jpg"
-                                className="w-full mx-auto lazyloaded aspect-16/9 object-cover rounded-xl"
+                                className="w-full mx-auto lazyloaded aspect-video object-cover rounded-xl"
                                 width={500}
                                 height={300}
                             />
