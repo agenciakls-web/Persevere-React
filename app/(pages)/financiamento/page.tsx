@@ -15,7 +15,7 @@ export default function Financiamento() {
                             <ul className="flex justify-center my-2">
                                 <li className="mx-2">
                                     <a
-                                        href="https://ww3.itau.com.br/imobline/pre/simuladores_new/index.aspx?IDENT_bkl=pre&amp;IMOB_tipobkl="
+                                        href="https://www.itau.com.br/emprestimos-financiamentos/credito-imobiliario?gclsrc=aw.ds&gad_source=1&gad_campaignid=23374170640&gbraid=0AAAAAob3x5QdIXGKAsKAthXNzQ1GZZubT&gclid=CjwKCAjwuanRBhBSEiwAY5y6V1itM-PibqTmdLkwU72_-yTdGzGhPsGvrm5deBZ_SnDWTeY9TzenFhoCLYAQAvD_BwE"
                                         target="_blank"
                                     >
                                         <Image
@@ -29,7 +29,7 @@ export default function Financiamento() {
                                 </li>
                                 <li className="mx-2">
                                     <a
-                                        href="https://www.webcasas.com.br/webcasas/?headerandfooter/#/dados-pessoais"
+                                        href="https://www.negociosimobiliarios.santander.com.br/negociosimobiliarios/#/dados-pessoais?goal=3&ic=lpcreditoimob"
                                         target="_blank"
                                     >
                                         <Image
@@ -43,7 +43,7 @@ export default function Financiamento() {
                                 </li>
                                 <li className="mx-2">
                                     <a
-                                        href="https://www42.bb.com.br/portalbb/imobiliario/creditoimobiliario/simular,802,2250,2250.bbx"
+                                        href="https://www.bb.com.br/site/pra-voce/financiamentos/financiamento-imobiliario/"
                                         target="_blank"
                                     >
                                         <Image
@@ -57,7 +57,7 @@ export default function Financiamento() {
                                 </li>
                                 <li className="mx-2">
                                     <a
-                                        href="https://banco.bradesco/html/classNameic/produtos-servicos/emprestimo-e-financiamento/encontre-seu-credito/simuladores-imoveis.shtm#box1-comprar"
+                                        href="https://banco.bradesco/html/classic/produtos-servicos/emprestimo-e-financiamento/encontre-seu-credito/simuladores-imoveis.shtm"
                                         target="_blank"
                                     >
                                         <Image
@@ -71,7 +71,7 @@ export default function Financiamento() {
                                 </li>
                                 <li className="mx-2">
                                     <a
-                                        href="http://www8.caixa.gov.br/siopiinternet/simulaOperacaoInternet.do?method=inicializarCasoUso"
+                                        href="https://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=inicializarCasoUso&isVoltar=true"
                                         target="_blank"
                                     >
                                         <Image
