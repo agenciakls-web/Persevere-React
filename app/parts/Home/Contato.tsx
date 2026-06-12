@@ -20,7 +20,7 @@ export default function Contato() {
                     {/* Botão */}
                     <div className="lg:w-5/12">
                         <a
-                            href={ContentLinks.whatsapp}
+                            href="/contato"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="conversion"
