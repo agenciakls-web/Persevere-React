@@ -24,7 +24,7 @@ export default function MobileNav({
 
       {/* Menu lateral com rolagem interna */}
       <nav
-        className={`fixed top-0 h-screen w-full md:w-96 bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open ${
+        className={`fixed top-0 h-screen w-80 md:w-96 bg-blue-500 pt-2 px-4 z-50 text-center text-base transition-all duration-300 ease-in-out font-open ${
           isOpen ? "right-0" : "-right-full"
         } overflow-hidden md:overflow-auto max-h-screen`}
       >

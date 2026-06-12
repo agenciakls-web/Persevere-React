@@ -20,7 +20,7 @@ export default function Contato() {
                     {/* Botão */}
                     <div className="lg:w-5/12">
                         <a
-                            href="/contato"
+                            href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="conversion"

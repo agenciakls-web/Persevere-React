@@ -521,7 +521,7 @@ export default function landingPage() {
             {/* Botão */}
             <div className="lg:w-5/12">
               <a
-                href={ContentLinks.whatsapp}
+                href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="conversion"

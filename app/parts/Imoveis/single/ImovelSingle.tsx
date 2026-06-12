@@ -279,7 +279,7 @@ export default function ImovelSingle({ initialSlug }: { initialSlug: string }) {
                                     )}
                                 </div>
 
-                                <Link href={ContentLinks.whatsapp} target="_blank">
+                                <Link href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!" target="_blank">
                                     <button
                                         type="button"
                                         className="bg-orange-500 hover:bg-orange-600 text-gray-100 font-medium rounded-full my-4 py-2 block md:px-8 2xl:px-16 text-xs md:text-base 2xl:text-lg mx-auto uppercase w-4/5 transition"

@@ -290,7 +290,7 @@ export default function ImovelPage({ imovel }: { imovel: ImovelType}) {
                      */}
 
                     <Link
-                      href={ContentLinks.whatsapp}
+                      href="https://wa.me/5521991257878?text=Ol%C3%A1,%20vim%20pelo%20site!"
                       target="_blank"
                     >
                       <button className="mx-auto my-4 block w-4/5 rounded-full bg-orange-500 hover:bg-orange-600 md:px-8 2xl:px-16 py-2 text-xs md:text-base 2xl:text-lg font-medium uppercase text-gray-100 ">
