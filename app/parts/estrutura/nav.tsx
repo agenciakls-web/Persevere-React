@@ -43,17 +43,17 @@ export default function MobileNav({
             <h3 className="text-blue-400 text-left font-bold">Institucional</h3>
             <ul className="text-white">
               <li className="mx-2">
-                <Link href="/" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Início
                 </Link>
               </li>
               <li className="mx-2">
-                <Link href="/sobre" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/sobre" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Quem Somos
                 </Link>
               </li>
               <li className="mx-2">
-                <Link href="/trabalhe" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/trabalhe" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Trabalhe Conosco
                 </Link>
               </li>
@@ -65,20 +65,21 @@ export default function MobileNav({
             <h3 className="text-blue-400 text-left font-bold">Imóveis</h3>
             <ul className="text-white">
               <li className="mx-2">
-                <Link href="/imoveis" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/imoveis" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Venda
                 </Link>
               </li>
               <li className="mx-2">
                 <Link
                   href="/imoveis?action=comprar&TipoImovel=Casa+de+Condominio"
+                  onClick={() => setIsOpen(false)}
                   className="py-1 flex items-center hover:text-orange-500"
                 >
                   Condomínios
                 </Link>
               </li>
               <li className="mx-2">
-                <Link href="/encomende" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/encomende" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Encomende seu imóvel
                 </Link>
               </li>
@@ -90,17 +91,17 @@ export default function MobileNav({
             <h3 className="text-blue-400 text-left font-bold">Serviços</h3>
             <ul className="text-white ">
               <li className="mx-2">
-                <Link href="/cadastre" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/cadastre" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Cadastre seu imóvel
                 </Link>
               </li>
               <li className="mx-2">
-                <Link href="/proposta" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/proposta" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Enviar Proposta
                 </Link>
               </li>
               <li className="mx-2">
-                <Link href="/financiamento" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/financiamento" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Financiamento
                 </Link>
               </li>
@@ -112,7 +113,7 @@ export default function MobileNav({
             <h3 className="text-blue-400 text-left font-bold">Contato</h3>
             <ul className="text-white">
               <li className="mx-2">
-                <Link href="/contato" className="py-1 flex items-center hover:text-orange-500">
+                <Link href="/contato" onClick={() => setIsOpen(false)} className="py-1 flex items-center hover:text-orange-500">
                   Fale Conosco
                 </Link>
               </li>
@@ -128,6 +129,7 @@ export default function MobileNav({
                   href={ContentLinks.avaliacao}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
                   className="flex justify-start items-center gap-2 hover:text-orange-500 transition-colors"
                 >
                   <div className="text-sm">
@@ -151,6 +153,7 @@ export default function MobileNav({
                   href={ContentLinks.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
                   className="menu-link main-menu-link"
                 >
                   <i className="fab fa-facebook-square"></i>
@@ -161,6 +164,7 @@ export default function MobileNav({
                   href={ContentLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
                   className="menu-link main-menu-link"
                 >
                   <i className="fab fa-instagram"></i>
@@ -171,13 +175,14 @@ export default function MobileNav({
                   href="https://wa.me/5521991257878?text=Olá,%20vim%20pelo%20site!"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
                   className="menu-link main-menu-link"
                 >
                   <i className="fab fa-whatsapp"></i>
                 </a>
               </li>
               <li className="m-2">
-                <Link href="/sobre" className="menu-link main-menu-link">
+                <Link href="/sobre" onClick={() => setIsOpen(false)} className="menu-link main-menu-link">
                   <i className="fas fa-phone"></i>
                 </Link>
               </li>
@@ -186,6 +191,7 @@ export default function MobileNav({
                   href={ContentLinks.email}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
                   className="menu-link main-menu-link"
                 >
                   <i className="far fa-envelope"></i>
