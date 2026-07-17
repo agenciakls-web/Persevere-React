@@ -21,6 +21,7 @@ interface FormFiltersType {
     action: string;
     orderBy: string;
     orderDirection: string;
+    Cidade: string;
 }
 
 function ListImoveisContent() {
@@ -36,6 +37,7 @@ function ListImoveisContent() {
     const quartosAtual = searchParams.get('quartos') || '';
     const condominioAtual = searchParams.get('condominio') || '';
     const codigoImovelAtual = searchParams.get('CodigoImovel') || '';
+    const cidadeAtual = searchParams.get('Cidade') || '';
     const actionAtual = searchParams.get('action') || 'comprar';
     const orderByAtual = searchParams.get('orderBy') || 'PrecoVenda';
     const orderDirectionAtual = searchParams.get('orderDirection') || 'asc';
@@ -54,6 +56,7 @@ function ListImoveisContent() {
         quartos: quartosAtual,
         condominio: condominioAtual,
         CodigoImovel: codigoImovelAtual,
+        Cidade: cidadeAtual,
         action: actionAtual,
         orderBy: orderByAtual,
         orderDirection: orderDirectionAtual,
@@ -68,11 +71,12 @@ function ListImoveisContent() {
             quartos: quartosAtual,
             condominio: condominioAtual,
             CodigoImovel: codigoImovelAtual,
+            Cidade: cidadeAtual,
             action: actionAtual,
             orderBy: orderByAtual,
             orderDirection: orderDirectionAtual,
         });
-    }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual, orderByAtual, orderDirectionAtual]);
+    }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, cidadeAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
     // Busca os tipos distintos cadastrados no banco de dados
     useEffect(() => {
@@ -107,6 +111,7 @@ function ListImoveisContent() {
                         quartos: quartosAtual,
                         condominio: condominioAtual,
                         CodigoImovel: codigoImovelAtual,
+                        Cidade: cidadeAtual,
                         action: actionAtual,
                         orderBy: orderByAtual,
                         orderDirection: orderDirectionAtual,
@@ -173,6 +178,7 @@ function ListImoveisContent() {
         if (novosFiltros.quartos) params.set('quartos', novosFiltros.quartos);
         if (novosFiltros.condominio) params.set('condominio', novosFiltros.condominio);
         if (novosFiltros.CodigoImovel) params.set('CodigoImovel', novosFiltros.CodigoImovel);
+        if (novosFiltros.Cidade) params.set('Cidade', novosFiltros.Cidade);
         if (novosFiltros.orderBy) params.set('orderBy', novosFiltros.orderBy);
         if (novosFiltros.orderDirection) params.set('orderDirection', novosFiltros.orderDirection);
 

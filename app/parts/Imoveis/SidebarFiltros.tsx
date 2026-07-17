@@ -11,6 +11,7 @@ interface FormFiltersType {
     quartos: string;
     condominio: string;
     CodigoImovel: string;
+    Cidade: string;
     action: string;
     orderBy: string;
     orderDirection: string;
@@ -48,6 +49,7 @@ export default function SidebarFiltros({
                                 quartos: '',
                                 condominio: '',
                                 CodigoImovel: '',
+                                Cidade: '',
                                 action: 'comprar',
                                 orderBy: formFilters.orderBy,
                                 orderDirection: formFilters.orderDirection,
@@ -55,11 +57,10 @@ export default function SidebarFiltros({
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
                         }}
-                        className={`w-1/2 rounded-lg py-2.5 text-xs md:text-sm font-bold uppercase transition ${
-                            formFilters.action === 'comprar'
+                        className={`w-1/2 rounded-lg py-2.5 text-xs md:text-sm font-bold uppercase transition ${formFilters.action === 'comprar'
                                 ? 'bg-blue-500 text-white shadow'
                                 : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                        }`}
+                            }`}
                     >
                         Pesquisa Geral
                     </button>
@@ -73,6 +74,7 @@ export default function SidebarFiltros({
                                 quartos: '',
                                 condominio: '',
                                 CodigoImovel: '',
+                                Cidade: '',
                                 action: 'codigo',
                                 orderBy: formFilters.orderBy,
                                 orderDirection: formFilters.orderDirection,
@@ -80,11 +82,10 @@ export default function SidebarFiltros({
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
                         }}
-                        className={`w-1/2 rounded-lg py-2.5 text-xs md:text-sm font-bold uppercase transition ${
-                            formFilters.action === 'codigo'
+                        className={`w-1/2 rounded-lg py-2.5 text-xs md:text-sm font-bold uppercase transition ${formFilters.action === 'codigo'
                                 ? 'bg-orange-500 text-white shadow'
                                 : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                        }`}
+                            }`}
                     >
                         Por Código
                     </button>
@@ -135,6 +136,20 @@ export default function SidebarFiltros({
                                     value={formFilters.pesquisa}
                                     onChange={handleChange}
                                     className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                />
+                            </div>
+                            {/* CAMPO NOVO: PESQUISA POR CIDADE */}
+                            <div>
+                                <h4 className="text-sm md:text-base my-2 font-bold uppercase text-blue-500">
+                                    Cidade
+                                </h4>
+                                <input
+                                    type="text"
+                                    name="Cidade"
+                                    placeholder="Ex: Rio de Janeiro, São Paulo..."
+                                    value={formFilters.Cidade || ''}
+                                    onChange={handleChange}
+                                    className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                 />
                             </div>
 
