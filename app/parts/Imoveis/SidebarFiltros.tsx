@@ -21,6 +21,7 @@ interface SidebarFiltrosProps {
     formFilters: FormFiltersType;
     setFormFilters: React.Dispatch<React.SetStateAction<FormFiltersType>>;
     tiposDisponiveis: TipoImovel[];
+    cidadesDisponiveis: { Cidade: string }[];
     aplicarFiltros: (novosFiltros?: FormFiltersType, novaPagina?: number) => void;
     handleSubmit: (e: React.FormEvent) => void;
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
@@ -30,6 +31,7 @@ export default function SidebarFiltros({
     formFilters,
     setFormFilters,
     tiposDisponiveis,
+    cidadesDisponiveis,
     aplicarFiltros,
     handleSubmit,
     handleChange,
@@ -138,19 +140,52 @@ export default function SidebarFiltros({
                                     className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
                                 />
                             </div>
-                            {/* CAMPO NOVO: PESQUISA POR CIDADE */}
+                            {/* CIDADES DINÂMICAS DO BANCO */}
                             <div>
                                 <h4 className="text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Cidade
                                 </h4>
-                                <input
-                                    type="text"
+                                <div className="hidden md:block space-y-1">
+                                    <label className="flex items-center py-1 cursor-pointer hover:text-blue-600 font-medium text-gray-700">
+                                        <input
+                                            type="radio"
+                                            name="Cidade"
+                                            value=""
+                                            checked={formFilters.Cidade === ""}
+                                            onChange={handleChange}
+                                            className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400"
+                                        />
+                                        Todas as cidades
+                                    </label>
+
+                                    {cidadesDisponiveis.map((item, index) => (
+                                        <label key={index} className="flex items-center py-1 cursor-pointer hover:text-blue-600 font-medium text-gray-700">
+                                            <input
+                                                type="radio"
+                                                name="Cidade"
+                                                value={item.Cidade}
+                                                checked={formFilters.Cidade === item.Cidade}
+                                                onChange={handleChange}
+                                                className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400"
+                                            />
+                                            {item.Cidade}
+                                        </label>
+                                    ))}
+                                </div>
+
+                                <select
                                     name="Cidade"
-                                    placeholder="Ex: Rio de Janeiro, São Paulo..."
-                                    value={formFilters.Cidade || ''}
+                                    value={formFilters.Cidade}
                                     onChange={handleChange}
-                                    className="w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
-                                />
+                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                >
+                                    <option value="">Todas as cidades</option>
+                                    {cidadesDisponiveis.map((item, index) => (
+                                        <option key={index} value={item.Cidade}>
+                                            {item.Cidade}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
 
                             {/* TIPO DINÂMICO DO BANCO */}

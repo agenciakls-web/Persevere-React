@@ -11,6 +11,10 @@ type TipoImovel = {
     TipoImovel: string;
 };
 
+type CidadeImovel = {
+    Cidade: string;
+};
+
 interface FormFiltersType {
     pesquisa: string;
     TipoImovel: string;
@@ -47,6 +51,7 @@ function ListImoveisContent() {
     const [totalPaginas, setTotalPaginas] = useState(1);
     const [loading, setLoading] = useState(true);
     const [tiposDisponiveis, setTiposDisponiveis] = useState<TipoImovel[]>([]);
+    const [cidadesDisponiveis, setCidadesDisponiveis] = useState<CidadeImovel[]>([]);
 
     // Objeto central do estado do formulário
     const [formFilters, setFormFilters] = useState<FormFiltersType>({
@@ -82,8 +87,14 @@ function ListImoveisContent() {
     useEffect(() => {
         async function carregarTipos() {
             try {
-                const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/tipos');
-                setTiposDisponiveis(response.data);
+                // Busca tipos e cidades em paralelo
+                const [resTipos, resCidades] = await Promise.all([
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/tipos'),
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/cidades')
+                ]);
+                
+                setTiposDisponiveis(resTipos.data);
+                setCidadesDisponiveis(resCidades.data); // <-- Guarda no estado
             } catch (error) {
                 console.error("Erro ao carregar os tipos de imóveis do banco:", error);
             }
@@ -197,6 +208,7 @@ function ListImoveisContent() {
                     formFilters={formFilters}
                     setFormFilters={setFormFilters}
                     tiposDisponiveis={tiposDisponiveis}
+                    cidadesDisponiveis={cidadesDisponiveis} // <-- Adicionado aqui
                     aplicarFiltros={aplicarFiltros}
                     handleSubmit={handleSubmit}
                     handleChange={handleChange}
