@@ -1,12 +1,41 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+type TipoImovel = {
+    TipoImovel: string;
+};
+
+type CidadeImovel = {
+    Cidade: string;
+};
 
 export default function PesquisaImovel() {
     const [activeTab, setActiveTab] = useState("tab-1");
+    const [tiposDisponiveis, setTiposDisponiveis] = useState<TipoImovel[]>([]);
+    const [cidadesDisponiveis, setCidadesDisponiveis] = useState<CidadeImovel[]>([]);
     
     const handleTabClick = (tabId: string) => {
         setActiveTab(tabId);
     };
+
+    // Carrega os dados dinâmicos do banco ao montar o componente
+    useEffect(() => {
+        async function carregarDadosFiltros() {
+            try {
+                const [resTipos, resCidades] = await Promise.all([
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/tipos'),
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/cidades')
+                ]);
+                
+                setTiposDisponiveis(resTipos.data);
+                setCidadesDisponiveis(resCidades.data);
+            } catch (error) {
+                console.error("Erro ao carregar dados dos filtros:", error);
+            }
+        }
+        carregarDadosFiltros();
+    }, []);
 
     return (
         <section className="py-10 bg-gray-100">
@@ -47,24 +76,46 @@ export default function PesquisaImovel() {
                     {activeTab === "tab-1" && (
                         <form action="/imoveis" method="GET">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                                {/* TIPO DE IMÓVEL DINÂMICO */}
                                 <div>
                                     <select
                                         name="TipoImovel"
                                         className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     >
                                         <option value="">Tipo</option>
-                                        {/* Exemplo de opções estáticas */}
-                                        <option value="Casa">Casa</option>
-                                        <option value="Apartamento">Apartamento</option>
+                                        {tiposDisponiveis.map((item, index) => (
+                                            <option key={index} value={item.TipoImovel}>
+                                                {item.TipoImovel}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
+
+                                {/* PESQUISA TEXTUAL */}
                                 <div>
                                     <input
                                         name="pesquisa"
-                                        placeholder="Digite condomínio, região, bairro ou cidade"
+                                        placeholder="Digite condomínio, região, bairro..."
                                         className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                     />
                                 </div>
+
+                                {/* CIDADE DINÂMICA (Adicionada após a pesquisa) */}
+                                <div>
+                                    <select
+                                        name="Cidade"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    >
+                                        <option value="">Cidade</option>
+                                        {cidadesDisponiveis.map((item, index) => (
+                                            <option key={index} value={item.Cidade}>
+                                                {item.Cidade}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* PREÇO VENDA */}
                                 <div>
                                     <select
                                         name="PrecoVenda"
@@ -79,6 +130,8 @@ export default function PesquisaImovel() {
                                         <option value="6">Acima de 1.000.000</option>
                                     </select>
                                 </div>
+
+                                {/* QUARTOS */}
                                 <div>
                                     <select
                                         name="quartos"
@@ -92,16 +145,8 @@ export default function PesquisaImovel() {
                                         <option value="5">5 ou +</option>
                                     </select>
                                 </div>
-                                <div>
-                                    <select
-                                        name="condominio"
-                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
-                                    >
-                                        <option value="">Em condomínio fechado</option>
-                                        <option value="1">Sim</option>
-                                        <option value="0">Não</option>
-                                    </select>
-                                </div>
+
+                                {/* BOTÃO BUSCAR */}
                                 <div className="flex items-center justify-center md:justify-start">
                                     <input type="hidden" name="action" value="comprar" />
                                     <button
