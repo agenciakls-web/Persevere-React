@@ -1,5 +1,9 @@
 'use client';
 
+type TipoImovel = {
+    TipoImovel: string;
+};
+
 interface FormFiltersType {
     pesquisa: string;
     TipoImovel: string;
@@ -8,13 +12,15 @@ interface FormFiltersType {
     condominio: string;
     CodigoImovel: string;
     action: string;
+    orderBy: string;
+    orderDirection: string;
 }
 
 interface SidebarFiltrosProps {
     formFilters: FormFiltersType;
-    setFormFilters: React.Dispatch<React.SetStateAction<FormFiltersType>> | React.Dispatch<React.SetStateAction<any>>;
-    tiposDisponiveis: any[]; // ou o tipo exato que você já usa
-    aplicarFiltros: (novosFiltros?: any, novaPagina?: number) => void; // flexibilizado para evitar incompatibilidade
+    setFormFilters: React.Dispatch<React.SetStateAction<FormFiltersType>>;
+    tiposDisponiveis: TipoImovel[];
+    aplicarFiltros: (novosFiltros?: FormFiltersType, novaPagina?: number) => void;
     handleSubmit: (e: React.FormEvent) => void;
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
@@ -35,14 +41,16 @@ export default function SidebarFiltros({
                     <button
                         type="button"
                         onClick={() => {
-                            const atualizado = {
+                            const atualizado: FormFiltersType = {
                                 pesquisa: '',
                                 TipoImovel: '',
                                 PrecoVenda: '',
                                 quartos: '',
                                 condominio: '',
                                 CodigoImovel: '',
-                                action: 'comprar'
+                                action: 'comprar',
+                                orderBy: formFilters.orderBy,
+                                orderDirection: formFilters.orderDirection,
                             };
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
@@ -58,14 +66,16 @@ export default function SidebarFiltros({
                     <button
                         type="button"
                         onClick={() => {
-                            const atualizado = {
+                            const atualizado: FormFiltersType = {
                                 pesquisa: '',
                                 TipoImovel: '',
                                 PrecoVenda: '',
                                 quartos: '',
                                 condominio: '',
                                 CodigoImovel: '',
-                                action: 'codigo'
+                                action: 'codigo',
+                                orderBy: formFilters.orderBy,
+                                orderDirection: formFilters.orderDirection,
                             };
                             setFormFilters(atualizado);
                             aplicarFiltros(atualizado, 1);
@@ -82,6 +92,8 @@ export default function SidebarFiltros({
 
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <input type="hidden" name="action" value={formFilters.action} />
+                    <input type="hidden" name="orderBy" value={formFilters.orderBy} />
+                    <input type="hidden" name="orderDirection" value={formFilters.orderDirection} />
 
                     {/* VISÃO: BUSCA POR CÓDIGO */}
                     {formFilters.action === 'codigo' && (
@@ -96,10 +108,8 @@ export default function SidebarFiltros({
                                     placeholder="Ex: PSI022"
                                     value={formFilters.CodigoImovel}
                                     onChange={handleChange}
-                                    className="w-full rounded-lg border border-orange-500  py-3 px-2 md:px-4 text-sm md:text-lg font-medium text-orange-600 placeholder-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 "
+                                    className="w-full rounded-lg border border-orange-500 py-3 px-2 md:px-4 text-sm md:text-lg font-medium text-orange-600 placeholder-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                                 />
-
-
                             </div>
                             <button
                                 type="submit"
@@ -115,7 +125,7 @@ export default function SidebarFiltros({
                         <div className="space-y-6">
                             {/* PESQUISA GERAL */}
                             <div>
-                                <h4 className= " text-sm md:text-base my-2 font-bold uppercase text-blue-500">
+                                <h4 className="text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Termo de pesquisa
                                 </h4>
                                 <input
@@ -130,7 +140,7 @@ export default function SidebarFiltros({
 
                             {/* TIPO DINÂMICO DO BANCO */}
                             <div>
-                                <h4 className= " text-sm md:text-base my-2 font-bold uppercase text-blue-500">
+                                <h4 className="text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Tipo de Imóvel
                                 </h4>
                                 <div className="hidden md:block space-y-1">
@@ -165,7 +175,7 @@ export default function SidebarFiltros({
                                     name="TipoImovel"
                                     value={formFilters.TipoImovel}
                                     onChange={handleChange}
-                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                 >
                                     <option value="">Todos os tipos</option>
                                     {tiposDisponiveis.map((tipo, index) => (
@@ -208,7 +218,7 @@ export default function SidebarFiltros({
                                     name="PrecoVenda"
                                     value={formFilters.PrecoVenda}
                                     onChange={handleChange}
-                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                 >
                                     <option value="">Preço de compra</option>
                                     <option value="1">Até 200.000</option>
@@ -222,7 +232,7 @@ export default function SidebarFiltros({
 
                             {/* QUARTOS */}
                             <div>
-                                <h4 className= " text-sm md:text-base my-2 font-bold uppercase text-blue-500">
+                                <h4 className="text-sm md:text-base my-2 font-bold uppercase text-blue-500">
                                     Mínimo de Quartos
                                 </h4>
                                 <div className="hidden md:block space-y-2">
@@ -245,7 +255,7 @@ export default function SidebarFiltros({
                                     name="quartos"
                                     value={formFilters.quartos}
                                     onChange={handleChange}
-                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500 md:col-span-2 tt-autocomplete kenlo-filter-property"
+                                    className="block md:hidden w-full py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
                                 >
                                     <option value="">Mínimo de Quartos</option>
                                     {[1, 2, 3, 4, 5].map((q) => (

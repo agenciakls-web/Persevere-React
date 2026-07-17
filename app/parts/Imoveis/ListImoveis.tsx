@@ -19,17 +19,16 @@ interface FormFiltersType {
     condominio: string;
     CodigoImovel: string;
     action: string;
-    // Novos campos adicionados na tipagem
     orderBy: string;
     orderDirection: string;
 }
 
-export default function ListImoveis() {
+function ListImoveisContent() {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Valores atuais vindos da URL do Next.js (com fallbacks padrão solicitados)
+    // Valores atuais vindos da URL do Next.js
     const paginaAtual = parseInt(searchParams.get('page') || '1');
     const pesquisaAtual = searchParams.get('pesquisa') || '';
     const tipoAtual = searchParams.get('TipoImovel') || '';
@@ -38,8 +37,6 @@ export default function ListImoveis() {
     const condominioAtual = searchParams.get('condominio') || '';
     const codigoImovelAtual = searchParams.get('CodigoImovel') || '';
     const actionAtual = searchParams.get('action') || 'comprar';
-    
-    // Padrão: Preço de forma Crescente (asc)
     const orderByAtual = searchParams.get('orderBy') || 'PrecoVenda';
     const orderDirectionAtual = searchParams.get('orderDirection') || 'asc';
 
@@ -64,7 +61,6 @@ export default function ListImoveis() {
 
     // Sincroniza o estado interno se a URL do navegador mudar
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setFormFilters({
             pesquisa: pesquisaAtual,
             TipoImovel: tipoAtual,
@@ -101,7 +97,6 @@ export default function ListImoveis() {
 
             setLoading(true);
             try {
-                // Passamos orderBy e orderDirection para a API também (caso o back-end já queira ordenar no banco)
                 const response = await axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis', {
                     params: {
                         page: paginaAtual,
@@ -120,19 +115,17 @@ export default function ListImoveis() {
 
                 const imoveis: ImovelType[] = response.data.resultado || response.data;
 
-                // Ordenação dinâmica feita no Front-end (Garante o funcionamento mesmo se o back não tiver pronto)
+                // Ordenação dinâmica feita no Front-end
                 imoveis.sort((a, b) => {
                     let valorA = a[orderByAtual as keyof ImovelType];
                     let valorB = b[orderByAtual as keyof ImovelType];
 
-                    // Tratamento caso o campo seja numérico (ex: Preço)
                     if (orderByAtual === 'PrecoVenda' || orderByAtual === 'PrecoLocacao') {
                         return orderDirectionAtual === 'asc' 
                             ? Number(valorA) - Number(valorB) 
                             : Number(valorB) - Number(valorA);
                     }
 
-                    // Tratamento padrão para strings (ex: Titulo ou Bairro)
                     valorA = String(valorA ?? '').toLowerCase();
                     valorB = String(valorB ?? '').toLowerCase();
 
@@ -153,7 +146,6 @@ export default function ListImoveis() {
         carregarImoveis();
     }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
-    // Trata as alterações de inputs do formulário
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
         const atualizado = { ...formFilters, [name]: value };
@@ -164,7 +156,6 @@ export default function ListImoveis() {
         }
     };
 
-    // Nova função auxiliar para capturar o select de ordenação isolado
     const handleOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const [campo, direcao] = e.target.value.split('-');
         const atualizado = { ...formFilters, orderBy: campo, orderDirection: direcao };
@@ -172,7 +163,6 @@ export default function ListImoveis() {
         aplicarFiltros(atualizado, 1);
     };
 
-    // Monta a QueryString e injeta os parâmetros na rota do Next.js
     const aplicarFiltros = (novosFiltros = formFilters, novaPagina = 1) => {
         const params = new URLSearchParams();
         if (novaPagina > 1) params.set('page', novaPagina.toString());
@@ -183,8 +173,6 @@ export default function ListImoveis() {
         if (novosFiltros.quartos) params.set('quartos', novosFiltros.quartos);
         if (novosFiltros.condominio) params.set('condominio', novosFiltros.condominio);
         if (novosFiltros.CodigoImovel) params.set('CodigoImovel', novosFiltros.CodigoImovel);
-        
-        // Mantém a ordenação viva nos parâmetros da URL
         if (novosFiltros.orderBy) params.set('orderBy', novosFiltros.orderBy);
         if (novosFiltros.orderDirection) params.set('orderDirection', novosFiltros.orderDirection);
 
@@ -197,22 +185,18 @@ export default function ListImoveis() {
     };
 
     return (
-        <div key={searchParams.toString()} className="flex flex-wrap">
-            <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
-                <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
-                    <SidebarFiltros
-                        formFilters={formFilters}
-                        setFormFilters={setFormFilters}
-                        tiposDisponiveis={tiposDisponiveis}
-                        aplicarFiltros={aplicarFiltros}
-                        handleSubmit={handleSubmit}
-                        handleChange={handleChange}
-                    />
-                </div>
-            </Suspense>
+        <div className="flex flex-wrap">
+            <div className="w-full px-4 md:block md:w-1/3 lg:w-1/4">
+                <SidebarFiltros
+                    formFilters={formFilters}
+                    setFormFilters={setFormFilters}
+                    tiposDisponiveis={tiposDisponiveis}
+                    aplicarFiltros={aplicarFiltros}
+                    handleSubmit={handleSubmit}
+                    handleChange={handleChange}
+                />
+            </div>
             <div className="w-full md:w-2/3 lg:w-3/4 px-4">
-                
-                {/* BARRA DE ORDENAÇÃO COMPLEMENTAR */}
                 <div className="flex justify-between items-center mb-6 bg-white p-2 md:p-4 rounded-xl shadow-sm border border-gray-100">
                     <span className="text-sm text-gray-500 font-medium">
                         {listaImoveis.length > 0 ? `${listaImoveis.length} imóveis encontrados` : ''}
@@ -249,15 +233,22 @@ export default function ListImoveis() {
                         <p className="mt-2 text-gray-500">Infelizmente não temos imóveis disponíveis nessa seção.</p>
                     </div>
                 )}
-                <Suspense fallback={<div className="py-12 text-center">Carregando filtros...</div>}>
-                    <Paginacao
-                        paginaAtual={paginaAtual}
-                        totalPaginas={totalPaginas}
-                        formFilters={formFilters}
-                        aplicarFiltros={aplicarFiltros}
-                    />
-                </Suspense>
+                
+                <Paginacao
+                    paginaAtual={paginaAtual}
+                    totalPaginas={totalPaginas}
+                    formFilters={formFilters}
+                    aplicarFiltros={aplicarFiltros}
+                />
             </div>
         </div>
+    );
+}
+
+export default function ListImoveis() {
+    return (
+        <Suspense fallback={<div className="py-12 text-center text-orange-500">Carregando listagem de imóveis...</div>}>
+            <ListImoveisContent />
+        </Suspense>
     );
 }
