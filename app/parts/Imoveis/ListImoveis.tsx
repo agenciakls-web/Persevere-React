@@ -83,23 +83,22 @@ function ListImoveisContent() {
         });
     }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, cidadeAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
-    // Busca os tipos distintos cadastrados no banco de dados
+    // Busca os tipos e cidades distintos cadastrados no banco de dados
     useEffect(() => {
-        async function carregarTipos() {
+        async function carregarDadosFiltros() {
             try {
-                // Busca tipos e cidades em paralelo
                 const [resTipos, resCidades] = await Promise.all([
                     axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/tipos'),
                     axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/cidades')
                 ]);
                 
                 setTiposDisponiveis(resTipos.data);
-                setCidadesDisponiveis(resCidades.data); // <-- Guarda no estado
+                setCidadesDisponiveis(resCidades.data);
             } catch (error) {
-                console.error("Erro ao carregar os tipos de imóveis do banco:", error);
+                console.error("Erro ao carregar os dados de apoio do banco:", error);
             }
         }
-        carregarTipos();
+        carregarDadosFiltros();
     }, []);
 
     // Busca a lista de imóveis com base nos filtros da URL
@@ -160,7 +159,7 @@ function ListImoveisContent() {
             }
         }
         carregarImoveis();
-    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, actionAtual, orderByAtual, orderDirectionAtual]);
+    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, cidadeAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
@@ -208,7 +207,7 @@ function ListImoveisContent() {
                     formFilters={formFilters}
                     setFormFilters={setFormFilters}
                     tiposDisponiveis={tiposDisponiveis}
-                    cidadesDisponiveis={cidadesDisponiveis} // <-- Adicionado aqui
+                    cidadesDisponiveis={cidadesDisponiveis}
                     aplicarFiltros={aplicarFiltros}
                     handleSubmit={handleSubmit}
                     handleChange={handleChange}
