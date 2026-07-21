@@ -46,6 +46,12 @@ export function EmailTemplate(body : ContatoTypes ) {
                                         </td>
                                         <td className="m-2 px-4 py-2 bg-zinc-200">{body.telefone}</td>
                                     </tr>
+                                    <tr>
+                                        <td className="m-2 px-4 py-2 text-right font-bold text-white w-32 bg-orange-500">
+                                            Mensagem
+                                        </td>
+                                        <td className="m-2 px-4 py-2 bg-zinc-200">{body.mensagem}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </Section>
