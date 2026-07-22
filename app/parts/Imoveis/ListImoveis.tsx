@@ -131,14 +131,21 @@ function ListImoveisContent() {
                 const imoveis: ImovelType[] = response.data.resultado || response.data;
 
                 // Ordenação dinâmica feita no Front-end
+                // Ordenação dinâmica feita no Front-end
                 imoveis.sort((a, b) => {
-                    let valorA = a[orderByAtual as keyof ImovelType];
-                    let valorB = b[orderByAtual as keyof ImovelType];
+                    // Define qual campo de preço usar com base no actionAtual
+                    let campoAlvo = orderByAtual;
+                    if (orderByAtual === 'PrecoVenda' && actionAtual === 'alugar') {
+                        campoAlvo = 'PrecoLocacao';
+                    }
 
-                    if (orderByAtual === 'PrecoVenda' || orderByAtual === 'PrecoLocacao') {
+                    let valorA = a[campoAlvo as keyof ImovelType];
+                    let valorB = b[campoAlvo as keyof ImovelType];
+
+                    if (campoAlvo === 'PrecoVenda' || campoAlvo === 'PrecoLocacao') {
                         return orderDirectionAtual === 'asc' 
-                            ? Number(valorA) - Number(valorB) 
-                            : Number(valorB) - Number(valorA);
+                            ? Number(valorA || 0) - Number(valorB || 0) 
+                            : Number(valorB || 0) - Number(valorA || 0);
                     }
 
                     valorA = String(valorA ?? '').toLowerCase();
