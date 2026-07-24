@@ -27,10 +27,9 @@ export default function Categoria() {
                             Terrenos
                         </div>
                     </Link>
-                    <Link href="/imoveis?action=comprar&TipoImovel=Loteamento%2FCondominio">
+                    <Link href="/imoveis?action=alugar">
                         <div className="bg-black bg-[url(/img/categoria-4.png)] bg-cover h-36 sm:h-64 rounded-xl sm:rounded-3xl text-center flex items-center justify-center text-white font-brandon uppercase text-base md:text-2xl">
-                            Loteamento/ <br />
-                            Condomínio
+                            Locação
                         </div>
                     </Link>
                 </div>
