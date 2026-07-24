@@ -10,11 +10,16 @@ type CidadeImovel = {
     Cidade: string;
 };
 
+type CondominioImovel = {
+    NomeCondominio: string;
+};
+
 export default function PesquisaImovel() {
     const [activeTab, setActiveTab] = useState("tab-1");
     const [tiposDisponiveis, setTiposDisponiveis] = useState<TipoImovel[]>([]);
     const [cidadesDisponiveis, setCidadesDisponiveis] = useState<CidadeImovel[]>([]);
-    
+    const [condominiosDisponiveis, setCondominiosDisponiveis] = useState<CondominioImovel[]>([]);
+
     const handleTabClick = (tabId: string) => {
         setActiveTab(tabId);
     };
@@ -23,13 +28,15 @@ export default function PesquisaImovel() {
     useEffect(() => {
         async function carregarDadosFiltros() {
             try {
-                const [resTipos, resCidades] = await Promise.all([
+                const [resTipos, resCidades, resCondominios] = await Promise.all([
                     axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/tipos'),
-                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/cidades')
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/cidades'),
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/condominios')
                 ]);
-                
+
                 setTiposDisponiveis(resTipos.data);
                 setCidadesDisponiveis(resCidades.data);
+                setCondominiosDisponiveis(resCondominios.data);
             } catch (error) {
                 console.error("Erro ao carregar dados dos filtros:", error);
             }
@@ -46,25 +53,41 @@ export default function PesquisaImovel() {
                 <h3 className="text-blue-500 text-xl md:text-3xl uppercase py-3 font-medium text-center">
                     Pesquisar imóvel
                 </h3>
-                <ul className="grid justify-center grid-cols-2 md:grid-cols-3 lg:grid-cols-3 px-4 md:px-16">
+                
+                {/* LISTA DE TABS */}
+                <ul className="grid justify-center grid-cols-3 px-4 md:px-16">
                     <li className="mx-1 md:mx-2 xl:mx-2">
                         <button
                             onClick={() => handleTabClick("tab-1")}
-                            className={`tab-button cursor-pointer my-1 md:my-0 px-1 xl:px-4 py-4 md:py-5 block rounded-xl lg:rounded-b-none lg:rounded-t-xl w-full text-center uppercase text-sm md:text-base lg:text-xs xl:text-sm 2xl:text-base ${activeTab === "tab-1"
+                            className={`tab-button cursor-pointer my-1 md:my-0 px-1 xl:px-4 py-4 md:py-5 block rounded-xl lg:rounded-b-none lg:rounded-t-xl w-full text-center uppercase text-sm md:text-base lg:text-xs xl:text-sm 2xl:text-base ${
+                                activeTab === "tab-1"
                                     ? "bg-white text-blue-500"
                                     : "bg-blue-500 text-white"
-                                }`}
+                            }`}
                         >
                             Comprar
                         </button>
                     </li>
                     <li className="mx-1 md:mx-2 xl:mx-2">
                         <button
-                            onClick={() => handleTabClick("tab-3")}
-                            className={`tab-button cursor-pointer my-1 md:my-0 px-1 xl:px-4 py-4 md:py-5 block rounded-xl lg:rounded-b-none lg:rounded-t-xl w-full text-center uppercase text-sm md:text-base lg:text-xs xl:text-sm 2xl:text-base ${activeTab === "tab-3"
+                            onClick={() => handleTabClick("tab-2")}
+                            className={`tab-button cursor-pointer my-1 md:my-0 px-1 xl:px-4 py-4 md:py-5 block rounded-xl lg:rounded-b-none lg:rounded-t-xl w-full text-center uppercase text-sm md:text-base lg:text-xs xl:text-sm 2xl:text-base ${
+                                activeTab === "tab-2"
                                     ? "bg-white text-blue-500"
                                     : "bg-blue-500 text-white"
-                                }`}
+                            }`}
+                        >
+                            Alugar
+                        </button>
+                    </li>
+                    <li className="mx-1 md:mx-2 xl:mx-2">
+                        <button
+                            onClick={() => handleTabClick("tab-3")}
+                            className={`tab-button cursor-pointer my-1 md:my-0 px-1 xl:px-4 py-4 md:py-5 block rounded-xl lg:rounded-b-none lg:rounded-t-xl w-full text-center uppercase text-sm md:text-base lg:text-xs xl:text-sm 2xl:text-base ${
+                                activeTab === "tab-3"
+                                    ? "bg-white text-blue-500"
+                                    : "bg-blue-500 text-white"
+                            }`}
                         >
                             Código
                         </button>
@@ -73,8 +96,10 @@ export default function PesquisaImovel() {
 
                 {/* Conteúdo */}
                 <div className="rounded-xl p-8 bg-white">
+                    {/* TAB 1: COMPRAR */}
                     {activeTab === "tab-1" && (
                         <form action="/imoveis" method="GET">
+                            <input type="hidden" name="action" value="comprar" />
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                                 {/* TIPO DE IMÓVEL DINÂMICO */}
                                 <div>
@@ -100,7 +125,7 @@ export default function PesquisaImovel() {
                                     />
                                 </div>
 
-                                {/* CIDADE DINÂMICA (Adicionada após a pesquisa) */}
+                                {/* CIDADE DINÂMICA */}
                                 <div>
                                     <select
                                         name="Cidade"
@@ -110,6 +135,21 @@ export default function PesquisaImovel() {
                                         {cidadesDisponiveis.map((item, index) => (
                                             <option key={index} value={item.Cidade}>
                                                 {item.Cidade}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* CONDOMÍNIO DINÂMICO */}
+                                <div>
+                                    <select
+                                        name="NomeCondominio"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    >
+                                        <option value="">Condomínio</option>
+                                        {condominiosDisponiveis.map((item, index) => (
+                                            <option key={index} value={item.NomeCondominio}>
+                                                {item.NomeCondominio}
                                             </option>
                                         ))}
                                     </select>
@@ -147,13 +187,12 @@ export default function PesquisaImovel() {
                                 </div>
 
                                 {/* BOTÃO BUSCAR */}
-                                <div className="flex items-center justify-center md:justify-start">
-                                    <input type="hidden" name="action" value="comprar" />
+                                <div className="flex items-center justify-center md:justify-start lg:col-span-3">
                                     <button
                                         type="submit"
-                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-2 px-16 block text-sm md:text-lg uppercase"
+                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-2 px-16 block text-sm md:text-lg uppercase hover:bg-orange-600 transition"
                                     >
-                                        <i className="fa fa-search"></i>
+                                        <i className="fa fa-search mr-2"></i>
                                         Buscar
                                     </button>
                                 </div>
@@ -161,8 +200,113 @@ export default function PesquisaImovel() {
                         </form>
                     )}
 
+                    {/* TAB 2: ALUGAR */}
+                    {activeTab === "tab-2" && (
+                        <form action="/imoveis" method="GET">
+                            <input type="hidden" name="action" value="alugar" />
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                                {/* TIPO DE IMÓVEL DINÂMICO */}
+                                <div>
+                                    <select
+                                        name="TipoImovel"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    >
+                                        <option value="">Tipo</option>
+                                        {tiposDisponiveis.map((item, index) => (
+                                            <option key={index} value={item.TipoImovel}>
+                                                {item.TipoImovel}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* PESQUISA TEXTUAL */}
+                                <div>
+                                    <input
+                                        name="pesquisa"
+                                        placeholder="Digite condomínio, região, bairro..."
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    />
+                                </div>
+
+                                {/* CIDADE DINÂMICA */}
+                                <div>
+                                    <select
+                                        name="Cidade"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    >
+                                        <option value="">Cidade</option>
+                                        {cidadesDisponiveis.map((item, index) => (
+                                            <option key={index} value={item.Cidade}>
+                                                {item.Cidade}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* CONDOMÍNIO DINÂMICO */}
+                                <div>
+                                    <select
+                                        name="NomeCondominio"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    >
+                                        <option value="">Condomínio</option>
+                                        {condominiosDisponiveis.map((item, index) => (
+                                            <option key={index} value={item.NomeCondominio}>
+                                                {item.NomeCondominio}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* PREÇO ALUGUEL */}
+                                <div>
+                                    <select
+                                        name="PrecoVenda"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    >
+                                        <option value="">Preço de locação</option>
+                                        <option value="1">Até R$ 1.000</option>
+                                        <option value="2">R$ 1.000 até R$ 2.000</option>
+                                        <option value="3">R$ 2.000 até R$ 3.000</option>
+                                        <option value="4">R$ 3.000 até R$ 5.000</option>
+                                        <option value="5">Acima de R$ 5.000</option>
+                                    </select>
+                                </div>
+
+                                {/* QUARTOS */}
+                                <div>
+                                    <select
+                                        name="quartos"
+                                        className="w-full py-2 md:py-3 px-2 md:px-4 rounded-lg text-sm md:text-lg font-medium border text-blue-500 border-blue-500"
+                                    >
+                                        <option value="">Mínimo de Quartos</option>
+                                        <option value="1">1 ou +</option>
+                                        <option value="2">2 ou +</option>
+                                        <option value="3">3 ou +</option>
+                                        <option value="4">4 ou +</option>
+                                        <option value="5">5 ou +</option>
+                                    </select>
+                                </div>
+
+                                {/* BOTÃO BUSCAR */}
+                                <div className="flex items-center justify-center md:justify-start lg:col-span-3">
+                                    <button
+                                        type="submit"
+                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-2 px-16 block text-sm md:text-lg uppercase hover:bg-orange-600 transition"
+                                    >
+                                        <i className="fa fa-search mr-2"></i>
+                                        Buscar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    )}
+
+                    {/* TAB 3: CÓDIGO */}
                     {activeTab === "tab-3" && (
                         <form action="/imoveis" method="GET">
+                            <input type="hidden" name="action" value="codigo" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <div>
                                     <input
@@ -173,12 +317,11 @@ export default function PesquisaImovel() {
                                     />
                                 </div>
                                 <div className="flex items-center justify-center md:justify-start">
-                                    <input type="hidden" name="action" value="codigo" />
                                     <button
                                         type="submit"
-                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-2 px-16 block text-sm md:text-lg uppercase"
+                                        className="bg-orange-500 text-gray-100 font-medium rounded-full py-2 px-16 block text-sm md:text-lg uppercase hover:bg-orange-600 transition"
                                     >
-                                        <i className="fa fa-search"></i>
+                                        <i className="fa fa-search mr-2"></i>
                                         Buscar
                                     </button>
                                 </div>
