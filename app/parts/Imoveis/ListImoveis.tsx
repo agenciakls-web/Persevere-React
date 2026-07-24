@@ -15,6 +15,10 @@ type CidadeImovel = {
     Cidade: string;
 };
 
+type CondominioImovel = {
+    NomeCondominio: string;
+};
+
 interface FormFiltersType {
     pesquisa: string;
     TipoImovel: string;
@@ -26,6 +30,7 @@ interface FormFiltersType {
     orderBy: string;
     orderDirection: string;
     Cidade: string;
+    NomeCondominio: string; // <-- Novo campo adicionado
 }
 
 function ListImoveisContent() {
@@ -42,6 +47,7 @@ function ListImoveisContent() {
     const condominioAtual = searchParams.get('condominio') || '';
     const codigoImovelAtual = searchParams.get('CodigoImovel') || '';
     const cidadeAtual = searchParams.get('Cidade') || '';
+    const nomeCondominioAtual = searchParams.get('NomeCondominio') || ''; // <-- Leitura da URL
     const actionAtual = searchParams.get('action') || 'comprar';
     const orderByAtual = searchParams.get('orderBy') || 'PrecoVenda';
     const orderDirectionAtual = searchParams.get('orderDirection') || 'asc';
@@ -52,6 +58,7 @@ function ListImoveisContent() {
     const [loading, setLoading] = useState(true);
     const [tiposDisponiveis, setTiposDisponiveis] = useState<TipoImovel[]>([]);
     const [cidadesDisponiveis, setCidadesDisponiveis] = useState<CidadeImovel[]>([]);
+    const [condominiosDisponiveis, setCondominiosDisponiveis] = useState<CondominioImovel[]>([]); // <-- Novo estado
 
     // Objeto central do estado do formulário
     const [formFilters, setFormFilters] = useState<FormFiltersType>({
@@ -62,6 +69,7 @@ function ListImoveisContent() {
         condominio: condominioAtual,
         CodigoImovel: codigoImovelAtual,
         Cidade: cidadeAtual,
+        NomeCondominio: nomeCondominioAtual, // <-- Adicionado ao estado
         action: actionAtual,
         orderBy: orderByAtual,
         orderDirection: orderDirectionAtual,
@@ -77,23 +85,26 @@ function ListImoveisContent() {
             condominio: condominioAtual,
             CodigoImovel: codigoImovelAtual,
             Cidade: cidadeAtual,
+            NomeCondominio: nomeCondominioAtual,
             action: actionAtual,
             orderBy: orderByAtual,
             orderDirection: orderDirectionAtual,
         });
-    }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, cidadeAtual, actionAtual, orderByAtual, orderDirectionAtual]);
+    }, [pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, cidadeAtual, nomeCondominioAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
-    // Busca os tipos e cidades distintos cadastrados no banco de dados
+    // Busca os tipos, cidades e condomínios distintos cadastrados no banco de dados
     useEffect(() => {
         async function carregarDadosFiltros() {
             try {
-                const [resTipos, resCidades] = await Promise.all([
+                const [resTipos, resCidades, resCondominios] = await Promise.all([
                     axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/tipos'),
-                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/cidades')
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/cidades'),
+                    axios.get(process.env.NEXT_PUBLIC_API_BACKEND + '/imoveis/condominios') // <-- Rota de condomínios adicionada
                 ]);
                 
                 setTiposDisponiveis(resTipos.data);
                 setCidadesDisponiveis(resCidades.data);
+                setCondominiosDisponiveis(resCondominios.data);
             } catch (error) {
                 console.error("Erro ao carregar os dados de apoio do banco:", error);
             }
@@ -122,6 +133,7 @@ function ListImoveisContent() {
                         condominio: condominioAtual,
                         CodigoImovel: codigoImovelAtual,
                         Cidade: cidadeAtual,
+                        NomeCondominio: nomeCondominioAtual, // <-- Enviado nos parâmetros da requisição
                         action: actionAtual,
                         orderBy: orderByAtual,
                         orderDirection: orderDirectionAtual,
@@ -131,9 +143,7 @@ function ListImoveisContent() {
                 const imoveis: ImovelType[] = response.data.resultado || response.data;
 
                 // Ordenação dinâmica feita no Front-end
-                // Ordenação dinâmica feita no Front-end
                 imoveis.sort((a, b) => {
-                    // Define qual campo de preço usar com base no actionAtual
                     let campoAlvo = orderByAtual;
                     if (orderByAtual === 'PrecoVenda' && actionAtual === 'alugar') {
                         campoAlvo = 'PrecoLocacao';
@@ -166,7 +176,7 @@ function ListImoveisContent() {
             }
         }
         carregarImoveis();
-    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, cidadeAtual, actionAtual, orderByAtual, orderDirectionAtual]);
+    }, [paginaAtual, pesquisaAtual, tipoAtual, precoAtual, quartosAtual, condominioAtual, codigoImovelAtual, cidadeAtual, nomeCondominioAtual, actionAtual, orderByAtual, orderDirectionAtual]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
@@ -196,6 +206,7 @@ function ListImoveisContent() {
         if (novosFiltros.condominio) params.set('condominio', novosFiltros.condominio);
         if (novosFiltros.CodigoImovel) params.set('CodigoImovel', novosFiltros.CodigoImovel);
         if (novosFiltros.Cidade) params.set('Cidade', novosFiltros.Cidade);
+        if (novosFiltros.NomeCondominio) params.set('NomeCondominio', novosFiltros.NomeCondominio); // <-- Adicionado ao URL
         if (novosFiltros.orderBy) params.set('orderBy', novosFiltros.orderBy);
         if (novosFiltros.orderDirection) params.set('orderDirection', novosFiltros.orderDirection);
 
@@ -215,6 +226,7 @@ function ListImoveisContent() {
                     setFormFilters={setFormFilters}
                     tiposDisponiveis={tiposDisponiveis}
                     cidadesDisponiveis={cidadesDisponiveis}
+                    condominiosDisponiveis={condominiosDisponiveis} // <-- Repassado para o SidebarFiltros
                     aplicarFiltros={aplicarFiltros}
                     handleSubmit={handleSubmit}
                     handleChange={handleChange}
