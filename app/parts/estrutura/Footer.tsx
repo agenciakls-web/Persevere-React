@@ -4,6 +4,7 @@ import { ContentLinks } from "../dados/contentLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import Kls from "@/public/img/credits/kls-full-white.png"
 
 export default function Footer() {
   return (
@@ -162,6 +163,18 @@ export default function Footer() {
                 </a>
               </div>
             </div>
+            <a href="https://www.agenciakls.com.br/" target="_blank">
+                  <div className="flex justify-start  gap-3 mt-8 text-white">
+                    <div className="text-sm">Desenvolvido por</div>
+                    <Image
+                      src={Kls}
+                      width="64"
+                      height="24"
+                      className="w-16"
+                      alt="Logo da Agência KLS"
+                    />
+                  </div>
+                </a>
           </div>
         </div>
       </footer>

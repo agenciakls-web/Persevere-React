@@ -45,7 +45,7 @@ export default async function Banner() {
     }
 
     return (
-        <div className="banner h-[16rem] sm:h-[20rem] md:h-[16rem] lg:h-[24rem] xl:h-[30rem] 2xl:h-[40rem] relative">
+        <div className="banner h-64 sm:h-80 md:h-64 lg:h-96 xl:h-120 2xl:h-160 relative">
             <MainSlider slides={slides} />
         </div>
     );

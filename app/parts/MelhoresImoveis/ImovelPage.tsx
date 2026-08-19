@@ -4,7 +4,7 @@ import Image from 'next/image';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
-import { ContentLinks } from '../dados/contentLinks';
+//import { ContentLinks } from '../dados/contentLinks';
 import Link from 'next/link';
 import { ImovelType } from '../tipagem/imoveis';
 
